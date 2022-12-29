@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 SocketManager="*res://scripts/socket/SocketManager.gd"
 GlobalNavigation="*res://scripts/global/GlobalNavigation.gd"
 Session="*res://scripts/socket/Session.gd"
+RoomInfo="*res://scripts/socket/RoomInfo.gd"
 
 [display]
 

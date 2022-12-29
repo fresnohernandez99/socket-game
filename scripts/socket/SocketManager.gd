@@ -47,7 +47,7 @@ func _closed(was_clean = false):
 	print("Closed, clean: ", was_clean)
 	state = DISCONNECTED
 
-func _connected():
+func _connected(param):
 	# You MUST always use get_peer(1).put_packet to send data to server,
 	# and not put_packet directly when not using the MultiplayerAPI.
 	#_client.get_peer(1).put_packet("Test packet".to_utf8())
@@ -61,6 +61,15 @@ func _on_data():
 	print("Got data from server: ", data)
 	waitingRequests(data)
 
+func _send(endpoint, data):
+	var request = {
+		"endpoint": endpoint,
+		"content": data
+	}
+	var json = JSON.print(request)
+	print("Sending: " + json)
+	_client.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
+	_client.get_peer(1).put_var(json)
 
 ################################################
 ###
@@ -116,23 +125,64 @@ func waitingRequests(response):
 			INTENT_CONNECTING_ACTIVE = ERROR_STATE
 	
 	if INTENT_RE_CONNECTING_ACTIVE:
-		pass
+		if result.content.code == INTENT_CORRECT:
+			INTENT_RE_CONNECTING_ACTIVE = SUCCESS_STATE
+			#TODO
+		else:
+			INTENT_RE_CONNECTING_ACTIVE = ERROR_STATE
 		
 	if INTENT_CREATE_ROOM_ACTIVE:
-		pass
+		if result.content.code == INTENT_CORRECT:
+			INTENT_CREATE_ROOM_ACTIVE = SUCCESS_STATE
+			print("Room creada: " + Session.playerId)
+		else:
+			INTENT_CREATE_ROOM_ACTIVE = ERROR_STATE
 		
 	if INTENT_CLOSE_ROOM_ACTIVE:
-		pass
+		if result.content.code == INTENT_CORRECT:
+			INTENT_CLOSE_ROOM_ACTIVE = SUCCESS_STATE
+			#TODO
+		else:
+			INTENT_CLOSE_ROOM_ACTIVE = ERROR_STATE
 		
 	if INTENT_CANCEL_ROOM_ACTIVE:
-		pass
+		if result.content.code == INTENT_CORRECT:
+			INTENT_CANCEL_ROOM_ACTIVE = SUCCESS_STATE
+			#TODO
+		else:
+			INTENT_CANCEL_ROOM_ACTIVE = ERROR_STATE
 		
 	if INTENT_GET_ROOMS_ACTIVE:
-		pass
+		if result.content.code == INTENT_CORRECT:
+			INTENT_GET_ROOMS_ACTIVE = SUCCESS_STATE
+			#TODO
+		else:
+			INTENT_GET_ROOMS_ACTIVE = ERROR_STATE
 		
 	if INTENT_JOIN_ROOM_ACTIVE:
-		pass
+		if result.content.code == INTENT_CORRECT:
+			INTENT_JOIN_ROOM_ACTIVE = SUCCESS_STATE
+			#TODO
+		else:
+			INTENT_JOIN_ROOM_ACTIVE = ERROR_STATE
 	
+
+func createRoom(roomName, roomCode):
+	INTENT_CREATE_ROOM_ACTIVE = LOADING_STATE
+	_send(INTENT_CREATE_ROOM, {
+		"id": Session.playerId,
+		"name": roomName,
+		"code": roomCode
+	})
+
+func loadRooms():
+	INTENT_GET_ROOMS_ACTIVE = LOADING_STATE
+	
+	_send(INTENT_GET_ROOMS, null)
+
+
+
+
 ################################################
 ###
 ### End-Region Requests
