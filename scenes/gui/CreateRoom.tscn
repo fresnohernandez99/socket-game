@@ -93,4 +93,21 @@ text = "Fill all requested data"
 align = 1
 valign = 1
 
+[node name="CreatingDialog" type="WindowDialog" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+window_title = "Confirm"
+
+[node name="Label2" type="Label" parent="Control/CreatingDialog"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = -37.0
+text = "Creating..."
+align = 1
+valign = 1
+
 [connection signal="pressed" from="Control/VBoxContainer/CreateRoomBtn" to="." method="_on_CreateRoomBtn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/CancelBtn" to="." method="_on_CancelBtn_pressed"]

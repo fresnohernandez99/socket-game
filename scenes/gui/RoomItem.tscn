@@ -3,6 +3,7 @@
 [node name="RoomItem" type="Control"]
 anchor_right = 1.0
 margin_bottom = 82.0
+rect_min_size = Vector2( 0, 82 )
 
 [node name="ColorRect2" type="ColorRect" parent="."]
 anchor_right = 1.0

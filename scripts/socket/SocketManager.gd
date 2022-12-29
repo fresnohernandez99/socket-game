@@ -180,7 +180,12 @@ func loadRooms():
 	
 	_send(INTENT_GET_ROOMS, null)
 
-
+func cancelRoom():
+	INTENT_CANCEL_ROOM_ACTIVE = LOADING_STATE
+	_send(INTENT_CANCEL_ROOM, {
+		"hostId": Session.playerId,
+		"roomId": Session.playerId
+	})
 
 
 ################################################
