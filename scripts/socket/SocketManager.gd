@@ -124,38 +124,39 @@ func waitingRequests(response):
 		else:
 			INTENT_CONNECTING_ACTIVE = ERROR_STATE
 	
-	if INTENT_RE_CONNECTING_ACTIVE:
+	if INTENT_RE_CONNECTING_ACTIVE == LOADING_STATE:
 		if result.content.code == INTENT_CORRECT:
 			INTENT_RE_CONNECTING_ACTIVE = SUCCESS_STATE
 			#TODO
 		else:
 			INTENT_RE_CONNECTING_ACTIVE = ERROR_STATE
 		
-	if INTENT_CREATE_ROOM_ACTIVE:
+	if INTENT_CREATE_ROOM_ACTIVE == LOADING_STATE:
 		if result.content.code == INTENT_CORRECT:
 			INTENT_CREATE_ROOM_ACTIVE = SUCCESS_STATE
 			print("Room creada: " + Session.playerId)
 		else:
 			INTENT_CREATE_ROOM_ACTIVE = ERROR_STATE
 		
-	if INTENT_CLOSE_ROOM_ACTIVE:
+	if INTENT_CLOSE_ROOM_ACTIVE == LOADING_STATE:
 		if result.content.code == INTENT_CORRECT:
 			INTENT_CLOSE_ROOM_ACTIVE = SUCCESS_STATE
 			#TODO
 		else:
 			INTENT_CLOSE_ROOM_ACTIVE = ERROR_STATE
 		
-	if INTENT_CANCEL_ROOM_ACTIVE:
+	if INTENT_CANCEL_ROOM_ACTIVE == LOADING_STATE:
 		if result.content.code == INTENT_CORRECT:
-			INTENT_CANCEL_ROOM_ACTIVE = SUCCESS_STATE
-			#TODO
+			INTENT_CANCEL_ROOM_ACTIVE = NOT_REQUESTED_STATE
+			#TODO not interested result
 		else:
 			INTENT_CANCEL_ROOM_ACTIVE = ERROR_STATE
 		
-	if INTENT_GET_ROOMS_ACTIVE:
+	if INTENT_GET_ROOMS_ACTIVE == LOADING_STATE:
 		if result.content.code == INTENT_CORRECT:
 			INTENT_GET_ROOMS_ACTIVE = SUCCESS_STATE
-			#TODO
+			SocketRooms.rooms = result.content.data
+			print("Rooms obtenidas: " + str(SocketRooms.rooms.size()))
 		else:
 			INTENT_GET_ROOMS_ACTIVE = ERROR_STATE
 		
@@ -178,7 +179,7 @@ func createRoom(roomName, roomCode):
 func loadRooms():
 	INTENT_GET_ROOMS_ACTIVE = LOADING_STATE
 	
-	_send(INTENT_GET_ROOMS, null)
+	_send(INTENT_GET_ROOMS, {})
 
 func cancelRoom():
 	INTENT_CANCEL_ROOM_ACTIVE = LOADING_STATE

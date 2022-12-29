@@ -70,6 +70,7 @@ margin_right = -10.0
 margin_bottom = -10.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer"]
-custom_constants/separation = 10
+custom_constants/separation = 5
 
 [connection signal="pressed" from="Control/AddRoomBtn" to="." method="_on_AddRoomBtn_pressed"]
+[connection signal="pressed" from="Control/RefreshBtn" to="." method="_on_RefreshBtn_pressed"]

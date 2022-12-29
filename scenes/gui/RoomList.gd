@@ -1,14 +1,39 @@
 extends Node
 
+onready var listContainer = $Control/ScrollContainer/VBoxContainer
 
 var roomItem = load("res://scenes/gui/RoomItem.tscn")
-#onready var ins_nave2_roja = nave2_roja.instance()
 
 func _ready():
 	loadRooms()
 
+func _process(delta):
+	if SocketManager.INTENT_GET_ROOMS_ACTIVE == SocketManager.SUCCESS_STATE:
+		onRoomsLoaded()
+
 func loadRooms():
 	SocketManager.loadRooms()
 
+func onRoomsLoaded():
+	SocketManager.INTENT_GET_ROOMS_ACTIVE = SocketManager.NOT_REQUESTED_STATE
+	
+	var contR = 0
+	while(contR < listContainer.get_child_count()):
+		var theChild = listContainer.get_child(contR)
+		listContainer.remove_child(theChild)
+		contR += 1
+	
+	var cont = 0
+	while(cont < SocketRooms.rooms.size()):
+		var ins = roomItem.instance()
+		ins.setData(SocketRooms.rooms[cont])
+		
+		listContainer.add_child(ins)
+		cont += 1
+
 func _on_AddRoomBtn_pressed():
 	get_tree().change_scene("res://scenes/gui/CreateRoom.tscn")
+
+
+func _on_RefreshBtn_pressed():
+	loadRooms()
