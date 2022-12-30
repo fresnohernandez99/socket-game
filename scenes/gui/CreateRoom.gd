@@ -15,7 +15,7 @@ func callCreateRoom():
 	var roomName = nameTextEdit.text
 	var roomCode = roomCodeTextEdit.text
 	
-	if roomName.length() == 0 or roomCode.length() == 0:
+	if roomName.length() == 0:
 		errorDialog.show()
 	else:
 		RoomInfo.id = Session.playerId

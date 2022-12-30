@@ -154,16 +154,17 @@ func waitingRequests(response):
 		
 	if INTENT_GET_ROOMS_ACTIVE == LOADING_STATE:
 		if result.content.code == INTENT_CORRECT:
-			INTENT_GET_ROOMS_ACTIVE = SUCCESS_STATE
 			SocketRooms.rooms = result.content.data
+			INTENT_GET_ROOMS_ACTIVE = SUCCESS_STATE
 			print("Rooms obtenidas: " + str(SocketRooms.rooms.size()))
 		else:
 			INTENT_GET_ROOMS_ACTIVE = ERROR_STATE
 		
 	if INTENT_JOIN_ROOM_ACTIVE:
 		if result.content.code == INTENT_CORRECT:
+			RoomInfo.setData(result.content.data)
 			INTENT_JOIN_ROOM_ACTIVE = SUCCESS_STATE
-			#TODO
+			print("Unido a la room: " + JSON.print(RoomInfo))
 		else:
 			INTENT_JOIN_ROOM_ACTIVE = ERROR_STATE
 	
@@ -187,6 +188,16 @@ func cancelRoom():
 		"hostId": Session.playerId,
 		"roomId": Session.playerId
 	})
+
+func joinRoom(roomId, code):
+	INTENT_JOIN_ROOM_ACTIVE = LOADING_STATE
+	_send(INTENT_JOIN_ROOM, {
+		"roomId": roomId,
+		"code": code,
+	})
+
+func leaveRoom():
+	pass # TODO
 
 
 ################################################

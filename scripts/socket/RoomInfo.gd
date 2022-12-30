@@ -10,3 +10,11 @@ var configuration = {
 	
 }
 var users = []
+
+func setData(socketRoom):
+	id = socketRoom.id
+	roomOwner = socketRoom.owner
+	roomName = socketRoom.name
+	code = socketRoom.code
+	configuration = socketRoom.configuration
+	users = socketRoom.users

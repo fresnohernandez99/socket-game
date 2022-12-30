@@ -10,6 +10,8 @@ func _ready():
 func _process(delta):
 	if SocketManager.INTENT_GET_ROOMS_ACTIVE == SocketManager.SUCCESS_STATE:
 		onRoomsLoaded()
+	if SocketManager.INTENT_JOIN_ROOM_ACTIVE == SocketManager.SUCCESS_STATE:
+		onJoinRoom()
 
 func loadRooms():
 	SocketManager.loadRooms()
@@ -30,6 +32,10 @@ func onRoomsLoaded():
 		
 		listContainer.add_child(ins)
 		cont += 1
+
+func onJoinRoom():
+	SocketManager.INTENT_JOIN_ROOM_ACTIVE = SocketManager.NOT_REQUESTED_STATE
+	get_tree().change_scene("res://scenes/gui/WaitingLobby.tscn")
 
 func _on_AddRoomBtn_pressed():
 	get_tree().change_scene("res://scenes/gui/CreateRoom.tscn")
