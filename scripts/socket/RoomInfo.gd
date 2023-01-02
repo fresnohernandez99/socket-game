@@ -10,6 +10,7 @@ var configuration = {
 	
 }
 var users = []
+var usersInfo = []
 
 func setData(socketRoom):
 	id = socketRoom.id

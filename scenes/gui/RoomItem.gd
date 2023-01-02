@@ -8,7 +8,6 @@ onready var codeLineEdit = $ConfirmationDialog/CodeLineEdit
 var data
 
 func setData(roomData):
-	print(roomData)
 	data = roomData
 	
 func _ready():

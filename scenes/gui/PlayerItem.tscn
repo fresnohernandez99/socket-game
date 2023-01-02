@@ -1,0 +1,73 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/imgs/playerFace.svg" type="Texture" id=1]
+[ext_resource path="res://scenes/gui/PlayerItem.gd" type="Script" id=2]
+
+[node name="PlayerItem" type="Control"]
+anchor_right = 1.0
+margin_left = 14.0
+margin_right = -27.0
+margin_bottom = 82.0
+rect_min_size = Vector2( 279, 82 )
+script = ExtResource( 2 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 279, 82 )
+color = Color( 0.509804, 0.431373, 0.490196, 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_top = 7.0
+margin_right = -8.0
+margin_bottom = -7.0
+rect_min_size = Vector2( 264, 68 )
+color = Color( 0.882353, 0.839216, 0.866667, 1 )
+
+[node name="PlayerNameLabel" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = 58.0
+margin_top = 32.0
+margin_right = -11.0
+margin_bottom = 47.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Jane Doe"
+
+[node name="PlayerLevelLabel" type="Label" parent="."]
+anchor_right = 1.0
+margin_left = 59.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "LV: 1"
+align = 2
+
+[node name="ImgContainer" type="Control" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 12.0
+margin_top = -20.0
+margin_right = 52.0
+margin_bottom = 20.0
+
+[node name="PlayerFace" type="Sprite" parent="ImgContainer"]
+scale = Vector2( 0.078125, 0.078125 )
+texture = ExtResource( 1 )
+centered = false
+
+[node name="KickBtn" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 86.0
+margin_top = -31.0
+margin_right = 128.0
+margin_bottom = -10.0
+text = "Kick"
+
+[connection signal="pressed" from="KickBtn" to="." method="_on_KickBtn_pressed"]

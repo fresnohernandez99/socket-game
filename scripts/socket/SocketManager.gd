@@ -106,6 +106,12 @@ const INTENT_GET_ROOMS = "6"
 var INTENT_JOIN_ROOM_ACTIVE = NOT_REQUESTED_STATE
 const INTENT_JOIN_ROOM = "7"
 
+var INTENT_USERS_INFO_ACTIVE = NOT_REQUESTED_STATE
+const INTENT_USERS_INFO = "8"
+
+var INTENT_UPLOAD_INFO_ACTIVE = NOT_REQUESTED_STATE
+const INTENT_UPLOAD_INFO = "9"
+
 func waitingRequests(response):
 	var json = JSON.parse(response)
 	var result
@@ -168,6 +174,20 @@ func waitingRequests(response):
 		else:
 			INTENT_JOIN_ROOM_ACTIVE = ERROR_STATE
 	
+	if INTENT_USERS_INFO_ACTIVE:
+		if result.content.code == INTENT_CORRECT:
+			RoomInfo.usersInfo = result.content.data
+			
+			print("Informacion de usuarios recibida: " + JSON.print(RoomInfo.usersInfo))
+			INTENT_USERS_INFO_ACTIVE = SUCCESS_STATE
+		else:
+			INTENT_USERS_INFO_ACTIVE = ERROR_STATE
+	
+	if INTENT_UPLOAD_INFO_ACTIVE:
+		if result.content.code == INTENT_CORRECT:
+			INTENT_UPLOAD_INFO_ACTIVE = SUCCESS_STATE
+		else:
+			INTENT_UPLOAD_INFO_ACTIVE = ERROR_STATE
 
 func createRoom(roomName, roomCode):
 	INTENT_CREATE_ROOM_ACTIVE = LOADING_STATE
@@ -194,6 +214,21 @@ func joinRoom(roomId, code):
 	_send(INTENT_JOIN_ROOM, {
 		"roomId": roomId,
 		"code": code,
+	})
+
+func uploadInfo():
+	INTENT_UPLOAD_INFO_ACTIVE = LOADING_STATE
+	_send(INTENT_UPLOAD_INFO, {
+		"playerInfo": {
+			"name": Session.playerName,
+			"playerId": Session.playerId
+		}
+	})
+
+func getUsersInfo(users):
+	INTENT_USERS_INFO_ACTIVE = LOADING_STATE
+	_send(INTENT_USERS_INFO, {
+		"userIds": users
 	})
 
 func leaveRoom():
