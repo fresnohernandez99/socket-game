@@ -97,8 +97,8 @@ const INTENT_CREATE_ROOM = "3"
 var INTENT_CLOSE_ROOM_ACTIVE = NOT_REQUESTED_STATE
 const INTENT_CLOSE_ROOM = "4"
 
-var INTENT_CANCEL_ROOM_ACTIVE = NOT_REQUESTED_STATE
-const INTENT_CANCEL_ROOM = "5"
+var INTENT_ABANDON_ROOM_ACTIVE = NOT_REQUESTED_STATE
+const INTENT_ABANDON_ROOM = "5"
 
 var INTENT_GET_ROOMS_ACTIVE = NOT_REQUESTED_STATE
 const INTENT_GET_ROOMS = "6"
@@ -130,35 +130,38 @@ func waitingRequests(response):
 		else:
 			INTENT_CONNECTING_ACTIVE = ERROR_STATE
 	
-	if INTENT_RE_CONNECTING_ACTIVE == LOADING_STATE:
+	if INTENT_RE_CONNECTING_ACTIVE == LOADING_STATE and result.endpoint == INTENT_RE_CONNECTING:
 		if result.content.code == INTENT_CORRECT:
 			INTENT_RE_CONNECTING_ACTIVE = SUCCESS_STATE
 			#TODO
 		else:
 			INTENT_RE_CONNECTING_ACTIVE = ERROR_STATE
 		
-	if INTENT_CREATE_ROOM_ACTIVE == LOADING_STATE:
+	if INTENT_CREATE_ROOM_ACTIVE == LOADING_STATE and result.endpoint == INTENT_CREATE_ROOM:
 		if result.content.code == INTENT_CORRECT:
 			INTENT_CREATE_ROOM_ACTIVE = SUCCESS_STATE
 			print("Room creada: " + Session.playerId)
 		else:
 			INTENT_CREATE_ROOM_ACTIVE = ERROR_STATE
 		
-	if INTENT_CLOSE_ROOM_ACTIVE == LOADING_STATE:
+	if INTENT_CLOSE_ROOM_ACTIVE == LOADING_STATE and result.endpoint == INTENT_CLOSE_ROOM:
 		if result.content.code == INTENT_CORRECT:
 			INTENT_CLOSE_ROOM_ACTIVE = SUCCESS_STATE
 			#TODO
 		else:
 			INTENT_CLOSE_ROOM_ACTIVE = ERROR_STATE
 		
-	if INTENT_CANCEL_ROOM_ACTIVE == LOADING_STATE:
+	if INTENT_ABANDON_ROOM_ACTIVE == LOADING_STATE and result.endpoint == INTENT_ABANDON_ROOM:
 		if result.content.code == INTENT_CORRECT:
-			INTENT_CANCEL_ROOM_ACTIVE = NOT_REQUESTED_STATE
-			#TODO not interested result
+			RoomInfo.lastDisconnectedUser = result.content.data
+			
+			print("Last disconnected user: " + JSON.print(result.content.data))
+			
+			INTENT_ABANDON_ROOM_ACTIVE = NOT_REQUESTED_STATE
 		else:
-			INTENT_CANCEL_ROOM_ACTIVE = ERROR_STATE
+			INTENT_ABANDON_ROOM_ACTIVE = ERROR_STATE
 		
-	if INTENT_GET_ROOMS_ACTIVE == LOADING_STATE:
+	if INTENT_GET_ROOMS_ACTIVE == LOADING_STATE and result.endpoint == INTENT_GET_ROOMS:
 		if result.content.code == INTENT_CORRECT:
 			SocketRooms.rooms = result.content.data
 			INTENT_GET_ROOMS_ACTIVE = SUCCESS_STATE
@@ -166,7 +169,7 @@ func waitingRequests(response):
 		else:
 			INTENT_GET_ROOMS_ACTIVE = ERROR_STATE
 		
-	if INTENT_JOIN_ROOM_ACTIVE:
+	if INTENT_JOIN_ROOM_ACTIVE == LOADING_STATE and result.endpoint == INTENT_JOIN_ROOM:
 		if result.content.code == INTENT_CORRECT:
 			RoomInfo.setData(result.content.data)
 			INTENT_JOIN_ROOM_ACTIVE = SUCCESS_STATE
@@ -174,7 +177,7 @@ func waitingRequests(response):
 		else:
 			INTENT_JOIN_ROOM_ACTIVE = ERROR_STATE
 	
-	if INTENT_USERS_INFO_ACTIVE:
+	if INTENT_USERS_INFO_ACTIVE == LOADING_STATE and result.endpoint == INTENT_USERS_INFO:
 		if result.content.code == INTENT_CORRECT:
 			RoomInfo.usersInfo = result.content.data
 			
@@ -183,7 +186,7 @@ func waitingRequests(response):
 		else:
 			INTENT_USERS_INFO_ACTIVE = ERROR_STATE
 	
-	if INTENT_UPLOAD_INFO_ACTIVE:
+	if INTENT_UPLOAD_INFO_ACTIVE == LOADING_STATE and result.endpoint == INTENT_UPLOAD_INFO:
 		if result.content.code == INTENT_CORRECT:
 			INTENT_UPLOAD_INFO_ACTIVE = SUCCESS_STATE
 		else:
@@ -202,11 +205,11 @@ func loadRooms():
 	
 	_send(INTENT_GET_ROOMS, {})
 
-func cancelRoom():
-	INTENT_CANCEL_ROOM_ACTIVE = LOADING_STATE
-	_send(INTENT_CANCEL_ROOM, {
+func abandonRoom():
+	INTENT_ABANDON_ROOM_ACTIVE = LOADING_STATE
+	_send(INTENT_ABANDON_ROOM, {
 		"hostId": Session.playerId,
-		"roomId": Session.playerId
+		"roomId": RoomInfo.id
 	})
 
 func joinRoom(roomId, code):
@@ -230,9 +233,6 @@ func getUsersInfo(users):
 	_send(INTENT_USERS_INFO, {
 		"userIds": users
 	})
-
-func leaveRoom():
-	pass # TODO
 
 
 ################################################

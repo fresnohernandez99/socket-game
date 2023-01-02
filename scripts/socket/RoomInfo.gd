@@ -10,6 +10,8 @@ var configuration = {
 	
 }
 var users = []
+var lastDisconnectedUser = ""
+
 var usersInfo = []
 
 func setData(socketRoom):
