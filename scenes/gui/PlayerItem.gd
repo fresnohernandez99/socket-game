@@ -13,7 +13,7 @@ func setData(playerData, imOwner: bool):
 	self.imOwner = imOwner
 	
 func _ready():
-	if !imOwner or data.id == Session.playerId:
+	if !imOwner or data.playerId == Session.playerId:
 		kickBtn.hide()
 	
 	playerNamelabel.text = data.name

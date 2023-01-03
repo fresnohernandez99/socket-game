@@ -40,11 +40,18 @@ func _connectManagers():
 	_client.connect("connection_error", self, "_closed")
 	_client.connect("connection_established", self, "_connected")
 	_client.connect("data_received", self, "_on_data")
+	_client.connect("server_close_request", self, "_server_close_request")
 
 func _closed(was_clean = false):
 	# was_clean will tell you if the disconnection was correctly notified
 	# by the remote peer before closing the socket.
 	print("Closed, clean: ", was_clean)
+	state = DISCONNECTED
+
+func _server_close_request(code: int = 0, reason: String = ""):
+	# was_clean will tell you if the disconnection was correctly notified
+	# by the remote peer before closing the socket.
+	print("Code: ", code, " Reason: ", reason)
 	state = DISCONNECTED
 
 func _connected(param):
@@ -57,7 +64,15 @@ func _on_data():
 	# Print the received packet, you MUST always use get_peer(1).get_packet
 	# to receive data from server, and not get_packet directly when not
 	# using the MultiplayerAPI.
-	var data = _client.get_peer(1).get_packet().get_string_from_utf8()
+	var peer = _client.get_peer(1)
+	
+	var data = peer.get_packet().get_string_from_utf8()
+	
+	var error = peer.get_packet_error()
+	
+	if error:
+		print("Error: " + JSON.print(error))
+	
 	print("Got data from server: ", data)
 	waitingRequests(data)
 
@@ -68,8 +83,16 @@ func _send(endpoint, data):
 	}
 	var json = JSON.print(request)
 	print("Sending: " + json)
-	_client.get_peer(1).set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
-	_client.get_peer(1).put_var(json)
+	var peer = _client.get_peer(1)
+	peer.set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
+	peer.put_packet(json.to_utf8())
+
+func _plainSend(endpoint, request):
+	#var json = JSON.print(request)
+	#print("Sending: " + json)
+	var peer = _client.get_peer(1)
+	peer.set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
+	peer.put_packet(request.to_utf8())
 
 ################################################
 ###
@@ -139,8 +162,10 @@ func waitingRequests(response):
 		
 	if INTENT_CREATE_ROOM_ACTIVE == LOADING_STATE and result.endpoint == INTENT_CREATE_ROOM:
 		if result.content.code == INTENT_CORRECT:
-			INTENT_CREATE_ROOM_ACTIVE = SUCCESS_STATE
+			RoomInfo.setData(result.content.data)
+			
 			print("Room creada: " + Session.playerId)
+			INTENT_CREATE_ROOM_ACTIVE = SUCCESS_STATE
 		else:
 			INTENT_CREATE_ROOM_ACTIVE = ERROR_STATE
 		
@@ -151,13 +176,13 @@ func waitingRequests(response):
 		else:
 			INTENT_CLOSE_ROOM_ACTIVE = ERROR_STATE
 		
-	if INTENT_ABANDON_ROOM_ACTIVE == LOADING_STATE and result.endpoint == INTENT_ABANDON_ROOM:
+	if result.endpoint == INTENT_ABANDON_ROOM and RoomInfo.id == result.content.data.roomId:
 		if result.content.code == INTENT_CORRECT:
-			RoomInfo.lastDisconnectedUser = result.content.data
+			RoomInfo.lastDisconnectedUser = result.content.data.playerId
 			
-			print("Last disconnected user: " + JSON.print(result.content.data))
+			print("Last disconnected user: " + RoomInfo.lastDisconnectedUser)
 			
-			INTENT_ABANDON_ROOM_ACTIVE = NOT_REQUESTED_STATE
+			INTENT_ABANDON_ROOM_ACTIVE = SUCCESS_STATE
 		else:
 			INTENT_ABANDON_ROOM_ACTIVE = ERROR_STATE
 		
@@ -169,7 +194,7 @@ func waitingRequests(response):
 		else:
 			INTENT_GET_ROOMS_ACTIVE = ERROR_STATE
 		
-	if INTENT_JOIN_ROOM_ACTIVE == LOADING_STATE and result.endpoint == INTENT_JOIN_ROOM:
+	if result.endpoint == INTENT_JOIN_ROOM:
 		if result.content.code == INTENT_CORRECT:
 			RoomInfo.setData(result.content.data)
 			INTENT_JOIN_ROOM_ACTIVE = SUCCESS_STATE
@@ -194,10 +219,15 @@ func waitingRequests(response):
 
 func createRoom(roomName, roomCode):
 	INTENT_CREATE_ROOM_ACTIVE = LOADING_STATE
+	
 	_send(INTENT_CREATE_ROOM, {
 		"id": Session.playerId,
 		"name": roomName,
-		"code": roomCode
+		"code": roomCode,
+		"configuration": {
+			"defeatCause": 3,
+			"maxPlayers": 2
+		}
 	})
 
 func loadRooms():

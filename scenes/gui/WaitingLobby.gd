@@ -13,7 +13,6 @@ func _ready():
 	
 	getUsersInfo()
 
-
 func _process(delta):
 	if SocketManager.INTENT_USERS_INFO_ACTIVE == SocketManager.SUCCESS_STATE:
 		onUsersInfoReceived()
@@ -33,11 +32,12 @@ func getUsersInfo():
 func onUsersInfoReceived():
 	SocketManager.INTENT_USERS_INFO_ACTIVE = SocketManager.NOT_REQUESTED_STATE
 	
-	var contR = 0
-	while(contR < listContainer.get_child_count()):
+	var contR = listContainer.get_child_count() - 1
+	while(contR >= 0):
 		var theChild = listContainer.get_child(contR)
 		listContainer.remove_child(theChild)
-		contR += 1
+		print("removing child: ", contR)
+		contR -= 1
 	
 	var cont = 0
 	while(cont < RoomInfo.usersInfo.size()):
@@ -48,12 +48,16 @@ func onUsersInfoReceived():
 		cont += 1
 	
 func onUserAbandonLobby():
+	if RoomInfo.roomOwner == RoomInfo.lastDisconnectedUser:
+		get_tree().change_scene("res://scenes/gui/RoomList.tscn")
+		return
+	
 	var cont = 0
 	var indexFound = -1
 	
 	while(cont < RoomInfo.users.size()):
 		var actualUser = RoomInfo.users[cont]
-		if actualUser.id == RoomInfo.lastDisconnectedUser:
+		if actualUser == RoomInfo.lastDisconnectedUser:
 			indexFound = cont
 		cont += 1
 	
@@ -64,7 +68,7 @@ func onUserAbandonLobby():
 	
 	while(cont < RoomInfo.usersInfo.size()):
 		var actualUser = RoomInfo.usersInfo[cont]
-		if actualUser.id == RoomInfo.lastDisconnectedUser:
+		if actualUser.playerId == RoomInfo.lastDisconnectedUser:
 			indexFound = cont
 		cont += 1
 	
@@ -73,6 +77,8 @@ func onUserAbandonLobby():
 	RoomInfo.lastDisconnectedUser = ""
 	
 	getUsersInfo()
+	
+	SocketManager.INTENT_ABANDON_ROOM_ACTIVE = SocketManager.NOT_REQUESTED_STATE
 
 func _on_CancelBtn_pressed():
 	SocketManager.abandonRoom()
