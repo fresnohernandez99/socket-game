@@ -223,11 +223,7 @@ func createRoom(roomName, roomCode):
 	_send(INTENT_CREATE_ROOM, {
 		"id": Session.playerId,
 		"name": roomName,
-		"code": roomCode,
-		"configuration": {
-			"defeatCause": 3,
-			"maxPlayers": 2
-		}
+		"code": roomCode
 	})
 
 func loadRooms():
@@ -262,6 +258,12 @@ func getUsersInfo(users):
 	INTENT_USERS_INFO_ACTIVE = LOADING_STATE
 	_send(INTENT_USERS_INFO, {
 		"userIds": users
+	})
+
+func closeRoomAndStart():
+	INTENT_CLOSE_ROOM_ACTIVE = LOADING_STATE
+	_send(INTENT_CLOSE_ROOM, {
+		"roomId": RoomInfo.id
 	})
 
 

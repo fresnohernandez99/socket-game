@@ -36,7 +36,6 @@ func onUsersInfoReceived():
 	while(contR >= 0):
 		var theChild = listContainer.get_child(contR)
 		listContainer.remove_child(theChild)
-		print("removing child: ", contR)
 		contR -= 1
 	
 	var cont = 0

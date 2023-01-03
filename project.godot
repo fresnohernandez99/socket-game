@@ -21,6 +21,7 @@ GlobalNavigation="*res://scripts/global/GlobalNavigation.gd"
 Session="*res://scripts/socket/Session.gd"
 RoomInfo="*res://scripts/socket/RoomInfo.gd"
 SocketRooms="*res://scripts/socket/SocketRooms.gd"
+Persistence="*res://scripts/persistense/Persistence.gd"
 
 [display]
 
