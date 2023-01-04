@@ -110,70 +110,26 @@ var instantHealMove = [
 	}
 ]
 
-var meleeDefenseMove = [
+var defenseMove = [
 	{
-		"id": DEFENSE_MOVE + "-" + ATTACK_TYPE_MELEE + "-" + "1",
+		"id": DEFENSE_MOVE + "-" + "1",
 		"percent": 1,
-		"specific": true,
+		"specific": false,
 		"specificType": [ATTACK_TYPE_MELEE]
 	},
 	{
-		"id": DEFENSE_MOVE + "-" + ATTACK_TYPE_MELEE + "-" + "2",
-		"percent": 2,
-		"specific": true,
-		"specificType": [ATTACK_TYPE_MELEE]
-	},
-	{
-		"id": DEFENSE_MOVE + "-" + ATTACK_TYPE_MELEE + "-" + "3",
-		"percent": 3,
-		"specific": true,
-		"specificType": [ATTACK_TYPE_MELEE]
-	}
-]
-
-var weaponDefenseMove = [
-	{
-		"id": DEFENSE_MOVE + "-" + ATTACK_TYPE_WEAPON + "-" + "1",
+		"id": DEFENSE_MOVE + "-" + "2",
 		"percent": 1,
-		"specific": true,
+		"specific": false,
 		"specificType": [ATTACK_TYPE_WEAPON]
 	},
 	{
-		"id": DEFENSE_MOVE + "-" + ATTACK_TYPE_WEAPON + "-" + "2",
-		"percent": 2,
-		"specific": true,
-		"specificType": [ATTACK_TYPE_WEAPON]
-	},
-	{
-		"id": DEFENSE_MOVE + "-" + ATTACK_TYPE_WEAPON + "-" + "3",
-		"percent": 3,
-		"specific": true,
-		"specificType": [ATTACK_TYPE_WEAPON]
-	}
-]
-
-var magicDefenseMove = [
-	{
-		"id": DEFENSE_MOVE + "-" + ATTACK_TYPE_MAGIC + "-" + "1",
+		"id": DEFENSE_MOVE + "-" + "3",
 		"percent": 1,
-		"specific": true,
-		"specificType": [ATTACK_TYPE_MAGIC]
-	},
-	{
-		"id": DEFENSE_MOVE + "-" + ATTACK_TYPE_MAGIC + "-" + "2",
-		"percent": 2,
-		"specific": true,
-		"specificType": [ATTACK_TYPE_MAGIC]
-	},
-	{
-		"id": DEFENSE_MOVE + "-" + ATTACK_TYPE_MAGIC + "-" + "3",
-		"percent": 3,
 		"specific": true,
 		"specificType": [ATTACK_TYPE_MAGIC]
 	}
 ]
-
-var defenseMoves = [meleeDefenseMove, weaponDefenseMove, magicDefenseMove]
 
 # Tree for BOX, SwordMaster
 var learningTree1 = [
@@ -381,10 +337,8 @@ func getNewBoost(hero):
 		return null
 
 func getNewDefenseMove(hero):
-	var defenseMoveType = defenseMoves[int(rand_range(0, defenseMoves.size()))]
-	
 	if hero.level == 1:
-		var selected = defenseMoveType[int(rand_range(0, defenseMoveType.size()))]
+		var selected = defenseMove[int(rand_range(0, defenseMove.size()))]
 		selected.id += "-" + LEVEL_GRADE_L1
 		return selected
 	
@@ -393,7 +347,7 @@ func getNewDefenseMove(hero):
 	
 	var levelGrade = getGrade(hero.level)
 	
-	var arr = removeAlreadyTokeMoves(hero.moves, defenseMoveType, levelGrade)
+	var arr = removeAlreadyTokeMoves(hero.moves, defenseMove, levelGrade)
 	
 	if arr.size() > 0:
 		var selected = arr[int(rand_range(0, arr.size()))]

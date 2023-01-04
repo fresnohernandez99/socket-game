@@ -7,7 +7,6 @@ const STAT_MAGIC = "magic" #3
 const STAT_SPEED = "speed" #4
 const STAT_STRENGTH = "strength" #5
 
-const InitialEquipments = preload("res://scripts/engine/InitialEquipments.gd")
 
 func _ready():
 	randomize()
@@ -102,41 +101,3 @@ func getInitialStatsByClass(classGiven):
 		
 		cont +=1
 	return stats
-
-func getInitialEquipments(classGiven):
-	var equipments = InitialEquipments.new()
-	
-	var byClass
-	match classGiven:
-		CLASS_BOX:
-			byClass = equipments.initialWeaponsForBox[int(rand_range(0, equipments.initialWeaponsForBox.size()))]
-		CLASS_ARCHER:
-			byClass = equipments.initialWeaponsForArcher[int(rand_range(0, equipments.initialWeaponsForArcher.size()))]
-		CLASS_SWORD_MASTER:
-			byClass = equipments.initialWeaponsForSwordMaster[int(rand_range(0, equipments.initialWeaponsForSwordMaster.size()))]
-		CLASS_WIZARD:
-			byClass = equipments.initialWeaponsForWizard[int(rand_range(0, equipments.initialWeaponsForWizard.size()))]
-		CLASS_NINJA :
-			byClass = equipments.initialWeaponsForNinja[int(rand_range(0, equipments.initialWeaponsForNinja.size()))]
-		
-	var generated = [
-		equipments.initialHeads[int(rand_range(0, equipments.initialHeads.size()))],
-		equipments.initialHands[int(rand_range(0, equipments.initialHands.size()))],
-		equipments.initialTorso[int(rand_range(0, equipments.initialTorso.size()))],
-		equipments.initialFoots[int(rand_range(0, equipments.initialFoots.size()))],
-		byClass
-	]
-	
-	return generated
-
-
-
-
-
-
-
-
-
-
-
-

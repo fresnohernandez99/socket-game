@@ -197,4 +197,27 @@ var initialWeaponsForNinja = [
 	}
 ]
 
+func getInitialEquipments(ClassHandler, classGiven):
+	var byClass
+	match classGiven:
+		ClassHandler.CLASS_BOX:
+			byClass = initialWeaponsForBox[int(rand_range(0, initialWeaponsForBox.size()))]
+		ClassHandler.CLASS_ARCHER:
+			byClass = initialWeaponsForArcher[int(rand_range(0, initialWeaponsForArcher.size()))]
+		ClassHandler.CLASS_SWORD_MASTER:
+			byClass = initialWeaponsForSwordMaster[int(rand_range(0, initialWeaponsForSwordMaster.size()))]
+		ClassHandler.CLASS_WIZARD:
+			byClass = initialWeaponsForWizard[int(rand_range(0, initialWeaponsForWizard.size()))]
+		ClassHandler.CLASS_NINJA :
+			byClass = initialWeaponsForNinja[int(rand_range(0, initialWeaponsForNinja.size()))]
+		
+	var generated = [
+		initialHeads[int(rand_range(0, initialHeads.size()))],
+		initialHands[int(rand_range(0, initialHands.size()))],
+		initialTorso[int(rand_range(0, initialTorso.size()))],
+		initialFoots[int(rand_range(0, initialFoots.size()))],
+		byClass
+	]
+	
+	return generated
 
