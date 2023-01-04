@@ -105,7 +105,8 @@ var healMove = [
 var instantHealMove = [
 	{
 		"id": INSTANT_HEAL_MOVE + "-" + "1",
-		"restoredPoints": 1
+		"restoreLife": true,
+		"uses": 1
 	}
 ]
 
@@ -172,6 +173,9 @@ var magicDefenseMove = [
 	}
 ]
 
+var defenseMoves = [meleeDefenseMove, weaponDefenseMove, magicDefenseMove]
+
+# Tree for BOX, SwordMaster
 var learningTree1 = [
 	ATTACK_MOVE,
 	ATTACK_MOVE,
@@ -181,7 +185,27 @@ var learningTree1 = [
 	MAGIC_MOVE
 ]
 
-func removeAlreadyTokeMoves(moves, arr):
+# Tree for Archer, Ninja
+var learningTree2 = [
+	ATTACK_MOVE,
+	BOOST_MOVE,
+	DEFENSE_MOVE,
+	ATTACK_MOVE,
+	HEAL_MOVE,
+	MAGIC_MOVE
+]
+
+# Tree for Wizard
+var learningTree3 = [
+	MAGIC_MOVE,
+	ATTACK_MOVE,
+	HEAL_MOVE,
+	BOOST_MOVE,
+	DEFENSE_MOVE,
+	ATTACK_MOVE
+]
+
+func removeAlreadyTokeMoves(moves, arr, levelGrade):
 	var cont = 0
 	while(cont < moves.size()):
 		var finding: String = moves[cont].id
@@ -190,7 +214,7 @@ func removeAlreadyTokeMoves(moves, arr):
 		while(cont2 >= 0):
 			var finding2: String = arr[cont2].id
 			
-			if finding.find(finding2) != -1:
+			if finding.find(finding2) != -1 and finding.find(levelGrade):
 				arr.remove(cont2)
 			
 			cont2 -= 1
@@ -198,8 +222,33 @@ func removeAlreadyTokeMoves(moves, arr):
 		cont += 1
 	return arr
 
-func generateNextMove(ClassHandler, charClass, level):
-	var learningTreePos = str(level)[str(level).length() -1]
+func getGrade(level):
+	if level/10 >= 4:
+		return LEVEL_GRADE_LS
+	elif level/10 >= 3:
+		return LEVEL_GRADE_L3
+	elif level/10 >= 2:
+		return LEVEL_GRADE_L2
+	elif level/10 >= 0:
+		return LEVEL_GRADE_L1
+
+func generateInitialMoves(ClassHandler, hero):
+	var arr
+	match(hero.charClass.name):
+		ClassHandler.CLASS_BOX:
+			arr = [getNewMeleeOrWeaponAttack(hero), getNewMeleeOrWeaponAttack(hero)]
+		ClassHandler.CLASS_ARCHER:
+			arr = [getNewMeleeOrWeaponAttack(hero), getNewBoost(hero)]
+		ClassHandler.CLASS_SWORD_MASTER:
+			arr = [getNewMeleeOrWeaponAttack(hero), getNewMeleeOrWeaponAttack(hero)]
+		ClassHandler.CLASS_WIZARD:
+			arr = [getNewMagicAttack(hero), getNewBoost(hero)]
+		ClassHandler.CLASS_NINJA:
+			arr = [getNewMeleeOrWeaponAttack(hero), getNewBoost(hero)]
+	return arr
+
+func generateNextMove(ClassHandler, hero):
+	var learningTreePos = str(hero.level)[str(hero.level).length() -1]
 	
 	var toGetOn
 	match(int(learningTreePos)):
@@ -215,19 +264,41 @@ func generateNextMove(ClassHandler, charClass, level):
 			toGetOn = 3
 		0:
 			toGetOn = 4
-
-func generateInitialMoves(ClassHandler, charClass):
-	match(charClass.name):
+	
+	var learningTree
+	match(hero.charClass.name):
 		ClassHandler.CLASS_BOX:
-			pass
+			learningTree = learningTree1
 		ClassHandler.CLASS_ARCHER:
-			pass
+			learningTree = learningTree2
 		ClassHandler.CLASS_SWORD_MASTER:
-			pass
+			learningTree = learningTree1
 		ClassHandler.CLASS_WIZARD:
-			pass
+			learningTree = learningTree3
 		ClassHandler.CLASS_NINJA:
+			learningTree = learningTree2
+	
+	var newLearningStep = learningTree[toGetOn]
+	
+	match(newLearningStep):
+		ATTACK_MOVE:
+			return getNewMeleeOrWeaponAttack(hero)
+		BOOST_MOVE:
+			return getNewBoost(hero)
+		DEFENSE_MOVE:
 			pass
+		HEAL_MOVE:
+			pass
+		MAGIC_MOVE:
+			return getNewMagicAttack(hero)
+
+func getNewMeleeOrWeaponAttack(hero):
+	var rand = rand_range(0, 11)
+	
+	if rand > 5:
+		return getNewMeleeAttack(hero)
+	else:
+		return getNewWeaponAttack(hero)
 
 func getNewMeleeAttack(hero):
 	if hero.level == 1:
@@ -238,22 +309,16 @@ func getNewMeleeAttack(hero):
 	if hero.level == 2:
 		return null
 	
-	var levelGrade
-	if hero.level/10 >= 4:
-		levelGrade = LEVEL_GRADE_LS
-	elif hero.level/10 >= 3:
-		hero.levelGrade = LEVEL_GRADE_L3
-	elif hero.level/10 >= 2:
-		levelGrade = LEVEL_GRADE_L2
-	elif hero.level/10 >= 0:
-		levelGrade = LEVEL_GRADE_L1
+	var levelGrade = getGrade(hero.level)
 	
-	var arr = removeAlreadyTokeMoves(hero.moves, meleeMoves)
+	var arr = removeAlreadyTokeMoves(hero.moves, meleeMoves, levelGrade)
 	
-	var selected = arr[int(rand_range(0, arr.size()))]
-	selected.id += "-" + levelGrade
-	return selected
-	
+	if arr.size() > 0:
+		var selected = arr[int(rand_range(0, arr.size()))]
+		selected.id += "-" + levelGrade
+		return selected
+	else:
+		return null
 
 func getNewWeaponAttack(hero):
 	if hero.level == 1:
@@ -264,21 +329,16 @@ func getNewWeaponAttack(hero):
 	if hero.level == 2:
 		return null
 	
-	var levelGrade
-	if hero.level/10 >= 4:
-		levelGrade = LEVEL_GRADE_LS
-	elif hero.level/10 >= 3:
-		hero.levelGrade = LEVEL_GRADE_L3
-	elif hero.level/10 >= 2:
-		levelGrade = LEVEL_GRADE_L2
-	elif hero.level/10 >= 0:
-		levelGrade = LEVEL_GRADE_L1
+	var levelGrade = getGrade(hero.level)
 	
-	var arr = removeAlreadyTokeMoves(hero.moves, weaponsMoves)
+	var arr = removeAlreadyTokeMoves(hero.moves, weaponsMoves, levelGrade)
 	
-	var selected = arr[int(rand_range(0, arr.size()))]
-	selected.id += "-" + levelGrade
-	return selected
+	if arr.size() > 0:
+		var selected = arr[int(rand_range(0, arr.size()))]
+		selected.id += "-" + levelGrade
+		return selected
+	else:
+		return null
 
 func getNewMagicAttack(hero):
 	if hero.level == 1:
@@ -289,26 +349,66 @@ func getNewMagicAttack(hero):
 	if hero.level == 2:
 		return null
 	
-	var levelGrade
-	if hero.level/10 >= 4:
-		levelGrade = LEVEL_GRADE_LS
-	elif hero.level/10 >= 3:
-		hero.levelGrade = LEVEL_GRADE_L3
-	elif hero.level/10 >= 2:
-		levelGrade = LEVEL_GRADE_L2
-	elif hero.level/10 >= 0:
-		levelGrade = LEVEL_GRADE_L1
+	var levelGrade = getGrade(hero.level)
 	
-	var arr = removeAlreadyTokeMoves(hero.moves, magicMoves)
+	var arr = removeAlreadyTokeMoves(hero.moves, magicMoves, levelGrade)
 	
-	var selected = arr[int(rand_range(0, arr.size()))]
-	selected.id += "-" + levelGrade
-	return selected
+	if arr.size() > 0:
+		var selected = arr[int(rand_range(0, arr.size()))]
+		selected.id += "-" + levelGrade
+		return selected
+	else:
+		return null
 
+func getNewBoost(hero):
+	if hero.level == 1:
+		var selected = boostMoves[int(rand_range(0, boostMoves.size()))]
+		selected.id += "-" + LEVEL_GRADE_L1
+		return selected
+	
+	if hero.level == 2:
+		return null
+	
+	var levelGrade = getGrade(hero.level)
+	
+	var arr = removeAlreadyTokeMoves(hero.moves, boostMoves, levelGrade)
+	
+	if arr.size() > 0:
+		var selected = arr[int(rand_range(0, arr.size()))]
+		selected.id += "-" + levelGrade
+		return selected
+	else:
+		return null
 
+func getNewDefenseMove(hero):
+	var defenseMoveType = defenseMoves[int(rand_range(0, defenseMoves.size()))]
+	
+	if hero.level == 1:
+		var selected = defenseMoveType[int(rand_range(0, defenseMoveType.size()))]
+		selected.id += "-" + LEVEL_GRADE_L1
+		return selected
+	
+	if hero.level == 2:
+		return null
+	
+	var levelGrade = getGrade(hero.level)
+	
+	var arr = removeAlreadyTokeMoves(hero.moves, defenseMoveType, levelGrade)
+	
+	if arr.size() > 0:
+		var selected = arr[int(rand_range(0, arr.size()))]
+		selected.id += "-" + levelGrade
+		return selected
+	else:
+		return null
 
-
-
+func getInstantHeal(hero):
+	# solamente para mas de level 10
+	var levelGrade = getGrade(hero.level)
+	var uses = (hero.level / 10) - 5 
+	
+	var move = instantHealMove[0]
+	move.uses = uses
 
 
 
