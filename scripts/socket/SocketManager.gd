@@ -250,7 +250,11 @@ func uploadInfo():
 	_send(INTENT_UPLOAD_INFO, {
 		"playerInfo": {
 			"name": Session.playerName,
-			"playerId": Session.playerId
+			"playerId": Session.playerId,
+			"handDeck": {
+				"name": "hand-deck",
+				"items": [Persistence.data.hero]
+			}
 		}
 	})
 

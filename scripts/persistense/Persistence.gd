@@ -9,6 +9,7 @@ const HeroHandler = preload("res://scripts/engine/HeroHandler.gd")
 var is_loaded = false
 
 var data = {}
+var heroHandler = HeroHandler.new()
 
 func _ready():
 	var file = File.new()
@@ -16,10 +17,12 @@ func _ready():
 	if file.file_exists(PATH):
 		load_data()
 	else:
-		var heroHandler = HeroHandler.new()
-		heroHandler.generateInitialHero()
-		#save_data()
-		#load_data()
+		var myHero = heroHandler.generateInitialHero()
+		
+		data.hero = myHero
+		
+		save_data()
+		load_data()
 
 func save_data():
 	var file = File.new()

@@ -6,13 +6,13 @@ const MoveHandler = preload("res://scripts/engine/MoveHandler.gd")
 const InitialEquipments = preload("res://scripts/engine/InitialEquipments.gd")
 const MoveNames = preload("res://scripts/engine/MoveNames.gd")
 
+var classHandler = ClassHandler.new()
+var moveHandler = MoveHandler.new()
+var moveNames = MoveNames.new()
+var initialEquipments = InitialEquipments.new()
+
 func generateInitialHero():
 	var heroId = uuid_util.v4()
-	
-	var classHandler = ClassHandler.new()
-	var moveHandler = MoveHandler.new()
-	var moveNames = MoveNames.new()
-	var initialEquipments = InitialEquipments.new()
 	
 	var charClass = classHandler.getRandomClass()
 	
@@ -29,6 +29,9 @@ func generateInitialHero():
 	var hero = {
 		"id": heroId,
 		"playerId": "",
+		"position": -1,
+		"type": "hero",
+		"name": "HERO",
 		"level": 1,
 		"experience": 0,
 		"nextLevelOn": 100,
@@ -41,10 +44,10 @@ func generateInitialHero():
 	
 	hero.moves = moveHandler.generateInitialMoves(classHandler, hero)
 	
-	#print(JSON.print(hero))
-	
-	#for i in range(hero.moves.size()):
-		#print(moveNames.getMoveName(classHandler, moveHandler, hero.charClass.name, hero.moves[i].id))
+	return hero
+
+func getMoveName(moveId, charClassName):
+	return moveNames.getMoveName(classHandler, moveHandler, charClassName, moveId)
 
 func setMultiplayerId():
 	Persistence.data.hero.playerId = Session.playerId
