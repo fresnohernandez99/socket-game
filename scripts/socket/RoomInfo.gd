@@ -19,5 +19,4 @@ func setData(socketRoom):
 	roomOwner = socketRoom.owner
 	roomName = socketRoom.name
 	code = socketRoom.code
-	configuration = socketRoom.configuration
 	users = socketRoom.users

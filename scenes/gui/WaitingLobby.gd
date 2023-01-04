@@ -24,7 +24,9 @@ func _process(delta):
 	if SocketManager.INTENT_ABANDON_ROOM_ACTIVE == SocketManager.SUCCESS_STATE:
 		SocketManager.INTENT_ABANDON_ROOM_ACTIVE = SocketManager.NOT_REQUESTED_STATE
 		onUserAbandonLobby()
-
+	
+	if SocketManager.INTENT_CLOSE_ROOM_ACTIVE == SocketManager.SUCCESS_STATE:
+		SocketManager.INTENT_CLOSE_ROOM_ACTIVE = SocketManager.NOT_REQUESTED_STATE
 
 func getUsersInfo():
 	SocketManager.getUsersInfo(RoomInfo.users)
@@ -86,4 +88,9 @@ func _on_CancelBtn_pressed():
 
 
 func _on_StartBtn_pressed():
-	pass # Replace with function body.
+	if RoomInfo.configuration.minPlayers <= RoomInfo.usersInfo.size():
+		SocketManager.closeRoomAndStart()
+	else:
+		var toast = Toast.new("Toast text", Toast.LENGTH_SHORT)
+		get_node("/root").add_child(toast)
+		toast.show()

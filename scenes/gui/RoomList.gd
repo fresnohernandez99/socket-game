@@ -26,9 +26,9 @@ func onRoomsLoaded():
 		contR += 1
 	
 	var cont = 0
-	while(cont < SocketRooms.rooms.size()):
+	while(cont < SocketRooms.roomsWithConfigs.size()):
 		var ins = roomItem.instance()
-		ins.setData(SocketRooms.rooms[cont])
+		ins.setData(SocketRooms.roomsWithConfigs[cont].room, SocketRooms.roomsWithConfigs[cont].spaceConfiguration)
 		
 		listContainer.add_child(ins)
 		cont += 1

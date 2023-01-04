@@ -135,6 +135,12 @@ const INTENT_USERS_INFO = "8"
 var INTENT_UPLOAD_INFO_ACTIVE = NOT_REQUESTED_STATE
 const INTENT_UPLOAD_INFO = "9"
 
+var INTENT_GET_CONFIGURATIONS_ACTIVE = NOT_REQUESTED_STATE
+const INTENT_GET_CONFIGURATIONS = "10"
+
+var INTENT_UPDATE_CONFIGURATIONS_ACTIVE = NOT_REQUESTED_STATE
+const INTENT_UPDATE_CONFIGURATIONS = "11"
+
 func waitingRequests(response):
 	var json = JSON.parse(response)
 	var result
@@ -171,8 +177,8 @@ func waitingRequests(response):
 		
 	if INTENT_CLOSE_ROOM_ACTIVE == LOADING_STATE and result.endpoint == INTENT_CLOSE_ROOM:
 		if result.content.code == INTENT_CORRECT:
+			print("Room Cerrada e iniciada con éxito")
 			INTENT_CLOSE_ROOM_ACTIVE = SUCCESS_STATE
-			#TODO
 		else:
 			INTENT_CLOSE_ROOM_ACTIVE = ERROR_STATE
 		
@@ -188,9 +194,9 @@ func waitingRequests(response):
 		
 	if INTENT_GET_ROOMS_ACTIVE == LOADING_STATE and result.endpoint == INTENT_GET_ROOMS:
 		if result.content.code == INTENT_CORRECT:
-			SocketRooms.rooms = result.content.data
+			SocketRooms.roomsWithConfigs = result.content.data.rooms
 			INTENT_GET_ROOMS_ACTIVE = SUCCESS_STATE
-			print("Rooms obtenidas: " + str(SocketRooms.rooms.size()))
+			print("Rooms obtenidas: " + str(SocketRooms.roomsWithConfigs.size()))
 		else:
 			INTENT_GET_ROOMS_ACTIVE = ERROR_STATE
 		
@@ -216,10 +222,25 @@ func waitingRequests(response):
 			INTENT_UPLOAD_INFO_ACTIVE = SUCCESS_STATE
 		else:
 			INTENT_UPLOAD_INFO_ACTIVE = ERROR_STATE
+	
+	if INTENT_GET_CONFIGURATIONS_ACTIVE == LOADING_STATE and result.endpoint == INTENT_GET_CONFIGURATIONS:
+		if result.content.code == INTENT_CORRECT:
+			
+			RoomInfo.configuration = result.content.data
+			INTENT_GET_CONFIGURATIONS_ACTIVE = SUCCESS_STATE
+		else:
+			INTENT_GET_CONFIGURATIONS_ACTIVE = ERROR_STATE
+	
+	if INTENT_UPDATE_CONFIGURATIONS_ACTIVE == LOADING_STATE and result.endpoint == INTENT_UPDATE_CONFIGURATIONS:
+		if result.content.code == INTENT_CORRECT:
+			
+			RoomInfo.configuration = result.content.data
+			INTENT_UPDATE_CONFIGURATIONS_ACTIVE = SUCCESS_STATE
+		else:
+			INTENT_UPDATE_CONFIGURATIONS_ACTIVE = ERROR_STATE
 
 func createRoom(roomName, roomCode):
 	INTENT_CREATE_ROOM_ACTIVE = LOADING_STATE
-	
 	_send(INTENT_CREATE_ROOM, {
 		"id": Session.playerId,
 		"name": roomName,
@@ -268,6 +289,16 @@ func closeRoomAndStart():
 	INTENT_CLOSE_ROOM_ACTIVE = LOADING_STATE
 	_send(INTENT_CLOSE_ROOM, {
 		"roomId": RoomInfo.id
+	})
+
+func updateRoomConfigs():
+	INTENT_UPDATE_CONFIGURATIONS_ACTIVE = LOADING_STATE
+	_send(INTENT_UPDATE_CONFIGURATIONS, {
+		"roomId": RoomInfo.id,
+		"spaceConfiguration": {
+			"maxPlayers": 2,
+			"minPlayers": 2
+		}
 	})
 
 

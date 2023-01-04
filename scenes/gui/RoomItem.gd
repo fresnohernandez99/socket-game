@@ -6,13 +6,15 @@ onready var requestCodeDialog = $ConfirmationDialog
 onready var codeLineEdit = $ConfirmationDialog/CodeLineEdit
 
 var data
+var configs
 
-func setData(roomData):
+func setData(roomData, spaceConfiguration):
 	data = roomData
+	configs = spaceConfiguration
 	
 func _ready():
 	roomNamelabel.text = data.name
-	roomPlayersLabel.text = "Connected: " + str(data.users.size()) + "/" + str(data.configuration.maxPlayers)
+	roomPlayersLabel.text = "Connected: " + str(data.users.size()) + "/" + str(configs.maxPlayers)
 
 
 func _on_ConnectBtn_pressed():
