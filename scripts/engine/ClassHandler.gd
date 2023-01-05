@@ -14,34 +14,34 @@ func _ready():
 var stats = [
 	{
 		"name": STAT_DEFENSE,
-		"value": .0
+		"value": 1.0
 	},
 	{
 		"name": STAT_EVASION,
-		"value": .0
+		"value": 1.0
 	},
 	{
 		"name": STAT_INTELLECT,
-		"value": .0
+		"value": 1.0
 	},
 	{
 		"name": STAT_MAGIC,
-		"value": .0
+		"value": 1.0
 	},
 	{
 		"name": STAT_SPEED,
-		"value": .0
+		"value": 1.0
 	},
 	{
 		"name": STAT_STRENGTH,
-		"value": .0
+		"value": 1.0
 	}
 ]
 
 const CLASS_BOX = "box" #0
 const CLASS_ARCHER = "archer" #1
 const CLASS_SWORD_MASTER = "sword_master" #2
-const CLASS_WIZARD = "sword_master" #3
+const CLASS_WIZARD = "wizard" #3
 const CLASS_NINJA = "ninja" #3
 
 var classes = [

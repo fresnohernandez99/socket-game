@@ -20,16 +20,10 @@ func generateInitialHero():
 	
 	var equipment = initialEquipments.getInitialEquipments(classHandler, charClass.name)
 	
-	var testMove21 = {
-		"id": "attack" + "-" + "melee" + "-" + "1" + "-" + "L1",
-		"damage": 2,
-		"type": ["melee"]
-	}
-	
 	var hero = {
 		"id": heroId,
 		"playerId": "",
-		"position": -1,
+		"position": "",
 		"type": "hero",
 		"name": "HERO",
 		"level": 1,

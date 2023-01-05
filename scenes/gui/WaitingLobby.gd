@@ -4,6 +4,7 @@ extends Node
 var isOwner = false
 
 onready var listContainer = $Control/ScrollContainer/VBoxContainer
+onready var startBtn = $Control/StartBtn
 
 var playerItem = load("res://scenes/gui/PlayerItem.tscn")
 
@@ -12,6 +13,9 @@ func _ready():
 	
 	if Session.playerId == RoomInfo.roomOwner:
 		isOwner = true
+	
+	if !isOwner:
+		startBtn.hide()
 	
 	getUsersInfo()
 
@@ -29,6 +33,7 @@ func _process(delta):
 	
 	if SocketManager.INTENT_CLOSE_ROOM_ACTIVE == SocketManager.SUCCESS_STATE:
 		SocketManager.INTENT_CLOSE_ROOM_ACTIVE = SocketManager.NOT_REQUESTED_STATE
+		get_tree().change_scene("res://scenes/ui/CombatScene.tscn")
 
 func getUsersInfo():
 	SocketManager.getUsersInfo(RoomInfo.users)

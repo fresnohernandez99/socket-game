@@ -110,7 +110,7 @@ var boostMoves = [
 var healMove = [
 	{
 		"id": HEAL_MOVE + "-" + "1",
-		"restoredPoints": 1,
+		"restoredPoints": 20,
 		"type": HEAL_MOVE
 	}
 ]
@@ -260,9 +260,9 @@ func generateNextMove(ClassHandler, hero):
 		BOOST_MOVE:
 			return getNewBoost(hero)
 		DEFENSE_MOVE:
-			pass
+			return getNewDefense(hero)
 		HEAL_MOVE:
-			pass
+			return getNewHeal(hero)
 		MAGIC_MOVE:
 			return getNewMagicAttack(hero)
 
@@ -354,7 +354,7 @@ func getNewBoost(hero):
 	else:
 		return null
 
-func getNewDefenseMove(hero):
+func getNewDefense(hero):
 	if hero.level == 1:
 		var selected = defenseMove[int(rand_range(0, defenseMove.size()))]
 		selected.id += "-" + LEVEL_GRADE_L1
@@ -374,6 +374,18 @@ func getNewDefenseMove(hero):
 	else:
 		return null
 
+func getNewHeal(hero):
+	# solamente para mas de level 10
+	var levelGrade = getGrade(hero.level)
+	var power = hero.level / 10
+	
+	var move = healMove[0]
+	
+	if power > 0:
+		move.restoredPoints *= power
+	
+	return move
+
 func getInstantHeal(hero):
 	# solamente para mas de level 10
 	var levelGrade = getGrade(hero.level)
@@ -381,6 +393,8 @@ func getInstantHeal(hero):
 	
 	var move = instantHealMove[0]
 	move.uses = uses
+	
+	return move
 
 
 

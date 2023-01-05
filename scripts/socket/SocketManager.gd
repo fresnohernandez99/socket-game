@@ -9,6 +9,9 @@ const DISCONNECTED = "disconnected"
 const CONNECTING = "connecting"
 const NOT_REQUESTED = "connecting"
 
+const SET_IN_FIELD_PLAY = "set-in-field"
+const OVER_PIECE_PLAY = "over-piece"
+
 var state = NOT_REQUESTED
 
 var actualRootNode = null
@@ -151,6 +154,12 @@ const INTENT_GET_CONFIGURATIONS = "10"
 var INTENT_UPDATE_CONFIGURATIONS_ACTIVE = NOT_REQUESTED_STATE
 const INTENT_UPDATE_CONFIGURATIONS = "11"
 
+var INTENT_SEND_PLAYS_ACTIVE = NOT_REQUESTED_STATE
+const INTENT_SEND_PLAYS = "12"
+
+var INTENT_ROUND_RESULTS_ACTIVE = NOT_REQUESTED_STATE
+const INTENT_ROUND_RESULTS = "13"
+
 func waitingRequests(response):
 	var json = JSON.parse(response)
 	var result
@@ -165,6 +174,7 @@ func waitingRequests(response):
 		if result.content.code == INTENT_CORRECT:
 			Session.playerId = result.from
 			INTENT_CONNECTING_ACTIVE = SUCCESS_STATE
+			Persistence.data.hero.playerId = Session.playerId
 			print("ID obtenido del server: " + Session.playerId)
 		else:
 			_showError("Error on: " + INTENT_CONNECTING)
@@ -188,7 +198,7 @@ func waitingRequests(response):
 			_showError("Error on: " + INTENT_CREATE_ROOM)
 			INTENT_CREATE_ROOM_ACTIVE = ERROR_STATE
 		
-	if INTENT_CLOSE_ROOM_ACTIVE == LOADING_STATE and result.endpoint == INTENT_CLOSE_ROOM:
+	if result.endpoint == INTENT_CLOSE_ROOM:
 		if result.content.code == INTENT_CORRECT:
 			print("Room Cerrada e iniciada con éxito")
 			INTENT_CLOSE_ROOM_ACTIVE = SUCCESS_STATE
@@ -259,6 +269,26 @@ func waitingRequests(response):
 		else:
 			_showError("Error on: " + INTENT_UPDATE_CONFIGURATIONS)
 			INTENT_UPDATE_CONFIGURATIONS_ACTIVE = ERROR_STATE
+	
+	if result.endpoint == INTENT_SEND_PLAYS:
+		if result.content.code == INTENT_CORRECT:
+			RoomInfo.lastPlayerReady = result.content.data.playerFrom
+			
+			INTENT_SEND_PLAYS_ACTIVE = SUCCESS_STATE
+		else:
+			_showError("Error on: " + INTENT_SEND_PLAYS)
+			INTENT_SEND_PLAYS_ACTIVE = ERROR_STATE
+	
+	if result.endpoint == INTENT_ROUND_RESULTS:
+		if result.content.code == INTENT_CORRECT:
+			RoomInfo.roundResult = result.content.data
+			
+			RoomInfo.allPlayersReady = true
+			
+			INTENT_ROUND_RESULTS_ACTIVE = SUCCESS_STATE
+		else:
+			_showError("Error on: " + INTENT_ROUND_RESULTS)
+			INTENT_ROUND_RESULTS_ACTIVE = ERROR_STATE
 
 func createRoom(roomName, roomCode):
 	INTENT_CREATE_ROOM_ACTIVE = LOADING_STATE
@@ -307,7 +337,6 @@ func getUsersInfo(users):
 	})
 
 func closeRoomAndStart():
-	INTENT_CLOSE_ROOM_ACTIVE = LOADING_STATE
 	_send(INTENT_CLOSE_ROOM, {
 		"roomId": RoomInfo.id
 	})
@@ -318,10 +347,24 @@ func updateRoomConfigs():
 		"roomId": RoomInfo.id,
 		"spaceConfiguration": {
 			"maxPlayers": 2,
-			"minPlayers": 2
+			"minPlayers": 2,
+			"evaluateMiss": true
 		}
 	})
 
+func sendInitPlay():
+	INTENT_SEND_PLAYS_ACTIVE = LOADING_STATE
+	_send(INTENT_SEND_PLAYS, {
+		"roomId": RoomInfo.id,
+		"plays": [
+			{
+				"playerId": Session.playerId,
+				"type": SET_IN_FIELD_PLAY,
+				"piece": Persistence.data.hero,
+				"newPosition": Session.playerId + "_1"
+			}
+		]
+	})
 
 ################################################
 ###

@@ -1,3 +1,21 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/gui/CombatControls.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/ui/CombatScene.gd" type="Script" id=2]
 
 [node name="CombatScene" type="Node"]
+script = ExtResource( 2 )
+
+[node name="PlayerContainer" type="Node2D" parent="."]
+
+[node name="Player" type="Position2D" parent="PlayerContainer"]
+position = Vector2( 60, 200 )
+
+[node name="Enemy1" type="Position2D" parent="PlayerContainer"]
+position = Vector2( 260, 200 )
+
+[node name="CombatControls" parent="." instance=ExtResource( 1 )]
+
+[connection signal="IsLoading" from="." to="CombatControls" method="_on_CombatScene_IsLoading"]
+[connection signal="ShowMsg" from="." to="CombatControls" method="_on_CombatScene_ShowMsg"]
+[connection signal="showNextPlay" from="CombatControls" to="." method="_on_CombatControls_showNextPlay"]

@@ -9,6 +9,7 @@ var moveNames = MoveNames.new()
 
 onready var controlStep1 = $Control/ControlsStep1
 onready var messageLabel = $Control/ControlsStep1/ScrollContainer/MessageLabel
+onready var nextBtn = $Control/ControlsStep1/NextBtn
 
 onready var controlStep2 = $Control/ControlsStep2
 onready var fightBtn = $Control/ControlsStep2/FightBtn
@@ -30,10 +31,14 @@ var hero
 
 signal UseMove(move)
 signal Surrender
+signal showNextPlay
+
+var loadingResults = true
 
 func _ready():
 	showControlStep1()
 	setHero(Persistence.data.hero)
+	SocketManager.sendInitPlay()
 
 func showControlStep1():
 	controlStep1.show()
@@ -69,6 +74,8 @@ func _setMoves():
 		move4Label.text = moveNames.getMoveName(classHandler, moveHandler, hero.charClass.name, hero.moves[3].id)
 		move4Btn.show()
 
+func _process(delta):
+	nextBtn.disabled = loadingResults
 
 
 #################################################
@@ -78,7 +85,7 @@ func addMsg(newMsg):
 	msgToShow.push_back(newMsg)
 
 func showNewMsg():
-	if msgToShow.size() < 0:
+	if msgToShow.size() <= 0:
 		showControlStep2()
 		return
 	
@@ -87,7 +94,18 @@ func showNewMsg():
 	
 	msgToShow.remove(0)
 
+func _on_NextBtn_pressed():
+	showNewMsg()
+	emit_signal("showNextPlay")
 
+func _on_CombatScene_ShowMsg(playMsg):
+	addMsg(playMsg[0])
+	showControlStep1()
+	showNewMsg()
+
+
+func _on_CombatScene_IsLoading(state):
+	loadingResults = state[0]
 
 
 #################################################
@@ -126,5 +144,6 @@ func _on_Move4Btn_pressed():
 
 func _on_BackFrom3Btn_pressed():
 	showControlStep2()
+
 
 

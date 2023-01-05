@@ -18,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="ControlsStep1" type="Control" parent="Control"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -55,6 +56,7 @@ margin_bottom = -2.0
 text = "NEXT"
 
 [node name="ControlsStep2" type="Control" parent="Control"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -99,6 +101,7 @@ margin_bottom = 86.0
 text = "Surrender"
 
 [node name="ControlsStep3" type="Control" parent="Control"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -188,6 +191,7 @@ margin_right = 310.0
 margin_bottom = 10.0
 text = "x"
 
+[connection signal="pressed" from="Control/ControlsStep1/NextBtn" to="." method="_on_NextBtn_pressed"]
 [connection signal="pressed" from="Control/ControlsStep2/FightBtn" to="." method="_on_FightBtn_pressed"]
 [connection signal="pressed" from="Control/ControlsStep2/SurrenderBtn" to="." method="_on_SurrenderBtn_pressed"]
 [connection signal="pressed" from="Control/ControlsStep3/Move1Btn" to="." method="_on_Move1Btn_pressed"]
