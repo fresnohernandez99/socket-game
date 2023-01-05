@@ -2,9 +2,10 @@ extends Node
 
 onready var nameTextEdit = $Control/VBoxContainer/NameTextEdit
 onready var roomCodeTextEdit = $Control/VBoxContainer/RoomCodeTextEdit
-onready var errorDialog = $Control/ErrorDialog
 onready var creatingDialog = $Control/CreatingDialog
 
+func _ready():
+	SocketManager.actualRootNode = get_node("/root")
 
 func _process(delta):
 	if SocketManager.INTENT_CREATE_ROOM_ACTIVE == SocketManager.SUCCESS_STATE:
@@ -20,7 +21,9 @@ func callCreateRoom():
 	var roomCode = roomCodeTextEdit.text
 	
 	if roomName.length() == 0:
-		errorDialog.show()
+		var toast = Toast.new("Fill all please", Toast.LENGTH_SHORT)
+		get_node("/root").add_child(toast)
+		toast.show()
 	else:
 		RoomInfo.id = Session.playerId
 		RoomInfo.roomName = roomName

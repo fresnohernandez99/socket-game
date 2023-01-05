@@ -3,10 +3,11 @@ extends Node
 onready var descriptionLabel = $Control/ScrollContainer/VBoxContainer/DescriptionLabel
 
 func _ready():
+	SocketManager.actualRootNode = get_node("/root")
+	
 	descriptionLabel.text += Persistence.data.hero.name + " details:" + "\n"
 	descriptionLabel.text += "LV: " + str(Persistence.data.hero.level) + "\n"
 	descriptionLabel.text += "Class: " + Persistence.data.hero.charClass.name + "\n\n"
-	
 	
 	descriptionLabel.text += "Stats: " + "\n"
 	var stats = Persistence.data.hero.stats

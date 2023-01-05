@@ -9,6 +9,7 @@ onready var timer = $Timer
 var changeTo = "res://scenes/gui/MainMenu.tscn"
 
 func _ready():
+	SocketManager.actualRootNode = get_node("/root")
 	reason = GlobalNavigation.navReason
 	GlobalNavigation.navReason = ""
 	procced()

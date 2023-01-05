@@ -14,9 +14,11 @@ var lastDisconnectedUser = ""
 
 var usersInfo = []
 
-func setData(socketRoom):
+func setData(socketRoom, configurations):
 	id = socketRoom.id
 	roomOwner = socketRoom.owner
 	roomName = socketRoom.name
 	code = socketRoom.code
 	users = socketRoom.users
+	
+	self.configuration = configurations

@@ -8,6 +8,8 @@ onready var listContainer = $Control/ScrollContainer/VBoxContainer
 var playerItem = load("res://scenes/gui/PlayerItem.tscn")
 
 func _ready():
+	SocketManager.actualRootNode = get_node("/root")
+	
 	if Session.playerId == RoomInfo.roomOwner:
 		isOwner = true
 	
@@ -91,6 +93,6 @@ func _on_StartBtn_pressed():
 	if RoomInfo.configuration.minPlayers <= RoomInfo.usersInfo.size():
 		SocketManager.closeRoomAndStart()
 	else:
-		var toast = Toast.new("Toast text", Toast.LENGTH_SHORT)
+		var toast = Toast.new("Room incomplete", Toast.LENGTH_SHORT)
 		get_node("/root").add_child(toast)
 		toast.show()

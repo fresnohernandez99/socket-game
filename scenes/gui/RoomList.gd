@@ -5,6 +5,7 @@ onready var listContainer = $Control/ScrollContainer/VBoxContainer
 var roomItem = load("res://scenes/gui/RoomItem.tscn")
 
 func _ready():
+	SocketManager.actualRootNode = get_node("/root")
 	loadRooms()
 
 func _process(delta):

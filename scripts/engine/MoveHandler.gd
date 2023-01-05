@@ -5,7 +5,7 @@ const DEFENSE_MOVE = "defense"
 const HEAL_MOVE = "heal"
 const BOOST_MOVE = "boost"
 const MAGIC_MOVE = "magic"
-const INSTANT_HEAL_MOVE = "instant_heal"
+const INSTANT_HEAL_MOVE = "instant-heal"
 
 const ATTACK_TYPE_MELEE = "melee"
 const ATTACK_TYPE_WEAPON = "weapon"
@@ -27,17 +27,20 @@ var meleeMoves = [
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_MELEE + "-" + "1",
 		"damage": 1,
-		"type": [ATTACK_TYPE_MELEE]
+		"types": [ATTACK_TYPE_MELEE],
+		"type": ATTACK_MOVE
 	},
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_MELEE + "-" + "2",
 		"damage": 2,
-		"type": [ATTACK_TYPE_MELEE]
+		"types": [ATTACK_TYPE_MELEE],
+		"type": ATTACK_MOVE
 	},
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_MELEE + "-" + "3",
 		"damage": 3,
-		"type": [ATTACK_TYPE_MELEE]
+		"types": [ATTACK_TYPE_MELEE],
+		"type": ATTACK_MOVE
 	}
 ]
 
@@ -45,17 +48,20 @@ var weaponsMoves = [
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_WEAPON + "-" + "1",
 		"damage": 1,
-		"type": [ATTACK_TYPE_WEAPON]
+		"types": [ATTACK_TYPE_WEAPON],
+		"type": ATTACK_MOVE
 	},
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_WEAPON + "-" + "2",
 		"damage": 2,
-		"type": [ATTACK_TYPE_WEAPON]
+		"types": [ATTACK_TYPE_WEAPON],
+		"type": ATTACK_MOVE
 	},
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_WEAPON + "-" + "3",
 		"damage": 3,
-		"type": [ATTACK_TYPE_WEAPON]
+		"types": [ATTACK_TYPE_WEAPON],
+		"type": ATTACK_MOVE
 	}
 ]
 
@@ -63,17 +69,20 @@ var magicMoves = [
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_MAGIC + "-" + "1",
 		"damage": 1,
-		"type": [ATTACK_TYPE_MAGIC]
+		"types": [ATTACK_TYPE_MAGIC],
+		"type": ATTACK_MOVE
 	},
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_MAGIC + "-" + "2",
 		"damage": 2,
-		"type": [ATTACK_TYPE_MAGIC]
+		"types": [ATTACK_TYPE_MAGIC],
+		"type": ATTACK_MOVE
 	},
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_MAGIC + "-" + "3",
 		"damage": 3,
-		"type": [ATTACK_TYPE_MAGIC]
+		"types": [ATTACK_TYPE_MAGIC],
+		"type": ATTACK_MOVE
 	}
 ]
 
@@ -81,32 +90,38 @@ var boostMoves = [
 	{
 		"id": BOOST_MOVE + "-" + BOOST_TO_INTELLECT + "-" + "1",
 		"attrToBoost": 2,
-		"value": 1
+		"value": 1,
+		"type": BOOST_MOVE
 	},
 	{
 		"id": BOOST_MOVE + "-" + BOOST_TO_SPEED + "-" + "1",
 		"attrToBoost": 4,
-		"value": 1
+		"value": 1,
+		"type": BOOST_MOVE
 	},
 	{
 		"id": BOOST_MOVE + "-" + BOOST_TO_STRENGTH + "-" + "1",
 		"attrToBoost": 5,
-		"value": 1
+		"value": 1,
+		"type": BOOST_MOVE
 	},
 ]
 
 var healMove = [
 	{
 		"id": HEAL_MOVE + "-" + "1",
-		"restoredPoints": 1
+		"restoredPoints": 1,
+		"type": HEAL_MOVE
 	}
 ]
 
+# TODO add on next version
 var instantHealMove = [
 	{
 		"id": INSTANT_HEAL_MOVE + "-" + "1",
 		"restoreLife": true,
-		"uses": 1
+		"uses": 1,
+		"type": INSTANT_HEAL_MOVE
 	}
 ]
 
@@ -115,19 +130,22 @@ var defenseMove = [
 		"id": DEFENSE_MOVE + "-" + "1",
 		"percent": 1,
 		"specific": false,
-		"specificType": [ATTACK_TYPE_MELEE]
+		"specificType": [ATTACK_TYPE_MELEE],
+		"type": DEFENSE_MOVE
 	},
 	{
 		"id": DEFENSE_MOVE + "-" + "2",
 		"percent": 1,
 		"specific": false,
-		"specificType": [ATTACK_TYPE_WEAPON]
+		"specificType": [ATTACK_TYPE_WEAPON],
+		"type": DEFENSE_MOVE
 	},
 	{
 		"id": DEFENSE_MOVE + "-" + "3",
 		"percent": 1,
 		"specific": true,
-		"specificType": [ATTACK_TYPE_MAGIC]
+		"specificType": [ATTACK_TYPE_MAGIC],
+		"type": DEFENSE_MOVE
 	}
 ]
 

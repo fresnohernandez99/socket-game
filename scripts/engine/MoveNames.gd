@@ -1,6 +1,6 @@
 extends Node
 
-func getMoveName(ClassHandler, MoveHandler, charClass, moveId: String):
+func getMoveName(ClassHandler, MoveHandler, charClass: String, moveId: String):
 	var moveNames = {
 		ClassHandler.CLASS_BOX: {
 			MoveHandler.ATTACK_MOVE + "-" + MoveHandler.ATTACK_TYPE_MELEE + "-" + "1": "Puñetazo",

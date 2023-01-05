@@ -11,6 +11,9 @@ const NOT_REQUESTED = "connecting"
 
 var state = NOT_REQUESTED
 
+var actualRootNode = null
+var toast: Toast
+
 func _process(delta):
 	# Call this in _process or _physics_process. Data transfer, and signals
 	# emission will only happen when calling this function.
@@ -46,12 +49,15 @@ func _closed(was_clean = false):
 	# was_clean will tell you if the disconnection was correctly notified
 	# by the remote peer before closing the socket.
 	print("Closed, clean: ", was_clean)
+	#_showError("Disconnected: ")
+	INTENT_CONNECTING_ACTIVE = ERROR_STATE
 	state = DISCONNECTED
 
 func _server_close_request(code: int = 0, reason: String = ""):
 	# was_clean will tell you if the disconnection was correctly notified
 	# by the remote peer before closing the socket.
 	print("Code: ", code, " Reason: ", reason)
+	INTENT_CONNECTING_ACTIVE = ERROR_STATE
 	state = DISCONNECTED
 
 func _connected(param):
@@ -94,6 +100,10 @@ func _plainSend(endpoint, request):
 	peer.set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
 	peer.put_packet(request.to_utf8())
 
+func _showError(actualErrorMsg):
+	toast = Toast.new(actualErrorMsg, Toast.LENGTH_SHORT)
+	actualRootNode.add_child(toast)
+	toast.show()
 ################################################
 ###
 ### Region Requests
@@ -146,7 +156,7 @@ func waitingRequests(response):
 	var result
 	
 	if json.error != OK:
-		print("error " + JSON.print(json.error))
+		_showError("Error on: parsing")
 		return
 	else:
 		result = json.result
@@ -157,6 +167,7 @@ func waitingRequests(response):
 			INTENT_CONNECTING_ACTIVE = SUCCESS_STATE
 			print("ID obtenido del server: " + Session.playerId)
 		else:
+			_showError("Error on: " + INTENT_CONNECTING)
 			INTENT_CONNECTING_ACTIVE = ERROR_STATE
 	
 	if INTENT_RE_CONNECTING_ACTIVE == LOADING_STATE and result.endpoint == INTENT_RE_CONNECTING:
@@ -164,15 +175,17 @@ func waitingRequests(response):
 			INTENT_RE_CONNECTING_ACTIVE = SUCCESS_STATE
 			#TODO
 		else:
+			_showError("Error on: " + INTENT_RE_CONNECTING)
 			INTENT_RE_CONNECTING_ACTIVE = ERROR_STATE
 		
 	if INTENT_CREATE_ROOM_ACTIVE == LOADING_STATE and result.endpoint == INTENT_CREATE_ROOM:
 		if result.content.code == INTENT_CORRECT:
-			RoomInfo.setData(result.content.data)
+			RoomInfo.setData(result.content.data.room, result.content.data.spaceConfiguration)
 			
 			print("Room creada: " + Session.playerId)
 			INTENT_CREATE_ROOM_ACTIVE = SUCCESS_STATE
 		else:
+			_showError("Error on: " + INTENT_CREATE_ROOM)
 			INTENT_CREATE_ROOM_ACTIVE = ERROR_STATE
 		
 	if INTENT_CLOSE_ROOM_ACTIVE == LOADING_STATE and result.endpoint == INTENT_CLOSE_ROOM:
@@ -180,6 +193,7 @@ func waitingRequests(response):
 			print("Room Cerrada e iniciada con éxito")
 			INTENT_CLOSE_ROOM_ACTIVE = SUCCESS_STATE
 		else:
+			_showError("Error on: " + INTENT_CLOSE_ROOM)
 			INTENT_CLOSE_ROOM_ACTIVE = ERROR_STATE
 		
 	if result.endpoint == INTENT_ABANDON_ROOM and RoomInfo.id == result.content.data.roomId:
@@ -190,6 +204,7 @@ func waitingRequests(response):
 			
 			INTENT_ABANDON_ROOM_ACTIVE = SUCCESS_STATE
 		else:
+			_showError("Error on: " + INTENT_ABANDON_ROOM)
 			INTENT_ABANDON_ROOM_ACTIVE = ERROR_STATE
 		
 	if INTENT_GET_ROOMS_ACTIVE == LOADING_STATE and result.endpoint == INTENT_GET_ROOMS:
@@ -198,14 +213,16 @@ func waitingRequests(response):
 			INTENT_GET_ROOMS_ACTIVE = SUCCESS_STATE
 			print("Rooms obtenidas: " + str(SocketRooms.roomsWithConfigs.size()))
 		else:
+			_showError("Error on: " + INTENT_GET_ROOMS)
 			INTENT_GET_ROOMS_ACTIVE = ERROR_STATE
 		
 	if result.endpoint == INTENT_JOIN_ROOM:
 		if result.content.code == INTENT_CORRECT:
-			RoomInfo.setData(result.content.data)
+			RoomInfo.setData(result.content.data.room, result.content.data.spaceConfiguration)
 			INTENT_JOIN_ROOM_ACTIVE = SUCCESS_STATE
 			print("Unido a la room: " + JSON.print(RoomInfo))
 		else:
+			_showError("Error on: " + INTENT_JOIN_ROOM)
 			INTENT_JOIN_ROOM_ACTIVE = ERROR_STATE
 	
 	if INTENT_USERS_INFO_ACTIVE == LOADING_STATE and result.endpoint == INTENT_USERS_INFO:
@@ -215,12 +232,14 @@ func waitingRequests(response):
 			print("Informacion de usuarios recibida: " + JSON.print(RoomInfo.usersInfo))
 			INTENT_USERS_INFO_ACTIVE = SUCCESS_STATE
 		else:
+			_showError("Error on: " + INTENT_USERS_INFO)
 			INTENT_USERS_INFO_ACTIVE = ERROR_STATE
 	
 	if INTENT_UPLOAD_INFO_ACTIVE == LOADING_STATE and result.endpoint == INTENT_UPLOAD_INFO:
 		if result.content.code == INTENT_CORRECT:
 			INTENT_UPLOAD_INFO_ACTIVE = SUCCESS_STATE
 		else:
+			_showError("Error on: " + INTENT_UPLOAD_INFO)
 			INTENT_UPLOAD_INFO_ACTIVE = ERROR_STATE
 	
 	if INTENT_GET_CONFIGURATIONS_ACTIVE == LOADING_STATE and result.endpoint == INTENT_GET_CONFIGURATIONS:
@@ -229,6 +248,7 @@ func waitingRequests(response):
 			RoomInfo.configuration = result.content.data
 			INTENT_GET_CONFIGURATIONS_ACTIVE = SUCCESS_STATE
 		else:
+			_showError("Error on: " + INTENT_GET_CONFIGURATIONS)
 			INTENT_GET_CONFIGURATIONS_ACTIVE = ERROR_STATE
 	
 	if INTENT_UPDATE_CONFIGURATIONS_ACTIVE == LOADING_STATE and result.endpoint == INTENT_UPDATE_CONFIGURATIONS:
@@ -237,6 +257,7 @@ func waitingRequests(response):
 			RoomInfo.configuration = result.content.data
 			INTENT_UPDATE_CONFIGURATIONS_ACTIVE = SUCCESS_STATE
 		else:
+			_showError("Error on: " + INTENT_UPDATE_CONFIGURATIONS)
 			INTENT_UPDATE_CONFIGURATIONS_ACTIVE = ERROR_STATE
 
 func createRoom(roomName, roomCode):
