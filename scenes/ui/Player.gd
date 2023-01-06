@@ -11,15 +11,14 @@ const RIGHT = "right"
 
 var isReady = false
 
-onready var statusLabel = $StatusLabel
+onready var statusLabel = $Status/StatusLabel
+onready var character = $KinematicBody2D
 
 func setData(data, standX, standY, turnFor = RIGHT):
 	hero = data
 	horizontalPosition = standX
 	verticalPosition = standY
 	self.turnFor = turnFor
-	
-	print(str(horizontalPosition), " ", str(verticalPosition))
 
 func setReady():
 	isReady = true
@@ -28,15 +27,18 @@ func setThinking():
 	isReady = false
 
 func _ready():
+	#FOR TEST
+	setData(null, 60, 200, LEFT)
+	#
+	
 	global_position.x = horizontalPosition
 	
 	if turnFor == LEFT:
-		scale.x = -1
+		character.scale.x = -1
 
 func _process(delta):
-	if verticalPosition < global_position.y:
-		global_position.y += 0.1
-		print(str(global_position.y))
+	if verticalPosition > global_position.y:
+		global_position.y += 8
 	
 	if isReady:
 		statusLabel.text = "READY!"
