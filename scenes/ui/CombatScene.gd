@@ -1,10 +1,12 @@
 extends Node
 
+const MoveHandler = preload("res://scripts/engine/MoveHandler.gd")
+
+var moveHandler = MoveHandler.new()
 
 signal ShowMsg(playMsg)
 signal IsLoading(state)
 
-onready var Player = preload("res://scenes/ui/Player.tscn")
 onready var players = []
 
 onready var playerContainer = $PlayerContainer
@@ -44,6 +46,7 @@ func setPlayerReady():
 
 
 func _initNextPlay():
+	emit_signal("IsLoading", [false])
 	if RoomInfo.roundResult.size() > 0:
 		var actualPlay = RoomInfo.roundResult.pop_front()
 		
@@ -51,30 +54,77 @@ func _initNextPlay():
 			SocketManager.SET_IN_FIELD_PLAY:
 				_setInFieldPlay(actualPlay)
 			SocketManager.OVER_PIECE_PLAY:
-				pass
+				_setPlayOverHero(actualPlay)
 
 func _setInFieldPlay(actualPlay):
+	var Player = load("res://scenes/ui/Player.tscn")
 	var playerIns = Player.instance()
 	
 	# poner heroe del jugador en posicion izquierda
 	if actualPlay.playerId == Session.playerId:
 		playerIns.setData(actualPlay.piece, playerPosition.global_position.x,  playerPosition.global_position.y, playerIns.LEFT)
 		
+		emit_signal("ShowMsg", ["[color=blue]You[/color] have entered in combat!"])
 	else:
 		var nextPlayerPosition
 		if players.size() > 0:
 			nextPlayerPosition = enemiesPosition[players.size() - 1]
 		else:
 			nextPlayerPosition = enemiesPosition[0]
-		
 		playerIns.setData(actualPlay.piece, nextPlayerPosition.global_position.x,  nextPlayerPosition.global_position.y)
-	
+		emit_signal("ShowMsg", ["[color=red]"+ actualPlay.piece.name +"[/color] has entered in combat!"])
+
 	playerContainer.add_child(playerIns)
 	players.push_back(playerIns)
+
+func _setPlayOverHero(actualPlay):
+	var playerFrom
+	var playerTo
 	
-func _onReproducePlayComplete():
+	var moveName = Persistence.heroHandler.getMoveName(actualPlay.move.id)
+	
+	for player in players:
+		if player.position == actualPlay.positionFrom:
+			playerFrom = player
+		if player.position == actualPlay.positionTo:
+			playerTo = player
+	
+	var colorFrom = "green"
+	var colorTo = "red"
+	
+	var moveColor = "aqua"
+	var missColor = "yellow"
+	
+	if playerFrom.hero.id == Persistence.data.hero.id:
+		colorFrom = "green"
+	else:
+		colorFrom = "red"
+	
+	if playerTo.hero.id == Persistence.data.hero.id:
+		colorTo = "green"
+	else:
+		colorTo = "red"
+	
+	if actualPlay.wassMiss:
+		emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] has use " + "[color="+ moveColor + "]" + moveName + "[/color] and he [color="+ missColor + "]miss it[/color]!" ])
+	else:
+		_showAnimationOver(actualPlay.move, playerTo)
+		_showAnimationFrom(actualPlay.move, playerFrom)
+		
+		if playerTo.hero.id == playerFrom.hero.id:
+			emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] has use " + "[color="+ moveColor + "]" + moveName + "[/color]!" ])
+		else:
+			emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] has use " + "[color="+ moveColor + "]" + moveName + "[/color] over " + "[color="+ colorTo + "]" + playerFrom.hero.name +"[/color]!" ])
+	
+	_calculatePlaysResults(actualPlay)
+
+func _showAnimationOver(move, player):
+	# TODO
 	pass
 
+func _showAnimationFrom(move, player):
+	# TODO
+	pass
 
 func _on_CombatControls_showNextPlay():
 	_initNextPlay()
@@ -82,24 +132,96 @@ func _on_CombatControls_showNextPlay():
 #################################################
 # Socket actions region
 #################################################
-func _sendAction():
+func _sendPlay():
 	pass
 
-func _onActionsReceived():
+
+func _calculatePlaysResults(actualPlay):
+	if actualPlay.wasMiss:
+		return
+	
+	var playerFrom
+	var playerTo
+	
+	for player in players:
+		if player.position == actualPlay.positionFrom:
+			playerFrom = player
+		if player.position == actualPlay.positionTo:
+			playerTo = player
+	
+	match(actualPlay.move.type):
+		moveHandler.ATTACK_MOVE:
+			_calculateAttack(actualPlay.move, playerTo, playerFrom)
+		moveHandler.DEFENSE_MOVE:
+			playerTo.hero.stats[0].value += playerTo.hero.stats[0].value * actualPlay.move.percent
+		moveHandler.HEAL_MOVE:
+			if playerTo.hero.lifePointsLose > actualPlay.move.restoredPoints:
+				playerTo.hero.lifePointsLose -= actualPlay.move.restoredPoints
+			else:
+				playerTo.hero.lifePointsLose = 0
+				
+		moveHandler.BOOST_MOVE:
+			playerTo.hero.stats[actualPlay.move.attrToBoost].value += actualPlay.move.value
+		moveHandler.INSTANT_HEAL_MOVE:
+			playerTo.hero.lifePointsLose = 0
+
+
+func _calculateAttack(move, playerTo, playerFrom):
+	var damage = move.damage
+	var types = move.types
+	
+	for t in types:
+		match(t):
+			moveHandler.ATTACK_TYPE_MELEE:
+				var stregth = playerFrom.hero.stats[5].value
+				var percent = damage * stregth / 100
+				
+				damage += percent
+				
+			moveHandler.ATTACK_TYPE_WEAPON:
+				var stregth = playerFrom.hero.stats[5].value
+				var percent1 = damage * stregth / 100
+				
+				var intellect = playerFrom.hero.stats[2].value
+				var percent2 = damage * intellect / 100
+				
+				damage += percent1
+				damage += percent2
+				
+			moveHandler.ATTACK_TYPE_MAGIC:
+				var magic = playerFrom.hero.stats[3].value
+				var percent1 = damage * magic / 100
+				
+				var intellect = playerFrom.hero.stats[2].value
+				var percent2 = damage * intellect / 100
+				
+				damage += percent1
+				damage += percent2
+	
+	var defenseAgainst = playerTo.hero.stats[0].value
+	
+	damage -= damage * defenseAgainst / 100
+	
+	playerTo.hero.lifePointsLose += damage
+	
+	_calculateActualMatch()
+
+func _calculateActualMatch():
+	var loserCount = 0
+	
+	for p in players:
+		if p.hero.lifePointsLose > p.hero.lifePoints:
+			p.lose()
+			loserCount += 1
+	
+	if loserCount == players.size() - 1:
+		endMatch()
+
+func endMatch():
+	#TODO
+	#FIND winner
+	#SEND RESULTS TO SERVER FOR CLOSE ROOM
 	pass
-
-func _calculateResults():
-	pass
-
-#################################################
-# Status actions region
-#################################################
-
-
-
-
-
-
 
 
 

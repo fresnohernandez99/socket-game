@@ -128,22 +128,22 @@ var instantHealMove = [
 var defenseMove = [
 	{
 		"id": DEFENSE_MOVE + "-" + "1",
-		"percent": 1,
+		"percent": 0.1,
 		"specific": false,
 		"specificType": [ATTACK_TYPE_MELEE],
 		"type": DEFENSE_MOVE
 	},
 	{
 		"id": DEFENSE_MOVE + "-" + "2",
-		"percent": 1,
+		"percent": 0.2,
 		"specific": false,
 		"specificType": [ATTACK_TYPE_WEAPON],
 		"type": DEFENSE_MOVE
 	},
 	{
 		"id": DEFENSE_MOVE + "-" + "3",
-		"percent": 1,
-		"specific": true,
+		"percent": 0.3,
+		"specific": false,
 		"specificType": [ATTACK_TYPE_MAGIC],
 		"type": DEFENSE_MOVE
 	}

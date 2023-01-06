@@ -90,7 +90,7 @@ func showNewMsg():
 		return
 	
 	var msg = msgToShow[0]
-	messageLabel.text = msg
+	messageLabel.bbcode_text = msg
 	
 	msgToShow.remove(0)
 

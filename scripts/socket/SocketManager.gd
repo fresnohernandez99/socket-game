@@ -82,7 +82,7 @@ func _on_data():
 	if error:
 		print("Error: " + JSON.print(error))
 	
-	print("Got data from server: ", data)
+	#print("Got data from server: ", data)
 	waitingRequests(data)
 
 func _send(endpoint, data):
@@ -91,7 +91,7 @@ func _send(endpoint, data):
 		"content": data
 	}
 	var json = JSON.print(request)
-	print("Sending: " + json)
+	#print("Sending: " + json)
 	var peer = _client.get_peer(1)
 	peer.set_write_mode(WebSocketPeer.WRITE_MODE_TEXT)
 	peer.put_packet(json.to_utf8())
@@ -192,7 +192,6 @@ func waitingRequests(response):
 		if result.content.code == INTENT_CORRECT:
 			RoomInfo.setData(result.content.data.room, result.content.data.spaceConfiguration)
 			
-			print("Room creada: " + Session.playerId)
 			INTENT_CREATE_ROOM_ACTIVE = SUCCESS_STATE
 		else:
 			_showError("Error on: " + INTENT_CREATE_ROOM)
@@ -200,7 +199,6 @@ func waitingRequests(response):
 		
 	if result.endpoint == INTENT_CLOSE_ROOM:
 		if result.content.code == INTENT_CORRECT:
-			print("Room Cerrada e iniciada con éxito")
 			INTENT_CLOSE_ROOM_ACTIVE = SUCCESS_STATE
 		else:
 			_showError("Error on: " + INTENT_CLOSE_ROOM)
@@ -209,8 +207,6 @@ func waitingRequests(response):
 	if result.endpoint == INTENT_ABANDON_ROOM and RoomInfo.id == result.content.data.roomId:
 		if result.content.code == INTENT_CORRECT:
 			RoomInfo.lastDisconnectedUser = result.content.data.playerId
-			
-			print("Last disconnected user: " + RoomInfo.lastDisconnectedUser)
 			
 			INTENT_ABANDON_ROOM_ACTIVE = SUCCESS_STATE
 		else:
@@ -221,7 +217,6 @@ func waitingRequests(response):
 		if result.content.code == INTENT_CORRECT:
 			SocketRooms.roomsWithConfigs = result.content.data.rooms
 			INTENT_GET_ROOMS_ACTIVE = SUCCESS_STATE
-			print("Rooms obtenidas: " + str(SocketRooms.roomsWithConfigs.size()))
 		else:
 			_showError("Error on: " + INTENT_GET_ROOMS)
 			INTENT_GET_ROOMS_ACTIVE = ERROR_STATE
@@ -229,8 +224,8 @@ func waitingRequests(response):
 	if result.endpoint == INTENT_JOIN_ROOM:
 		if result.content.code == INTENT_CORRECT:
 			RoomInfo.setData(result.content.data.room, result.content.data.spaceConfiguration)
+			
 			INTENT_JOIN_ROOM_ACTIVE = SUCCESS_STATE
-			print("Unido a la room: " + JSON.print(RoomInfo))
 		else:
 			_showError("Error on: " + INTENT_JOIN_ROOM)
 			INTENT_JOIN_ROOM_ACTIVE = ERROR_STATE
@@ -239,7 +234,6 @@ func waitingRequests(response):
 		if result.content.code == INTENT_CORRECT:
 			RoomInfo.usersInfo = result.content.data
 			
-			print("Informacion de usuarios recibida: " + JSON.print(RoomInfo.usersInfo))
 			INTENT_USERS_INFO_ACTIVE = SUCCESS_STATE
 		else:
 			_showError("Error on: " + INTENT_USERS_INFO)
@@ -247,6 +241,7 @@ func waitingRequests(response):
 	
 	if INTENT_UPLOAD_INFO_ACTIVE == LOADING_STATE and result.endpoint == INTENT_UPLOAD_INFO:
 		if result.content.code == INTENT_CORRECT:
+			
 			INTENT_UPLOAD_INFO_ACTIVE = SUCCESS_STATE
 		else:
 			_showError("Error on: " + INTENT_UPLOAD_INFO)
@@ -254,8 +249,8 @@ func waitingRequests(response):
 	
 	if INTENT_GET_CONFIGURATIONS_ACTIVE == LOADING_STATE and result.endpoint == INTENT_GET_CONFIGURATIONS:
 		if result.content.code == INTENT_CORRECT:
-			
 			RoomInfo.configuration = result.content.data
+			
 			INTENT_GET_CONFIGURATIONS_ACTIVE = SUCCESS_STATE
 		else:
 			_showError("Error on: " + INTENT_GET_CONFIGURATIONS)
@@ -263,8 +258,8 @@ func waitingRequests(response):
 	
 	if INTENT_UPDATE_CONFIGURATIONS_ACTIVE == LOADING_STATE and result.endpoint == INTENT_UPDATE_CONFIGURATIONS:
 		if result.content.code == INTENT_CORRECT:
-			
 			RoomInfo.configuration = result.content.data
+			
 			INTENT_UPDATE_CONFIGURATIONS_ACTIVE = SUCCESS_STATE
 		else:
 			_showError("Error on: " + INTENT_UPDATE_CONFIGURATIONS)
@@ -319,6 +314,8 @@ func joinRoom(roomId, code):
 
 func uploadInfo():
 	INTENT_UPLOAD_INFO_ACTIVE = LOADING_STATE
+	Persistence.data.hero.name = Session.playerName
+	
 	_send(INTENT_UPLOAD_INFO, {
 		"playerInfo": {
 			"name": Session.playerName,
@@ -348,7 +345,8 @@ func updateRoomConfigs():
 		"spaceConfiguration": {
 			"maxPlayers": 2,
 			"minPlayers": 2,
-			"evaluateMiss": true
+			"evaluateMiss": true,
+			"evaluateSpeed": true
 		}
 	})
 
