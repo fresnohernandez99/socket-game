@@ -364,6 +364,25 @@ func sendInitPlay():
 		]
 	})
 
+func sendOverPiecePlay(move, posTo, posFrom):
+	INTENT_SEND_PLAYS_ACTIVE = LOADING_STATE
+	
+	var toSend = {
+		"roomId": RoomInfo.id,
+		"plays": [
+			{
+				"playerId": Session.playerId,
+				"type": OVER_PIECE_PLAY,
+				"positionFrom": posFrom,
+				"positionTo": posTo,
+				"move": move,
+				"wasMiss": false
+			}
+		]
+	}
+	print(toSend)
+	_send(INTENT_SEND_PLAYS, toSend)
+
 ################################################
 ###
 ### End-Region Requests

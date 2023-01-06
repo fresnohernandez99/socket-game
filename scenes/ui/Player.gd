@@ -16,6 +16,7 @@ onready var character = $KinematicBody2D
 onready var nameLabel = $Status/NameLabel
 onready var levelLabel = $Status/LevelLabel
 onready var lifeBar = $Status/LifeBar
+onready var statusLabel = $KinematicBody2D/StatusLabel
 
 func setData(data, standX, standY, turnFor = RIGHT):
 	hero = data
@@ -51,9 +52,9 @@ func _process(delta):
 	lifeBar.value = hero.lifePoints - hero.lifePointsLose
 	
 	if isReady:
-		pass
+		statusLabel.show()
 	else:
-		pass
+		statusLabel.hide()
 
 func lose():
 	isAlive = false

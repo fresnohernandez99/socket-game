@@ -18,4 +18,5 @@ position = Vector2( 260, 200 )
 
 [connection signal="IsLoading" from="." to="CombatControls" method="_on_CombatScene_IsLoading"]
 [connection signal="ShowMsg" from="." to="CombatControls" method="_on_CombatScene_ShowMsg"]
+[connection signal="UseMove" from="CombatControls" to="." method="_on_CombatControls_UseMove"]
 [connection signal="showNextPlay" from="CombatControls" to="." method="_on_CombatControls_showNextPlay"]

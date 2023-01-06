@@ -1,13 +1,17 @@
 extends Node
 
 const MoveHandler = preload("res://scripts/engine/MoveHandler.gd")
+const MoveNames = preload("res://scripts/engine/MoveNames.gd")
 
+var moveNames = MoveNames.new()
 var moveHandler = MoveHandler.new()
 
 signal ShowMsg(playMsg)
 signal IsLoading(state)
 
 onready var players = []
+
+onready var combatControls = $CombatControls
 
 onready var playerContainer = $PlayerContainer
 
@@ -19,6 +23,7 @@ onready var enemiesPosition = [enemy1Position]
 func _ready():
 	emit_signal("IsLoading", [true])
 	emit_signal("ShowMsg", ["The battle is about to start"])
+	SocketManager.sendInitPlay()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,15 +43,19 @@ func setPlayerReady():
 	for player in players:
 		if player.hero.playerId == RoomInfo.lastPlayerReady:
 			player.setReady()
-			RoomInfo.lastPlayersReady = ""
+			RoomInfo.lastPlayerReady = ""
 			
 			if Session.playerId == RoomInfo.lastPlayerReady:
 				emit_signal("IsLoading", [true])
 				emit_signal("ShowMsg", ["READY!"])
 
-
 func _initNextPlay():
+	combatControls.setUnaviable(false)
 	emit_signal("IsLoading", [false])
+	
+	for p in players:
+		p.setThinking()
+	
 	if RoomInfo.roundResult.size() > 0:
 		var actualPlay = RoomInfo.roundResult.pop_front()
 		
@@ -64,6 +73,10 @@ func _setInFieldPlay(actualPlay):
 	if actualPlay.playerId == Session.playerId:
 		playerIns.setData(actualPlay.piece, playerPosition.global_position.x,  playerPosition.global_position.y, playerIns.LEFT)
 		
+		Persistence.data.hero.position = actualPlay.piece.position
+		
+		combatControls.setHero(Persistence.data.hero)
+		
 		emit_signal("ShowMsg", ["[color=blue]You[/color] have entered in combat!"])
 	else:
 		var nextPlayerPosition
@@ -73,7 +86,9 @@ func _setInFieldPlay(actualPlay):
 			nextPlayerPosition = enemiesPosition[0]
 		playerIns.setData(actualPlay.piece, nextPlayerPosition.global_position.x,  nextPlayerPosition.global_position.y)
 		emit_signal("ShowMsg", ["[color=red]"+ actualPlay.piece.name +"[/color] has entered in combat!"])
-
+		
+		combatControls.addEnemyPlayer(actualPlay.piece)
+		
 	playerContainer.add_child(playerIns)
 	players.push_back(playerIns)
 
@@ -81,13 +96,13 @@ func _setPlayOverHero(actualPlay):
 	var playerFrom
 	var playerTo
 	
-	var moveName = Persistence.heroHandler.getMoveName(actualPlay.move.id)
-	
 	for player in players:
-		if player.position == actualPlay.positionFrom:
+		if player.hero.position == actualPlay.positionFrom:
 			playerFrom = player
-		if player.position == actualPlay.positionTo:
+		if player.hero.position == actualPlay.positionTo:
 			playerTo = player
+	
+	var moveName = moveNames.getMoveName(playerFrom.hero.charClass.name, actualPlay.move.id)
 	
 	var colorFrom = "green"
 	var colorTo = "red"
@@ -105,7 +120,7 @@ func _setPlayOverHero(actualPlay):
 	else:
 		colorTo = "red"
 	
-	if actualPlay.wassMiss:
+	if actualPlay.wasMiss:
 		emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] has use " + "[color="+ moveColor + "]" + moveName + "[/color] and he [color="+ missColor + "]miss it[/color]!" ])
 	else:
 		_showAnimationOver(actualPlay.move, playerTo)
@@ -114,7 +129,7 @@ func _setPlayOverHero(actualPlay):
 		if playerTo.hero.id == playerFrom.hero.id:
 			emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] has use " + "[color="+ moveColor + "]" + moveName + "[/color]!" ])
 		else:
-			emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] has use " + "[color="+ moveColor + "]" + moveName + "[/color] over " + "[color="+ colorTo + "]" + playerFrom.hero.name +"[/color]!" ])
+			emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] has use " + "[color="+ moveColor + "]" + moveName + "[/color] over " + "[color="+ colorTo + "]" + playerTo.hero.name +"[/color]!" ])
 	
 	_calculatePlaysResults(actualPlay)
 
@@ -132,10 +147,17 @@ func _on_CombatControls_showNextPlay():
 #################################################
 # Socket actions region
 #################################################
-func _sendPlay():
-	pass
+func _sendPlay(move, posTo):
+	SocketManager.sendOverPiecePlay(move, posTo, Persistence.data.hero.position)
+
+func _on_CombatControls_UseMove(move):
+	_sendPlay(move[0], move[1])
+	combatControls.setUnaviable(true)
 
 
+#################################################
+# Calculate region
+#################################################
 func _calculatePlaysResults(actualPlay):
 	if actualPlay.wasMiss:
 		return
@@ -144,9 +166,9 @@ func _calculatePlaysResults(actualPlay):
 	var playerTo
 	
 	for player in players:
-		if player.position == actualPlay.positionFrom:
+		if player.hero.position == actualPlay.positionFrom:
 			playerFrom = player
-		if player.position == actualPlay.positionTo:
+		if player.hero.position == actualPlay.positionTo:
 			playerTo = player
 	
 	match(actualPlay.move.type):
@@ -164,7 +186,6 @@ func _calculatePlaysResults(actualPlay):
 			playerTo.hero.stats[actualPlay.move.attrToBoost].value += actualPlay.move.value
 		moveHandler.INSTANT_HEAL_MOVE:
 			playerTo.hero.lifePointsLose = 0
-
 
 func _calculateAttack(move, playerTo, playerFrom):
 	var damage = move.damage
@@ -218,11 +239,8 @@ func _calculateActualMatch():
 		endMatch()
 
 func endMatch():
-	#TODO
-	#FIND winner
-	#SEND RESULTS TO SERVER FOR CLOSE ROOM
-	pass
-
+	SocketManager.finalResult = players
+	get_tree().change_scene("res://scenes/ui/EndCombatScene.tscn")
 
 
 

@@ -190,6 +190,18 @@ margin_right = 310.0
 margin_bottom = 10.0
 text = "x"
 
+[node name="Unaviable" type="Control" parent="."]
+visible = false
+margin_left = -4.0
+margin_top = 430.0
+margin_right = 326.0
+margin_bottom = 639.0
+
+[node name="ColorRect" type="ColorRect" parent="Unaviable"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0745098, 0.0745098, 0.0745098, 0.32549 )
+
 [connection signal="pressed" from="Control/ControlsStep1/NextBtn" to="." method="_on_NextBtn_pressed"]
 [connection signal="pressed" from="Control/ControlsStep2/FightBtn" to="." method="_on_FightBtn_pressed"]
 [connection signal="pressed" from="Control/ControlsStep2/SurrenderBtn" to="." method="_on_SurrenderBtn_pressed"]

@@ -21,6 +21,8 @@ var lastPlayerReady: String
 # To reproduce player actions
 var roundResult
 
+var finalResult
+
 func setData(socketRoom, configurations):
 	id = socketRoom.id
 	roomOwner = socketRoom.owner

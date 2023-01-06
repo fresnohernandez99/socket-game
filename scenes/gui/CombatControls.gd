@@ -27,7 +27,11 @@ onready var move3Label = $Control/ControlsStep3/Move3Btn/Label
 onready var move4Btn = $Control/ControlsStep3/Move4Btn
 onready var move4Label = $Control/ControlsStep3/Move4Btn/Label
 
+onready var unabiable = $Unaviable
+
 var hero
+
+var players = []
 
 signal UseMove(move)
 signal Surrender
@@ -37,8 +41,6 @@ var loadingResults = true
 
 func _ready():
 	showControlStep1()
-	setHero(Persistence.data.hero)
-	SocketManager.sendInitPlay()
 
 func showControlStep1():
 	controlStep1.show()
@@ -55,23 +57,29 @@ func showControlStep3():
 	controlStep2.hide()
 	controlStep3.show()
 
+func setUnaviable(value: bool):
+	unabiable.visible = value
+
 func setHero(hero):
 	self.hero = hero
 	_setMoves()
+
+func addEnemyPlayer(p):
+	players.push_back(p)
 
 func _setMoves():
 	move1Btn.show()
 	move2Btn.show()
 	
-	move1Label.text = moveNames.getMoveName(classHandler, moveHandler, hero.charClass.name, hero.moves[0].id)
-	move2Label.text = moveNames.getMoveName(classHandler, moveHandler, hero.charClass.name, hero.moves[1].id)
+	move1Label.text = moveNames.getMoveName(hero.charClass.name, hero.moves[0].id)
+	move2Label.text = moveNames.getMoveName(hero.charClass.name, hero.moves[1].id)
 	
 	if hero.moves.size() >= 3:
-		move3Label.text = moveNames.getMoveName(classHandler, moveHandler, hero.charClass.name, hero.moves[2].id)
+		move3Label.text = moveNames.getMoveName(hero.charClass.name, hero.moves[2].id)
 		move3Btn.show()
 	
 	if hero.moves.size() >= 4:
-		move4Label.text = moveNames.getMoveName(classHandler, moveHandler, hero.charClass.name, hero.moves[3].id)
+		move4Label.text = moveNames.getMoveName(hero.charClass.name, hero.moves[3].id)
 		move4Btn.show()
 
 func _process(delta):
@@ -125,22 +133,26 @@ func _on_SurrenderBtn_pressed():
 #################################################
 
 func _on_Move1Btn_pressed():
-	emit_signal("UseMove", [hero.moves[0]])
+	createMove(hero.moves[0])
 
 
 func _on_Move2Btn_pressed():
-	emit_signal("UseMove", [hero.moves[1]])
+	createMove(hero.moves[1])
 
 
 func _on_Move3Btn_pressed():
-	emit_signal("UseMove", [hero.moves[2]])
+	createMove(hero.moves[2])
 
 
 func _on_Move4Btn_pressed():
-	emit_signal("UseMove", [hero.moves[3]])
+	createMove(hero.moves[3])
 
-
-
+func createMove(move):
+	if move.type == moveHandler.ATTACK_MOVE:
+		if players.size() == 1:
+			emit_signal("UseMove", [move, players[0].position])
+	else:
+		emit_signal("UseMove", [move, hero.position])
 
 func _on_BackFrom3Btn_pressed():
 	showControlStep2()

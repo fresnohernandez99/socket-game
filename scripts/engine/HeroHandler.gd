@@ -42,7 +42,7 @@ func generateInitialHero():
 	return hero
 
 func getMoveName(moveId, charClassName):
-	return moveNames.getMoveName(classHandler, moveHandler, charClassName, moveId)
+	return moveNames.getMoveName(charClassName, moveId)
 
 func setMultiplayerId():
 	Persistence.data.hero.playerId = Session.playerId

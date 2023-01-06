@@ -1,6 +1,9 @@
 extends Node
 
-func getMoveName(ClassHandler, MoveHandler, charClass: String, moveId: String):
+const ClassHandler = preload("res://scripts/engine/ClassHandler.gd")
+const MoveHandler = preload("res://scripts/engine/MoveHandler.gd")
+
+func getMoveName(charClass: String, moveId: String):
 	var moveNames = {
 		ClassHandler.CLASS_BOX: {
 			MoveHandler.ATTACK_MOVE + "-" + MoveHandler.ATTACK_TYPE_MELEE + "-" + "1": "Punch",
