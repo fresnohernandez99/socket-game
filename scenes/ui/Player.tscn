@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/ui/Player.gd" type="Script" id=1]
+[ext_resource path="res://scenes/ui/objects/Points.tscn" type="PackedScene" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 18.0
@@ -92,3 +93,7 @@ anchor_bottom = 1.0
 margin_top = -13.0
 margin_right = 14.0
 color = Color( 0, 0, 0, 1 )
+
+[node name="Points" parent="Status" instance=ExtResource( 2 )]
+margin_left = 30.0
+margin_right = 80.0

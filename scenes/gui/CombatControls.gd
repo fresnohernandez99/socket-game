@@ -27,6 +27,9 @@ onready var move3Label = $Control/ControlsStep3/Move3Btn/Label
 onready var move4Btn = $Control/ControlsStep3/Move4Btn
 onready var move4Label = $Control/ControlsStep3/Move4Btn/Label
 
+onready var controlStep4 = $Control/ControlsStep4
+onready var messageLabe4 = $Control/ControlsStep4/ScrollContainer/MessageLabel
+
 onready var unabiable = $Unaviable
 
 var hero
@@ -46,16 +49,25 @@ func showControlStep1():
 	controlStep1.show()
 	controlStep2.hide()
 	controlStep3.hide()
+	controlStep4.hide()
 
 func showControlStep2():
 	controlStep1.hide()
 	controlStep2.show()
 	controlStep3.hide()
+	controlStep4.hide()
 
 func showControlStep3():
 	controlStep1.hide()
 	controlStep2.hide()
 	controlStep3.show()
+	controlStep4.hide()
+
+func showControlStep4():
+	controlStep1.hide()
+	controlStep2.hide()
+	controlStep3.hide()
+	controlStep4.show()
 
 func setUnaviable(value: bool):
 	unabiable.visible = value
@@ -158,4 +170,9 @@ func _on_BackFrom3Btn_pressed():
 	showControlStep2()
 
 
+func _on_BackFrom4Btn_pressed():
+	pass # Replace with function body.
 
+
+func _on_StatsBtn_pressed():
+	showControlStep4()

@@ -10,11 +10,12 @@ func _ready():
 func _process(delta):
 	if SocketManager.INTENT_CREATE_ROOM_ACTIVE == SocketManager.SUCCESS_STATE:
 		SocketManager.INTENT_CREATE_ROOM_ACTIVE = SocketManager.NOT_REQUESTED_STATE
-		updateRoomConfigurations()
-	
-	if SocketManager.INTENT_UPDATE_CONFIGURATIONS_ACTIVE == SocketManager.SUCCESS_STATE:
-		SocketManager.INTENT_UPDATE_CONFIGURATIONS_ACTIVE = SocketManager.NOT_REQUESTED_STATE
+		#updateRoomConfigurations()
 		onCreateRoom()
+	
+	#if SocketManager.INTENT_UPDATE_CONFIGURATIONS_ACTIVE == SocketManager.SUCCESS_STATE:
+	#	SocketManager.INTENT_UPDATE_CONFIGURATIONS_ACTIVE = SocketManager.NOT_REQUESTED_STATE
+	#	onCreateRoom()
 	
 func callCreateRoom():
 	var roomName = nameTextEdit.text

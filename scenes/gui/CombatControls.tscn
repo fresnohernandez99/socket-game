@@ -55,7 +55,6 @@ margin_bottom = -2.0
 text = "NEXT"
 
 [node name="ControlsStep2" type="Control" parent="Control"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -88,15 +87,26 @@ margin_bottom = -5.0
 disabled = true
 text = "Items"
 
+[node name="StatsBtn" type="Button" parent="Control/ControlsStep2"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -290.0
+margin_top = 5.0
+margin_right = -160.0
+margin_bottom = 85.0
+text = "Stats"
+
 [node name="SurrenderBtn" type="Button" parent="Control/ControlsStep2"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-margin_left = -214.0
-margin_top = 6.0
-margin_right = -84.0
-margin_bottom = 86.0
+margin_left = -139.0
+margin_top = 5.0
+margin_right = -9.0
+margin_bottom = 85.0
 text = "Surrender"
 
 [node name="ControlsStep3" type="Control" parent="Control"]
@@ -190,6 +200,39 @@ margin_right = 310.0
 margin_bottom = 10.0
 text = "x"
 
+[node name="ControlsStep4" type="Control" parent="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -10.0
+rect_min_size = Vector2( 300, 180 )
+
+[node name="ColorRect" type="ColorRect" parent="Control/ControlsStep4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.160784, 0.282353, 0.313726, 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/ControlsStep4"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="MessageLabel" type="RichTextLabel" parent="Control/ControlsStep4/ScrollContainer"]
+margin_right = 280.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 280, 170 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+bbcode_enabled = true
+
+[node name="BackFrom4Btn" type="Button" parent="Control/ControlsStep4"]
+margin_left = 290.0
+margin_top = -11.0
+margin_right = 310.0
+margin_bottom = 10.0
+text = "x"
+
 [node name="Unaviable" type="Control" parent="."]
 visible = false
 margin_left = -4.0
@@ -204,9 +247,11 @@ color = Color( 0.0745098, 0.0745098, 0.0745098, 0.32549 )
 
 [connection signal="pressed" from="Control/ControlsStep1/NextBtn" to="." method="_on_NextBtn_pressed"]
 [connection signal="pressed" from="Control/ControlsStep2/FightBtn" to="." method="_on_FightBtn_pressed"]
+[connection signal="pressed" from="Control/ControlsStep2/StatsBtn" to="." method="_on_StatsBtn_pressed"]
 [connection signal="pressed" from="Control/ControlsStep2/SurrenderBtn" to="." method="_on_SurrenderBtn_pressed"]
 [connection signal="pressed" from="Control/ControlsStep3/Move1Btn" to="." method="_on_Move1Btn_pressed"]
 [connection signal="pressed" from="Control/ControlsStep3/Move2Btn" to="." method="_on_Move2Btn_pressed"]
 [connection signal="pressed" from="Control/ControlsStep3/Move3Btn" to="." method="_on_Move3Btn_pressed"]
 [connection signal="pressed" from="Control/ControlsStep3/Move4Btn" to="." method="_on_Move4Btn_pressed"]
 [connection signal="pressed" from="Control/ControlsStep3/BackFrom3Btn" to="." method="_on_BackFrom3Btn_pressed"]
+[connection signal="pressed" from="Control/ControlsStep4/BackFrom4Btn" to="." method="_on_BackFrom4Btn_pressed"]

@@ -17,6 +17,7 @@ onready var nameLabel = $Status/NameLabel
 onready var levelLabel = $Status/LevelLabel
 onready var lifeBar = $Status/LifeBar
 onready var statusLabel = $KinematicBody2D/StatusLabel
+onready var points = $Status/Points
 
 func setData(data, standX, standY, turnFor = RIGHT):
 	hero = data
@@ -59,7 +60,23 @@ func _process(delta):
 func lose():
 	isAlive = false
 
+func receiveHit(damage):
+	points.start("-" + str(damage), Color(1,0,0,0))
 
+func sendHit():
+	pass
+
+func increaseStat(p):
+	points.start("+" + str(points), Color(0,0,1,0))
+
+func decreaseStat(p):
+	points.start("-" + str(p), Color(1,0,1,0))
+
+func increaseLife(life):
+	points.start("+" + str(life), Color(0,1,0,0))
+
+func miss():
+	points.start("MISS", Color(1,1,1,0))
 
 
 

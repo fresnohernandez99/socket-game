@@ -1,7 +1,7 @@
 extends Node
 
 
-var websocket_url = "ws://localhost:8025/server/1/YOLOGODOT"
+var websocket_url = "ws://localhost:9080"
 var _client = WebSocketClient.new()
 
 const CONNECTED = "connected"
@@ -161,6 +161,7 @@ var INTENT_ROUND_RESULTS_ACTIVE = NOT_REQUESTED_STATE
 const INTENT_ROUND_RESULTS = "13"
 
 func waitingRequests(response):
+	print("respuesta original" + response)
 	var json = JSON.parse(response)
 	var result
 	
@@ -288,9 +289,19 @@ func waitingRequests(response):
 func createRoom(roomName, roomCode):
 	INTENT_CREATE_ROOM_ACTIVE = LOADING_STATE
 	_send(INTENT_CREATE_ROOM, {
-		"id": Session.playerId,
-		"name": roomName,
-		"code": roomCode
+		"room": {
+			"id": Session.playerId,
+			"name": roomName,
+			"code": roomCode
+		},
+		"spaceConfiguration": {
+			"gameBase": "01",
+			"defeatCause": 3,
+			"maxPlayers": 2,
+			"minPlayers": 2,
+			"evaluateMiss": true,
+			"evaluateSpeed": true
+		}
 	})
 
 func loadRooms():
@@ -343,6 +354,8 @@ func updateRoomConfigs():
 	_send(INTENT_UPDATE_CONFIGURATIONS, {
 		"roomId": RoomInfo.id,
 		"spaceConfiguration": {
+			"gameBase": "01",
+			"defeatCause": 3,
 			"maxPlayers": 2,
 			"minPlayers": 2,
 			"evaluateMiss": true,

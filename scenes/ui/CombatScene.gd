@@ -3,6 +3,9 @@ extends Node
 const MoveHandler = preload("res://scripts/engine/MoveHandler.gd")
 const MoveNames = preload("res://scripts/engine/MoveNames.gd")
 
+var pieces = [Persistence.data.hero]
+var hero = pieces.duplicate(true)[0]
+
 var moveNames = MoveNames.new()
 var moveHandler = MoveHandler.new()
 
@@ -26,7 +29,6 @@ func _ready():
 	SocketManager.sendInitPlay()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if SocketManager.INTENT_SEND_PLAYS_ACTIVE == SocketManager.SUCCESS_STATE:
 		SocketManager.INTENT_SEND_PLAYS_ACTIVE = SocketManager.NOT_REQUESTED_STATE
@@ -73,9 +75,9 @@ func _setInFieldPlay(actualPlay):
 	if actualPlay.playerId == Session.playerId:
 		playerIns.setData(actualPlay.piece, playerPosition.global_position.x,  playerPosition.global_position.y, playerIns.LEFT)
 		
-		Persistence.data.hero.position = actualPlay.piece.position
+		hero.position = actualPlay.piece.position
 		
-		combatControls.setHero(Persistence.data.hero)
+		combatControls.setHero(hero)
 		
 		emit_signal("ShowMsg", ["[color=blue]You[/color] have entered in combat!"])
 	else:
@@ -110,12 +112,12 @@ func _setPlayOverHero(actualPlay):
 	var moveColor = "aqua"
 	var missColor = "yellow"
 	
-	if playerFrom.hero.id == Persistence.data.hero.id:
+	if playerFrom.hero.id == hero.id:
 		colorFrom = "green"
 	else:
 		colorFrom = "red"
 	
-	if playerTo.hero.id == Persistence.data.hero.id:
+	if playerTo.hero.id == hero.id:
 		colorTo = "green"
 	else:
 		colorTo = "red"
@@ -148,7 +150,7 @@ func _on_CombatControls_showNextPlay():
 # Socket actions region
 #################################################
 func _sendPlay(move, posTo):
-	SocketManager.sendOverPiecePlay(move, posTo, Persistence.data.hero.position)
+	SocketManager.sendOverPiecePlay(move, posTo, hero.position)
 
 func _on_CombatControls_UseMove(move):
 	_sendPlay(move[0], move[1])
@@ -159,9 +161,6 @@ func _on_CombatControls_UseMove(move):
 # Calculate region
 #################################################
 func _calculatePlaysResults(actualPlay):
-	if actualPlay.wasMiss:
-		return
-	
 	var playerFrom
 	var playerTo
 	
@@ -170,6 +169,10 @@ func _calculatePlaysResults(actualPlay):
 			playerFrom = player
 		if player.hero.position == actualPlay.positionTo:
 			playerTo = player
+			
+	if actualPlay.wasMiss:
+		playerFrom.miss()
+		return
 	
 	match(actualPlay.move.type):
 		moveHandler.ATTACK_MOVE:
@@ -224,6 +227,7 @@ func _calculateAttack(move, playerTo, playerFrom):
 	damage -= damage * defenseAgainst / 100
 	
 	playerTo.hero.lifePointsLose += damage
+	playerTo.receiveHit(damage)
 	
 	_calculateActualMatch()
 
@@ -239,6 +243,7 @@ func _calculateActualMatch():
 		endMatch()
 
 func endMatch():
+	yield(get_tree().create_timer(4), "timeout")
 	SocketManager.finalResult = players
 	get_tree().change_scene("res://scenes/ui/EndCombatScene.tscn")
 
