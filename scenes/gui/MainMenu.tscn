@@ -78,3 +78,4 @@ margin_bottom = -18.0
 text = "Create by ProyectoX"
 
 [connection signal="pressed" from="Control/MultiPlayerBtn" to="." method="_on_MultiPlayerBtn_pressed"]
+[connection signal="pressed" from="Control/OptionsBtn" to="." method="_on_OptionsBtn_pressed"]

@@ -1,6 +1,6 @@
 extends Node
 
-var playerName = "Client"
+var playerName = "Fabian"
 var playerId = ""
 var hero = {}
 
