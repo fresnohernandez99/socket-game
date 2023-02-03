@@ -67,6 +67,7 @@ func isValidarPort():
 func _on_Savebtn_pressed():
 	salvasOpcion.ip = nodoIPText.text
 	salvasOpcion.port = nodoPort.text
+	salvasOpcion.volume = nodoVolume.value 
 	Persistence.save_data()
 	get_tree().change_scene("res://scenes/gui/MainMenu.tscn")
 	
