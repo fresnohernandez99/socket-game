@@ -96,6 +96,6 @@ color = Color( 0, 0, 0, 1 )
 
 [node name="Points" parent="Status" instance=ExtResource( 2 )]
 margin_left = 30.0
-margin_top = -33.0
-margin_right = 80.0
-margin_bottom = -3.0
+margin_top = -27.0
+margin_right = 154.0
+margin_bottom = 3.0

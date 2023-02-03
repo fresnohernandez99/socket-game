@@ -224,9 +224,10 @@ func _calculateAttack(move, playerTo, playerFrom):
 	
 	var defenseAgainst = playerTo.hero.stats[0].value
 	
-	damage -= damage * defenseAgainst / 100
+	damage -= int(damage * defenseAgainst / 100)
 	
 	playerTo.hero.lifePointsLose += damage
+	
 	playerTo.receiveHit(damage)
 	
 	_calculateActualMatch()
@@ -244,7 +245,7 @@ func _calculateActualMatch():
 
 func endMatch():
 	yield(get_tree().create_timer(4), "timeout")
-	SocketManager.finalResult = players
+	RoomInfo.finalResult = players
 	get_tree().change_scene("res://scenes/ui/EndCombatScene.tscn")
 
 

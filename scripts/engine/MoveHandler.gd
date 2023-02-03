@@ -26,19 +26,19 @@ func _ready():
 var meleeMoves = [
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_MELEE + "-" + "1",
-		"damage": 1,
+		"damage": 11,
 		"types": [ATTACK_TYPE_MELEE],
 		"type": ATTACK_MOVE
 	},
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_MELEE + "-" + "2",
-		"damage": 2,
+		"damage": 22,
 		"types": [ATTACK_TYPE_MELEE],
 		"type": ATTACK_MOVE
 	},
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_MELEE + "-" + "3",
-		"damage": 3,
+		"damage": 33,
 		"types": [ATTACK_TYPE_MELEE],
 		"type": ATTACK_MOVE
 	}
@@ -47,19 +47,19 @@ var meleeMoves = [
 var weaponsMoves = [
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_WEAPON + "-" + "1",
-		"damage": 1,
+		"damage": 11,
 		"types": [ATTACK_TYPE_WEAPON],
 		"type": ATTACK_MOVE
 	},
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_WEAPON + "-" + "2",
-		"damage": 2,
+		"damage": 22,
 		"types": [ATTACK_TYPE_WEAPON],
 		"type": ATTACK_MOVE
 	},
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_WEAPON + "-" + "3",
-		"damage": 3,
+		"damage": 33,
 		"types": [ATTACK_TYPE_WEAPON],
 		"type": ATTACK_MOVE
 	}
@@ -68,19 +68,19 @@ var weaponsMoves = [
 var magicMoves = [
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_MAGIC + "-" + "1",
-		"damage": 1,
+		"damage": 11,
 		"types": [ATTACK_TYPE_MAGIC],
 		"type": ATTACK_MOVE
 	},
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_MAGIC + "-" + "2",
-		"damage": 2,
+		"damage": 22,
 		"types": [ATTACK_TYPE_MAGIC],
 		"type": ATTACK_MOVE
 	},
 	{
 		"id": ATTACK_MOVE + "-" + ATTACK_TYPE_MAGIC + "-" + "3",
-		"damage": 3,
+		"damage": 33,
 		"types": [ATTACK_TYPE_MAGIC],
 		"type": ATTACK_MOVE
 	}
@@ -110,7 +110,7 @@ var boostMoves = [
 var healMove = [
 	{
 		"id": HEAL_MOVE + "-" + "1",
-		"restoredPoints": 20,
+		"restoredPoints": 30,
 		"type": HEAL_MOVE
 	}
 ]
