@@ -74,7 +74,7 @@ func showControlStep4():
 	messageLabe4.bbcode_text = ""
 	for i in range(stats.size()):
 		if actualStats[i].value - stats[i].value != 0:
-			messageLabe4.bbcode_text += classHandler._getStatName(i) + " : " + "[color=blue]" + str(stats[i].value) + "[/color]" + " (+) " + "[color=green]"+ str(actualStats[i].value - stats[i].value) + "[/color] \n" 
+			messageLabe4.bbcode_text += classHandler._getStatName(i) + " : " + "[color=blue]" + str(stats[i].value) + "[/color]" + " -> " + "[color=green]"+ str(actualStats[i].value - stats[i].value) + "[/color] \n" 
 		else:
 			messageLabe4.bbcode_text += classHandler._getStatName(i) + " : " + "[color=blue]" + str(stats[i].value) + "[/color] \n" 
 
