@@ -8,9 +8,9 @@ const HeroHandler = preload("res://scripts/engine/HeroHandler.gd")
 
 var is_loaded = false
 var option = {
-	"ip": '10.0.0.1',
+	"ip": 'localhost',
 	"volume" : "100",
-	"port" : "8080"
+	"port" : "9080"
 }
 var namePlayer = {
 	 "name":"Player",
