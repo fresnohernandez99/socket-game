@@ -31,7 +31,7 @@ func startConnection():
 	#
 	
 	websocket_url = "ws://" + Persistence.data.option.ip + ":" + Persistence.data.option.port
-	
+	print(websocket_url)
 	var err = _client.connect_to_url(websocket_url)
 	
 	if err != OK:
