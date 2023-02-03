@@ -67,7 +67,7 @@ margin_bottom = 7.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
 
-[node name="Button" type="Button" parent="Control/VBoxContainer/Stat1"]
+[node name="Button1" type="Button" parent="Control/VBoxContainer/Stat1"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -102,7 +102,7 @@ margin_bottom = 7.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
 
-[node name="Button" type="Button" parent="Control/VBoxContainer/Stat2"]
+[node name="Button2" type="Button" parent="Control/VBoxContainer/Stat2"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -137,7 +137,7 @@ margin_bottom = 7.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
 
-[node name="Button" type="Button" parent="Control/VBoxContainer/Stat3"]
+[node name="Button3" type="Button" parent="Control/VBoxContainer/Stat3"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -172,7 +172,7 @@ margin_bottom = 7.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
 
-[node name="Button" type="Button" parent="Control/VBoxContainer/Stat4"]
+[node name="Button4" type="Button" parent="Control/VBoxContainer/Stat4"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -207,7 +207,7 @@ margin_bottom = 7.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
 
-[node name="Button" type="Button" parent="Control/VBoxContainer/Stat5"]
+[node name="Button5" type="Button" parent="Control/VBoxContainer/Stat5"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -242,7 +242,7 @@ margin_bottom = 7.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "0"
 
-[node name="Button" type="Button" parent="Control/VBoxContainer/Stat6"]
+[node name="Button6" type="Button" parent="Control/VBoxContainer/Stat6"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -251,3 +251,11 @@ margin_left = -20.0
 margin_top = -10.0
 margin_bottom = 10.0
 text = "+"
+
+[connection signal="pressed" from="Control/ExitBtn" to="." method="_on_ExitBtn_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Stat1/Button1" to="." method="_on_Button1_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Stat2/Button2" to="." method="_on_Button2_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Stat3/Button3" to="." method="_on_Button3_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Stat4/Button4" to="." method="_on_Button4_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Stat5/Button5" to="." method="_on_Button5_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Stat6/Button6" to="." method="_on_Button6_pressed"]

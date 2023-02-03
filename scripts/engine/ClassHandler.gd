@@ -143,7 +143,7 @@ func getInitialStatsByClass(classGiven):
 	while(cont < classes[positionOfClass].poweredStat.size()):
 		var actualStatToBoost = classes[positionOfClass].poweredStat[cont]
 		
-		var pointsToSplit = [ 1, 1.5, 2]
+		var pointsToSplit = [ 1, 2, 3]
 		var pointsToSplitSelected = pointsToSplit[int(rand_range(0, pointsToSplit.size()))]
 		
 		var cont2 = 0
