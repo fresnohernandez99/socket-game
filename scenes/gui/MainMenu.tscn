@@ -58,7 +58,7 @@ text = "Single Player"
 margin_top = 399.0
 margin_right = 320.0
 margin_bottom = 423.0
-text = "Online"
+text = "Perfil"
 
 [node name="OptionsBtn" type="Button" parent="Control"]
 margin_top = 522.0
