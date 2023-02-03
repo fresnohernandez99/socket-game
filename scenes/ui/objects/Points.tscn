@@ -4,9 +4,9 @@
 
 [node name="Points" type="Control"]
 margin_left = -25.0
-margin_top = -8.0
+margin_top = -14.0
 margin_right = 99.0
-margin_bottom = 9.0
+margin_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource( 1 )

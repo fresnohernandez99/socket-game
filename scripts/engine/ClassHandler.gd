@@ -13,27 +13,27 @@ func _ready():
 
 var stats = [
 	{
-		"name": STAT_DEFENSE,
+		"name": STAT_DEFENSE, #influye restando damage al atake recibido
 		"value": 1.0
 	},
 	{
-		"name": STAT_EVASION,
+		"name": STAT_EVASION, #influye en la probabilidad de miss
 		"value": 1.0
 	},
 	{
-		"name": STAT_INTELLECT,
+		"name": STAT_INTELLECT, #influye en un atake
 		"value": 1.0
 	},
 	{
-		"name": STAT_MAGIC,
+		"name": STAT_MAGIC, #no influye en nada en esta ocasión
 		"value": 1.0
 	},
 	{
-		"name": STAT_SPEED,
+		"name": STAT_SPEED, #influye en un atake, influye en kien ataka primero
 		"value": 1.0
 	},
 	{
-		"name": STAT_STRENGTH,
+		"name": STAT_STRENGTH, #influye en un atake
 		"value": 1.0
 	}
 ]

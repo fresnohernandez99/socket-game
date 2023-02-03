@@ -1,8 +1,8 @@
 extends Control
 
 
-export var message = "Example"
-export var message_delay = 1.5
+export var message = ""
+export var message_delay = 1.0
 export var cascading_delay = 0.1
 
 onready var text = $RichTextLabel
@@ -16,7 +16,8 @@ var char_timers
 func _ready():
 	set_physics_process(false)
 
-func start(text, color = Color(0,1,0,0)):
+func start(message, color = Color(0,1,0,0)):
+	self.message = message
 	self.color = color
 	yield(get_tree().create_timer(start_delay), "timeout")
 	fade_text(message, message_delay, cascading_delay)

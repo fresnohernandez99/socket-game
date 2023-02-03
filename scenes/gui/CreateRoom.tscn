@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/gui/CreateRoom.gd" type="Script" id=1]
+[ext_resource path="res://scenes/gui/Menu.tscn" type="PackedScene" id=2]
 
 [node name="CreateRoom" type="Node"]
 script = ExtResource( 1 )
@@ -92,6 +93,8 @@ margin_bottom = -37.0
 text = "Creating..."
 align = 1
 valign = 1
+
+[node name="Menu" parent="." instance=ExtResource( 2 )]
 
 [connection signal="pressed" from="Control/VBoxContainer/CreateRoomBtn" to="." method="_on_CreateRoomBtn_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/CancelBtn" to="." method="_on_CancelBtn_pressed"]

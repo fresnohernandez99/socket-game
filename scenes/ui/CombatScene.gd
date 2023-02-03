@@ -68,6 +68,7 @@ func _initNextPlay():
 				_setPlayOverHero(actualPlay)
 
 func _setInFieldPlay(actualPlay):
+	print(actualPlay)
 	var Player = load("res://scenes/ui/Player.tscn")
 	var playerIns = Player.instance()
 	
@@ -155,7 +156,6 @@ func _sendPlay(move, posTo):
 func _on_CombatControls_UseMove(move):
 	_sendPlay(move[0], move[1])
 	combatControls.setUnaviable(true)
-
 
 #################################################
 # Calculate region

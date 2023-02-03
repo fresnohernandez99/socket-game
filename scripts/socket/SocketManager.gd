@@ -1,7 +1,7 @@
 extends Node
 
 
-var websocket_url = "ws://localhost:9080"
+var websocket_url = "ws://192.168.0.100:9080"
 var _client = WebSocketClient.new()
 
 const CONNECTED = "connected"
@@ -161,7 +161,6 @@ var INTENT_ROUND_RESULTS_ACTIVE = NOT_REQUESTED_STATE
 const INTENT_ROUND_RESULTS = "13"
 
 func waitingRequests(response):
-	print("respuesta original" + response)
 	var json = JSON.parse(response)
 	var result
 	
@@ -217,6 +216,7 @@ func waitingRequests(response):
 	if INTENT_GET_ROOMS_ACTIVE == LOADING_STATE and result.endpoint == INTENT_GET_ROOMS:
 		if result.content.code == INTENT_CORRECT:
 			SocketRooms.roomsWithConfigs = result.content.data.rooms
+			
 			INTENT_GET_ROOMS_ACTIVE = SUCCESS_STATE
 		else:
 			_showError("Error on: " + INTENT_GET_ROOMS)
@@ -393,7 +393,6 @@ func sendOverPiecePlay(move, posTo, posFrom):
 			}
 		]
 	}
-	print(toSend)
 	_send(INTENT_SEND_PLAYS, toSend)
 
 ################################################
