@@ -43,10 +43,10 @@ valign = 3
 autowrap = true
 
 [node name="Perfil" type="Button" parent="Control"]
-margin_top = 481.0
+margin_top = 399.0
 margin_right = 320.0
-margin_bottom = 502.0
-text = "Online"
+margin_bottom = 420.0
+text = "Perfil"
 
 [node name="SinglePlayerBtn" type="Button" parent="Control"]
 margin_top = 440.0
@@ -55,10 +55,10 @@ margin_bottom = 461.0
 text = "Single Player"
 
 [node name="MultiPlayerBtn" type="Button" parent="Control"]
-margin_top = 399.0
+margin_top = 481.0
 margin_right = 320.0
-margin_bottom = 423.0
-text = "Perfil"
+margin_bottom = 505.0
+text = "Online"
 
 [node name="OptionsBtn" type="Button" parent="Control"]
 margin_top = 522.0
@@ -83,6 +83,6 @@ margin_right = 74.5
 margin_bottom = -18.0
 text = "Create by ProyectoX"
 
-[connection signal="pressed" from="Control/Perfil" to="." method="_on_MultiPlayerBtn_pressed"]
+[connection signal="pressed" from="Control/Perfil" to="." method="_on_Perfil_pressed"]
 [connection signal="pressed" from="Control/MultiPlayerBtn" to="." method="_on_MultiPlayerBtn_pressed"]
 [connection signal="pressed" from="Control/OptionsBtn" to="." method="_on_OptionsBtn_pressed"]
