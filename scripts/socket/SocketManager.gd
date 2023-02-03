@@ -327,6 +327,8 @@ func joinRoom(roomId, code):
 
 func uploadInfo():
 	INTENT_UPLOAD_INFO_ACTIVE = LOADING_STATE
+	Session.playerName = Persistence.data.namePlayer.name
+	
 	Persistence.data.hero.name = Session.playerName
 	
 	_send(INTENT_UPLOAD_INFO, {
