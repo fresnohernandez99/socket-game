@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends KinematicBody2D
+
+export (int) var speed = 200
+export (float) var rotation_speed = 1.5
+
+var velocity = Vector2()
+
+func get_input():
+	velocity = Vector2()
+	if Input.is_action_pressed(\"ui_right\"):
+		velocity.x += 1
+	
+	if Input.is_action_pressed(\"ui_left\"):
+		velocity.x -= 1
+	if Input.is_action_pressed(\"ui_down\"):
+		velocity.y += 1
+	if Input.is_action_pressed(\"ui_up\"):
+		velocity.y -= 1
+	velocity = velocity.normalized() * speed
+
+func _physics_process(delta):
+	get_input()
+	velocity = move_and_slide(velocity)
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 19.5, 19 )
+
+[node name="runningplayer" type="KinematicBody2D" groups=["player"]]
+script = SubResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="AnimatedSprite"]
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1.5, 0 )
+shape = SubResource( 1 )
