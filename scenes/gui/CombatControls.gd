@@ -69,8 +69,9 @@ func showControlStep4():
 	controlStep3.hide()
 	controlStep4.show()
 	var stats = Persistence.data.hero.stats
+	messageLabe4.bbcode_text = ""
 	for i in range(stats.size()):
-		messageLabe4.bbcode_text = stats[i].name + " : " + str(stats[i].value) + "\n"
+		messageLabe4.bbcode_text += stats[i].name + " : " + str(stats[i].value) + "\n"
 	
 
 func setUnaviable(value: bool):
