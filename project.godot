@@ -58,7 +58,6 @@ port=false
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
-theme/custom_font="res://assets/fonts/basic_font_16.tres"
 
 [physics]
 

@@ -43,7 +43,7 @@ signal showNextPlay
 var loadingResults = true
 
 func _ready():
-	showControlStep1()
+	showControlStep2()
 	
 func showControlStep1():
 	controlStep1.show()
@@ -69,9 +69,14 @@ func showControlStep4():
 	controlStep3.hide()
 	controlStep4.show()
 	var stats = Persistence.data.hero.stats
+	var actualStats = hero.stats
+	
 	messageLabe4.bbcode_text = ""
 	for i in range(stats.size()):
-		messageLabe4.bbcode_text += stats[i].name + " : " + str(stats[i].value) + "\n"
+		if actualStats[i].value - stats[i].value != 0:
+			messageLabe4.bbcode_text += classHandler._getStatName(i) + " : " + "[color=blue]" + str(stats[i].value) + "[/color]" + " (+) " + "[color=green]"+ str(actualStats[i].value - stats[i].value) + "[/color] \n" 
+		else:
+			messageLabe4.bbcode_text += classHandler._getStatName(i) + " : " + "[color=blue]" + str(stats[i].value) + "[/color] \n" 
 
 func setUnaviable(value: bool):
 	unabiable.visible = value
