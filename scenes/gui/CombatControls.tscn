@@ -18,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="ControlsStep1" type="Control" parent="Control"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0
@@ -201,7 +202,6 @@ margin_bottom = 10.0
 text = "x"
 
 [node name="ControlsStep4" type="Control" parent="Control"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 10.0

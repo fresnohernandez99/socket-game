@@ -44,7 +44,7 @@ var loadingResults = true
 
 func _ready():
 	showControlStep1()
-
+	
 func showControlStep1():
 	controlStep1.show()
 	controlStep2.hide()
@@ -68,6 +68,10 @@ func showControlStep4():
 	controlStep2.hide()
 	controlStep3.hide()
 	controlStep4.show()
+	var stats = Persistence.data.hero.stats
+	for i in range(stats.size()):
+		messageLabe4.bbcode_text += stats[i].name + " : " + str(stats[i].value) + "\n"
+	
 
 func setUnaviable(value: bool):
 	unabiable.visible = value
@@ -171,8 +175,9 @@ func _on_BackFrom3Btn_pressed():
 
 
 func _on_BackFrom4Btn_pressed():
-	pass # Replace with function body.
+	showControlStep2()
 
 
 func _on_StatsBtn_pressed():
 	showControlStep4()
+	
