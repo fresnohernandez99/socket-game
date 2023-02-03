@@ -7,8 +7,20 @@ const HeroHandler = preload("res://scripts/engine/HeroHandler.gd")
 
 
 var is_loaded = false
+var option = {
+	"ip": '10.0.0.1',
+	"volume" : "100",
+	"port" : "8080"
+}
+var namePlayer = {
+	 "name":"Player",
+	 "sexo":" " 
+}
+var data = {
+	"option": option,
+	"namePlayer": namePlayer 
+}
 
-var data = {}
 var heroHandler = HeroHandler.new()
 
 func _ready():
