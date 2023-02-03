@@ -25,3 +25,7 @@ func _ready():
 func _on_MultiPlayerBtn_pressed():
 	GlobalNavigation.navReason = GlobalNavigation.NAV_FOR_CONNECT
 	get_tree().change_scene("res://scenes/gui/Loading.tscn")
+
+
+func _on_OptionsBtn_pressed():
+	get_tree().change_scene("res://scenes/gui/Option.tscn")

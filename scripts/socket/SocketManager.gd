@@ -225,7 +225,7 @@ func waitingRequests(response):
 	if result.endpoint == INTENT_JOIN_ROOM:
 		if result.content.code == INTENT_CORRECT:
 			RoomInfo.setData(result.content.data.room, result.content.data.spaceConfiguration)
-			
+			print("++++"+JSON.print(result.contnt))
 			INTENT_JOIN_ROOM_ACTIVE = SUCCESS_STATE
 		else:
 			_showError("Error on: " + INTENT_JOIN_ROOM)
