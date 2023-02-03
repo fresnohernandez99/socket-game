@@ -67,6 +67,60 @@ var classes = [
 	}
 ]
 
+func _getStatName(stat: int):
+	var statName = ""
+	match stat:
+		0:
+			statName = "Defensa"
+		1:
+			statName = "Evasión"
+		2:
+			statName = "Intelecto"
+		3:
+			statName = "Magia"
+		4:
+			statName = "Velocidad"
+		5:
+			statName = "Fuerza"
+	return statName
+
+func _getStatPosByName(statName):
+	var statPos = 0
+	match statName:
+		"defense":
+			statPos = 0
+		"evasion":
+			statPos = 1
+		"intellect":
+			statPos = 2
+		"magic":
+			statPos = 3
+		"speed":
+			statPos = 4
+		"strength":
+			statPos = 5
+	return statPos
+
+func upgradeLife(hero):
+	var positionOfClass
+	
+	match hero.charClass:
+		CLASS_BOX:
+			positionOfClass = 0
+		CLASS_ARCHER:
+			positionOfClass = 1
+		CLASS_SWORD_MASTER:
+			positionOfClass = 2
+		CLASS_WIZARD:
+			positionOfClass = 3
+		CLASS_NINJA :
+			positionOfClass = 4
+	
+	var primaryStatName = classes[positionOfClass].poweredStat[0]
+	var primaryStatPos = _getStatPosByName(primaryStatName)
+	
+	return 100 + 5 * hero.stats[primaryStatPos] + 2 * hero.stats[5]
+
 func getRandomClass():
 	return classes[int(rand_range(0, classes.size()))]
 	

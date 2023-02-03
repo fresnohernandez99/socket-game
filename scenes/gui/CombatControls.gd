@@ -43,7 +43,7 @@ signal showNextPlay
 var loadingResults = true
 
 func _ready():
-	showControlStep1()
+	showControlStep2()
 	
 func showControlStep1():
 	controlStep1.show()

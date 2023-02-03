@@ -28,7 +28,7 @@ func _ready():
 	emit_signal("IsLoading", [true])
 	emit_signal("ShowMsg", ["The battle is about to start"])
 	#SocketManager.sendInitPlay()
-	
+	initPlay()
 	setPlayerReady()
 
 
@@ -71,7 +71,7 @@ func initPlay():
 			}
 		},
 		"rules": [],
-		"playerList": [],
+		"playerList": [SocketRooms.getNewNpc("IA", 10)],
 		"loserPlayers": [],
 		"spaceGrid": {
 			"grid": []
@@ -81,7 +81,7 @@ func initPlay():
 	var gameEngine = GameEngine.new()
 	gameEngine.initConfigurations(serverConfigurations)
 	
-	pass
+	
 
 #################################################
 # Visual actions region
