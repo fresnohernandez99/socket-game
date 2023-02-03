@@ -11,6 +11,6 @@ func _ready():
 
 func _process(delta):
 
-	if NamePlayer.text =="":
-			if  male.pressed == false:
-					$Save.disabled = true
+	if NamePlayer.text == "":
+		if male.pressed == false:
+				$Save.disabled = true

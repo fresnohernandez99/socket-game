@@ -43,8 +43,12 @@ func isValidedIP():
 					
 	 var result = regex.search(nodoIPText.text)
 	
-
-	 if result != null:
+	
+#	 regularexp = RegEx.new()
+#	 regularexp.compile("")
+#	 var result2 = regularexp.search(nodoIPText.text)
+#     result2 != null
+	 if result != null  :
 			return true
 		
 func isValidarPort():
@@ -63,7 +67,11 @@ func isValidarPort():
 func _on_Savebtn_pressed():
 	salvasOpcion.ip = nodoIPText.text
 	salvasOpcion.port = nodoPort.text
-	print(nodoIPText.text)
+	Persistence.save_data()
 	
 	
 
+
+
+func _on_Cancelbtn_pressed():
+	get_tree().change_scene("res://scenes/gui/MainMenu.tscn")
