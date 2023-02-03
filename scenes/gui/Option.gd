@@ -5,11 +5,11 @@ var Bandera
 var volume 
 
 onready var nodoVolume = $Volume/HSlider
-onready var nodoLabelVolume = $Volume/labelVolume
-onready var nodoIPText = $IP/IPtext
-onready var nodoIPValidInvalid = $IP/validInvalid
+onready var nodoLabelVolume = $Volume/LabelVolume
+onready var nodoIPText = $Ip/IpText
+onready var nodoIPValidInvalid = $Ip/ValidInvalid
 onready var Savebtn = $Savebtn
-onready var nodoPort = $PORT/PORTtext
+onready var nodoPort = $Port/PortText
 
 var salvasOpcion = Persistence.data.option
 

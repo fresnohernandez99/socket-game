@@ -50,13 +50,13 @@ margin_top = 29.0
 margin_right = 186.0
 margin_bottom = 54.0
 
-[node name="labelVolume" type="Label" parent="Volume"]
+[node name="LabelVolume" type="Label" parent="Volume"]
 margin_left = 189.0
 margin_top = 32.0
 margin_right = 229.0
 margin_bottom = 47.0
 
-[node name="IP" type="Label" parent="."]
+[node name="Ip" type="Label" parent="."]
 margin_left = 37.0
 margin_top = 222.0
 margin_right = 118.0
@@ -64,18 +64,18 @@ margin_bottom = 246.0
 text = "IP Adress :"
 align = 1
 
-[node name="IPtext" type="TextEdit" parent="IP"]
+[node name="IpText" type="TextEdit" parent="Ip"]
 margin_top = 37.0
 margin_right = 247.0
 margin_bottom = 64.0
 
-[node name="validInvalid" type="Label" parent="IP"]
+[node name="ValidInvalid" type="Label" parent="Ip"]
 margin_left = 194.0
 margin_top = 19.0
 margin_right = 247.0
 margin_bottom = 34.0
 
-[node name="PORT" type="Label" parent="."]
+[node name="Port" type="Label" parent="."]
 margin_left = 39.0
 margin_top = 308.0
 margin_right = 91.0
@@ -83,7 +83,7 @@ margin_bottom = 332.0
 text = "PORT :"
 align = 1
 
-[node name="PORTtext" type="TextEdit" parent="PORT"]
+[node name="PortText" type="TextEdit" parent="Port"]
 margin_top = 32.0
 margin_right = 99.0
 margin_bottom = 58.0

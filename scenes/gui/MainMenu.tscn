@@ -34,7 +34,7 @@ rect_min_size = Vector2( 289, 370 )
 
 [node name="DescriptionLabel" type="Label" parent="Control/ScrollContainer/VBoxContainer"]
 margin_right = 289.0
-margin_bottom = 14.0
+margin_bottom = 15.0
 grow_horizontal = 0
 grow_vertical = 0
 rect_min_size = Vector2( 280, 0 )
@@ -84,5 +84,6 @@ margin_bottom = -18.0
 text = "Create by ProyectoX"
 
 [connection signal="pressed" from="Control/Perfil" to="." method="_on_Perfil_pressed"]
+[connection signal="pressed" from="Control/SinglePlayerBtn" to="." method="_on_SinglePlayerBtn_pressed"]
 [connection signal="pressed" from="Control/MultiPlayerBtn" to="." method="_on_MultiPlayerBtn_pressed"]
 [connection signal="pressed" from="Control/OptionsBtn" to="." method="_on_OptionsBtn_pressed"]

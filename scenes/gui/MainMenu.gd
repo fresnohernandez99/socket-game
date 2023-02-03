@@ -33,3 +33,7 @@ func _on_OptionsBtn_pressed():
 
 func _on_Perfil_pressed():
 	get_tree().change_scene("res://scenes/gui/Rename.tscn")
+
+
+func _on_SinglePlayerBtn_pressed():
+	get_tree().change_scene("res://scenes/ui/Map.tscn")

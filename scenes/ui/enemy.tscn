@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://scenes/ui/enemy.gd" type="Script" id=1]
+[ext_resource path="res://scenes/ui/Enemy.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18.5, 19 )
@@ -11,7 +11,7 @@ radius = 28.0713
 [sub_resource type="CircleShape2D" id=2]
 radius = 76.1643
 
-[node name="enemy" type="KinematicBody2D"]
+[node name="Enemy" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -27,18 +27,18 @@ color = Color( 0.901961, 0.0666667, 0.0431373, 1 )
 position = Vector2( 0.5, 0 )
 shape = SubResource( 1 )
 
-[node name="start" type="Area2D" parent="."]
+[node name="Start" type="Area2D" parent="."]
 position = Vector2( 2, 0 )
 
-[node name="collisionStart" type="CollisionShape2D" parent="start"]
+[node name="CollisionStart" type="CollisionShape2D" parent="Start"]
 shape = SubResource( 3 )
 
-[node name="distance" type="Area2D" parent="."]
+[node name="Distance" type="Area2D" parent="."]
 
-[node name="distanciaCollision" type="CollisionShape2D" parent="distance"]
+[node name="DistanciaCollision" type="CollisionShape2D" parent="Distance"]
 position = Vector2( 0, -1 )
 shape = SubResource( 2 )
 
-[connection signal="body_entered" from="start" to="." method="_on_start_body_entered"]
-[connection signal="body_entered" from="distance" to="." method="_on_distance_body_entered"]
-[connection signal="body_exited" from="distance" to="." method="_on_distance_body_exited"]
+[connection signal="body_entered" from="Start" to="." method="_on_start_body_entered"]
+[connection signal="body_entered" from="Distance" to="." method="_on_distance_body_entered"]
+[connection signal="body_exited" from="Distance" to="." method="_on_distance_body_exited"]
