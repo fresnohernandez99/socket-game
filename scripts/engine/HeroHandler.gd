@@ -25,7 +25,7 @@ func generateInitialHero():
 		"playerId": "",
 		"position": "",
 		"type": "hero",
-		"name": Session.playerName,
+		"name": Persistence.data.namePlayer.name,
 		"level": 1,
 		"experience": 0,
 		"nextLevelOn": 100,

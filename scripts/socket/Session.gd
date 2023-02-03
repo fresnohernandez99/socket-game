@@ -1,8 +1,9 @@
 extends Node
 
-var playerName = "Fabian"
+var playerName = "Player"
 var playerId = ""
 var hero = {}
+
 
 func generateInitialHero():
 	pass
