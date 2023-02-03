@@ -26,7 +26,7 @@ func _process(delta):
 	nodoLabelVolume.text = str(volume)+"%"
 	
 	
-	if  nodoIPText.text !="" && isValidedIP() && isValidarPort():
+	if  nodoIPText.text !="" && isValidedIP() && isValidarPort() :
 		nodoIPValidInvalid.text = "valid"
 		Savebtn.disabled = false
 	else:
@@ -48,7 +48,7 @@ func isValidedIP():
 #	 regularexp.compile("")
 #	 var result2 = regularexp.search(nodoIPText.text)
 #     result2 != null
-	 if result != null  :
+	 if result != null  || nodoIPText.text == "localhost"  :
 			return true
 		
 func isValidarPort():
