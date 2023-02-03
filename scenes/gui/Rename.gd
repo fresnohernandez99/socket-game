@@ -14,3 +14,15 @@ func _process(delta):
 	if NamePlayer.text == "":
 		if male.pressed == false:
 				$Save.disabled = true
+
+
+func _on_Cancel_pressed():
+	get_tree().change_scene("res://scenes/gui/MainMenu.tscn")
+
+func _on_Save_pressed():
+	
+	Persistence.data.namePlayer.name = NamePlayer.text
+	Persistence.save_data()   
+	get_tree().change_scene("res://scenes/gui/MainMenu.tscn")
+	
+	

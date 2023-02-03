@@ -71,3 +71,6 @@ margin_top = 390.0
 margin_right = 300.0
 margin_bottom = 441.0
 text = "Cancel"
+
+[connection signal="pressed" from="Save" to="." method="_on_Save_pressed"]
+[connection signal="pressed" from="Cancel" to="." method="_on_Cancel_pressed"]

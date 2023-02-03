@@ -29,3 +29,7 @@ func _on_MultiPlayerBtn_pressed():
 
 func _on_OptionsBtn_pressed():
 	get_tree().change_scene("res://scenes/gui/Option.tscn")
+
+
+func _on_Perfil_pressed():
+	get_tree().change_scene("res://scenes/gui/Rename.tscn")
