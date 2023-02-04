@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/gui/MainMenu.gd" type="Script" id=1]
+[ext_resource path="res://icon.svg" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/basic_font_16.tres" type="DynamicFont" id=3]
 
 [node name="MainMenu" type="Node"]
 script = ExtResource( 1 )
@@ -17,23 +19,23 @@ anchor_bottom = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 16.0
-margin_top = 16.0
+margin_top = 176.0
 margin_right = -15.0
-margin_bottom = -254.0
-rect_min_size = Vector2( 289, 370 )
+margin_bottom = -264.0
+rect_min_size = Vector2( 289, 200 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/ScrollContainer"]
 margin_right = 289.0
-margin_bottom = 370.0
-rect_min_size = Vector2( 289, 370 )
+margin_bottom = 180.0
+rect_min_size = Vector2( 289, 180 )
 
 [node name="DescriptionLabel" type="Label" parent="Control/ScrollContainer/VBoxContainer"]
 margin_right = 289.0
-margin_bottom = 14.0
+margin_bottom = 170.0
 grow_horizontal = 0
 grow_vertical = 0
-rect_min_size = Vector2( 280, 0 )
+rect_min_size = Vector2( 280, 170 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 valign = 3
 autowrap = true
@@ -78,6 +80,22 @@ margin_top = -23.0
 margin_right = 80.0
 margin_bottom = -10.0
 text = "Creado por EquipoX 2023"
+
+[node name="Icon" type="Sprite" parent="Control"]
+position = Vector2( 161, 47 )
+scale = Vector2( 0.164062, 0.164062 )
+texture = ExtResource( 2 )
+
+[node name="Label2" type="Label" parent="Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -32.5
+margin_top = 88.0
+margin_right = 32.5
+margin_bottom = 115.0
+custom_colors/font_color = Color( 0.803922, 0.254902, 0.254902, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "FIÑE"
 
 [connection signal="pressed" from="Control/Perfil" to="." method="_on_Perfil_pressed"]
 [connection signal="pressed" from="Control/SinglePlayerBtn" to="." method="_on_SinglePlayerBtn_pressed"]
