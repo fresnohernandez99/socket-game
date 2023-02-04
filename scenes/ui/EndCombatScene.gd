@@ -208,14 +208,20 @@ func _on_Move2Btn_pressed():
 
 
 func _on_Move3Btn_pressed():
-	Persistence.data.hero.moves[2] = actualToLearn
+	if Persistence.data.hero.moves.size() >= 3:
+		Persistence.data.hero.moves[2] = actualToLearn
+	else:
+		Persistence.data.hero.moves.push_back(actualToLearn)
 	Persistence.save_data()
 	if newAttacksEarned.size() > 0:
 		showUpdateAttakcs()
 
 
 func _on_Move4Btn_pressed():
-	Persistence.data.hero.moves[3] = actualToLearn
+	if Persistence.data.hero.moves.size() >= 3:
+		Persistence.data.hero.moves[3] = actualToLearn
+	else:
+		Persistence.data.hero.moves.push_back(actualToLearn)
 	Persistence.save_data()
 	toastHasLearn()
 	if newAttacksEarned.size() > 0:
