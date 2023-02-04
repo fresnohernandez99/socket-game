@@ -54,10 +54,10 @@ enabled=PoolStringArray( "res://addons/toast/plugin.cfg" )
 [global]
 
 port=false
+font=false
 
 [gui]
 
-theme/custom_font="res://assets/fonts/basic_font_16.tres"
 common/drop_mouse_on_gui_input_disabled=true
 
 [physics]
