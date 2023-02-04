@@ -14,7 +14,8 @@ func _process(delta):
 	if NamePlayer.text == "":
 		if male.pressed == false:
 				$Save.disabled = true
-
+	else:
+		$Save.disabled = false
 
 func _on_Cancel_pressed():
 	get_tree().change_scene("res://scenes/gui/MainMenu.tscn")
