@@ -24,6 +24,15 @@ onready var statusLabel = $KinematicBody2D/StatusLabel
 onready var points = $Status/Points
 onready var typebackground = $Status/TypeBackground
 
+var actualSprite
+onready var sprites = [
+	$KinematicBody2D/Sprite_Class_1_H,
+	$KinematicBody2D/Sprite_Class_2_O,
+	$KinematicBody2D/Sprite_Class_3_G,
+	$KinematicBody2D/Sprite_Class_4_V,
+	$KinematicBody2D/Sprite_Class_5_S
+]
+
 func setData(data, standX, standY, turnFor = RIGHT):
 	hero = data
 	horizontalPosition = standX
@@ -38,6 +47,13 @@ func setThinking():
 
 func _ready():
 	typebackground.color = classHandler.getColorByClass(hero)
+	
+	actualSprite = sprites[classHandler.getSpritePosByClass(hero)]
+	
+	for s in sprites:
+		if s != actualSprite:
+			s.hide()
+	
 	global_position.x = horizontalPosition
 	
 	if turnFor == LEFT:

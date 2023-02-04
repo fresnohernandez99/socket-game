@@ -14,9 +14,19 @@ radius = 18.0
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [  ],
+"loop": false,
+"name": "hitted",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 4 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "idle",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "use",
 "speed": 5.0
 } ]
 
@@ -50,6 +60,33 @@ texture = ExtResource( 8 )
 frames = SubResource( 2 )
 animation = "idle"
 frame = 1
+playing = true
+flip_h = true
+
+[node name="Sprite_Class_2_O" type="AnimatedSprite" parent="KinematicBody2D"]
+frames = SubResource( 2 )
+animation = "idle"
+playing = true
+flip_h = true
+
+[node name="Sprite_Class_3_G" type="AnimatedSprite" parent="KinematicBody2D"]
+frames = SubResource( 2 )
+animation = "idle"
+frame = 4
+playing = true
+flip_h = true
+
+[node name="Sprite_Class_4_V" type="AnimatedSprite" parent="KinematicBody2D"]
+frames = SubResource( 2 )
+animation = "idle"
+frame = 4
+playing = true
+flip_h = true
+
+[node name="Sprite_Class_5_S" type="AnimatedSprite" parent="KinematicBody2D"]
+frames = SubResource( 2 )
+animation = "idle"
+frame = 3
 playing = true
 flip_h = true
 

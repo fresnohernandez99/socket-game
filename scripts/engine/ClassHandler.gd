@@ -82,6 +82,21 @@ func getColorByClass(hero):
 			color = Color.black
 	return color
 
+func getSpritePosByClass(hero):
+	var spritePos
+	match hero.charClass.name:
+		CLASS_BOX:
+			spritePos = 0
+		CLASS_ARCHER:
+			spritePos = 1
+		CLASS_SWORD_MASTER:
+			spritePos = 2
+		CLASS_WIZARD:
+			spritePos = 3
+		CLASS_NINJA :
+			spritePos = 4
+	return spritePos
+
 func getClassName(hero):
 	var className
 	match hero.charClass.name:
