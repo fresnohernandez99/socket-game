@@ -15,14 +15,32 @@ onready var pointBtn2 = $Control/VBoxContainer/Stat2/Button2
 onready var pointBtn3 = $Control/VBoxContainer/Stat3/Button3
 onready var pointBtn4 = $Control/VBoxContainer/Stat4/Button4
 onready var pointBtn5 = $Control/VBoxContainer/Stat5/Button5
-onready var pointBtn6 = $Control/VBoxContainer/Stat6/Button6\
+onready var pointBtn6 = $Control/VBoxContainer/Stat6/Button6
 
-	
+onready var attacks = $Control/Attacks
+onready var attacksLabel = $Control/Attacks/Label
+onready var pos1 = $Control/Attacks/Move1Btn/Label
+onready var pos2 = $Control/Attacks/Move2Btn/Label
+onready var pos3 = $Control/Attacks/Move3Btn/Label
+onready var pos4 = $Control/Attacks/Move4Btn/Label
+
+
+const ClassHandler = preload("res://scripts/engine/ClassHandler.gd")
+const MoveHandler = preload("res://scripts/engine/MoveHandler.gd")
+const MoveNames = preload("res://scripts/engine/MoveNames.gd")
+var classHandler = ClassHandler.new()
+var moveHandler = MoveHandler.new()
+var moveNames = MoveNames.new()
+
+
 var stats 
 var uLose = false
 var heroAgainst
 
-var talentPoints = 5
+var talentPoints = 0
+
+var newAttacksEarned = []
+var actualToLearn = null
 
 func _ready():
 	stats = Persistence.data.hero.stats 
@@ -42,6 +60,9 @@ func _ready():
 	
 	calculateTalentPoints(experience)
 
+	if newAttacksEarned.size() > 0:
+		showUpdateAttakcs()
+
 	updateUi()
 
 func calculateTalentPoints(experience):
@@ -54,9 +75,38 @@ func calculateTalentPoints(experience):
 		
 		talentPoints += 1
 		
+		Persistence.data.hero.level += 1
+		
 		calculateTalentPoints(extra)
 		
+		var newMove = getNewPower()
+		if newMove != null:
+			newAttacksEarned.push_front(newMove)
+		
 		Persistence.save_data()
+
+func getNewPower():
+	var level = Persistence.data.hero.level
+	var newMove = moveHandler.generateNextMove(classHandler, Persistence.data.hero)
+	return newMove
+
+func showUpdateAttakcs():
+	actualToLearn = newAttacksEarned.pop_back()
+	
+	attacks.show()
+	var hero = Persistence.data.hero
+	
+	attacksLabel.text = "Aprender: " + moveNames.getMoveName(hero.charClass.name, actualToLearn.id)
+	
+	pos1.text = moveNames.getMoveName(hero.charClass.name, hero.moves[0].id)
+	pos1.text = moveNames.getMoveName(hero.charClass.name, hero.moves[1].id)
+	
+	if hero.moves.size() >= 3:
+		pos1.text = moveNames.getMoveName(hero.charClass.name, hero.moves[2].id)
+	
+	if hero.moves.size() >= 4:
+		pos1.text = moveNames.getMoveName(hero.charClass.name, hero.moves[3].id)
+
 
 func calculateExperienceEarnedIfWin():
 	if heroAgainst.level > Persistence.data.hero.level:
@@ -139,4 +189,39 @@ func _on_Button6_pressed():
 func _on_ExitBtn_pressed():
 	Persistence.save_data()
 	get_tree().change_scene("res://scenes/gui/RoomList.tscn")
-	pass # Replace with function body.
+
+
+func _on_Move1Btn_pressed():
+	Persistence.data.hero.moves[0] = actualToLearn
+	Persistence.save_data()
+	toastHasLearn()
+	if newAttacksEarned.size() > 0:
+		showUpdateAttakcs()
+
+
+func _on_Move2Btn_pressed():
+	Persistence.data.hero.moves[1] = actualToLearn
+	Persistence.save_data()
+	toastHasLearn()
+	if newAttacksEarned.size() > 0:
+		showUpdateAttakcs()
+
+
+func _on_Move3Btn_pressed():
+	Persistence.data.hero.moves[2] = actualToLearn
+	Persistence.save_data()
+	if newAttacksEarned.size() > 0:
+		showUpdateAttakcs()
+
+
+func _on_Move4Btn_pressed():
+	Persistence.data.hero.moves[3] = actualToLearn
+	Persistence.save_data()
+	toastHasLearn()
+	if newAttacksEarned.size() > 0:
+		showUpdateAttakcs()
+
+func toastHasLearn():
+	var toast = Toast.new("Has aprendido: " + moveNames.getMoveName(Persistence.data.hero.charClass.name, actualToLearn.id), Toast.LENGTH_SHORT)
+	get_node("/root").add_child(toast)
+	toast.show()

@@ -71,7 +71,9 @@ func showControlStep4():
 	var stats = Persistence.data.hero.stats
 	var actualStats = hero.stats
 	
-	messageLabe4.bbcode_text = ""
+	messageLabe4.bbcode_text = "Próximo nivel a : " + str(Persistence.data.hero.nextLevelOn - Persistence.data.hero.nextLevelOnEarned) + "\n\n"
+	
+	
 	for i in range(stats.size()):
 		if actualStats[i].value - stats[i].value != 0:
 			messageLabe4.bbcode_text += classHandler._getStatName(i) + " : " + "[color=blue]" + str(stats[i].value) + "[/color]" + " -> " + "[color=green]"+ str(actualStats[i].value - stats[i].value) + "[/color] \n" 
