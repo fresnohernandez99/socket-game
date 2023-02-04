@@ -255,8 +255,6 @@ func emulatePlay(move, posTo, posFrom):
 			"wasMiss": false
 		}
 	
-	print(JSON.print(IAMove))
-	
 	if IAMove.move.type != moveHandler.ATTACK_MOVE:
 		print("AAA")
 		IAMove.positionTo = "IA" + "_1"
@@ -323,6 +321,11 @@ func _calculatePlaysResults(actualPlay):
 			playerTo.hero.stats[actualPlay.move.attrToBoost].value += actualPlay.move.value
 		moveHandler.INSTANT_HEAL_MOVE:
 			playerTo.hero.lifePointsLose = 0
+			
+	if playerFrom.hero.id == hero.id:
+		combatControls.setHero(playerFrom.hero)
+	else:
+		combatControls.setHero(playerTo.hero)
 
 func _calculateAttack(move, playerTo, playerFrom):
 	var damage = move.damage
