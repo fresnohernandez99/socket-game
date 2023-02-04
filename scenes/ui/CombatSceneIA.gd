@@ -256,7 +256,6 @@ func emulatePlay(move, posTo, posFrom):
 		}
 	
 	if IAMove.move.type != moveHandler.ATTACK_MOVE:
-		print("AAA")
 		IAMove.positionTo = "IA" + "_1"
 	
 	var plays = [
@@ -383,8 +382,9 @@ func _calculateActualMatch():
 	return false
 
 func endMatch():
+	combatControls.setUnaviable(true)
 	yield(get_tree().create_timer(4), "timeout")
-	RoomInfo.finalResult = players
+	RoomInfo.finalResult = [players[0].hero, players[1].hero]
 	get_tree().change_scene("res://scenes/ui/EndCombatScene.tscn")
 
 

@@ -254,7 +254,7 @@ func _calculateActualMatch():
 
 func endMatch():
 	yield(get_tree().create_timer(4), "timeout")
-	RoomInfo.finalResult = players
+	RoomInfo.finalResult = [players[0].hero, players[1].hero]
 	get_tree().change_scene("res://scenes/ui/EndCombatScene.tscn")
 
 

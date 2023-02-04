@@ -26,15 +26,20 @@ var talentPoints = 5
 
 func _ready():
 	stats = Persistence.data.hero.stats 
-	for p in RoomInfo.roundResult:
-		if p.hero.lifePointsLose > p.hero.lifePoints:
-			if p.hero.id == Persistence.data.hero.id:
+	for p in RoomInfo.finalResult:
+		if p.lifePointsLose > p.lifePoints:
+			if p.id == Persistence.data.hero.id:
 				uLose = true
-		if p.hero.id != Persistence.data.hero.id:
-			heroAgainst = p.hero
+		if p.id != Persistence.data.hero.id:
+			heroAgainst = p
 
-	var experience = calculateExperienceEarned()
+	var experience
 
+	if !uLose:
+		experience = calculateExperienceEarnedIfWin()
+	else:
+		experience = calculateExperienceEarnedIfLose()
+	
 	calculateTalentPoints(experience)
 
 	updateUi()
@@ -53,10 +58,25 @@ func calculateTalentPoints(experience):
 		
 		Persistence.save_data()
 
-func calculateExperienceEarned():
-	var lvDiference = Persistence.data.hero.level - heroAgainst.level
-	
-	return lvDiference * 20
+func calculateExperienceEarnedIfWin():
+	if heroAgainst.level > Persistence.data.hero.level:
+		var lvDiference = heroAgainst.level - Persistence.data.hero.level
+		
+		return lvDiference * 20
+	else:
+		var lvDiference = Persistence.data.hero.level - heroAgainst.level
+		
+		return lvDiference * 10
+
+func calculateExperienceEarnedIfLose():
+	if heroAgainst.level > Persistence.data.hero.level:
+		var lvDiference = heroAgainst.level - Persistence.data.hero.level
+		
+		return lvDiference * 10
+	else:
+		var lvDiference = Persistence.data.hero.level - heroAgainst.level
+		
+		return lvDiference * 5
 
 func updateUi():
 	pointsLabel1.text = str(stats[0].value)
