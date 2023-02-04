@@ -16,7 +16,6 @@ var salvasOpcion = Persistence.data.option
 func _ready():
 	nodoIPText.text = salvasOpcion.ip
 	nodoPort.text =  salvasOpcion.port
-	print( salvasOpcion.volume)
 	nodoVolume.value = int(salvasOpcion.volume)
 	 
 

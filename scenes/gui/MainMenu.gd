@@ -19,7 +19,6 @@ func _ready():
 	var moves = Persistence.data.hero.moves
 	for i in range(moves.size()):
 		descriptionLabel.text += Persistence.heroHandler.getMoveName(moves[i].id, Persistence.data.hero.charClass.name) + "\n"
-	#print(moveNames.getMoveName(classHandler, moveHandler, hero.charClass.name, hero.moves[i].id))
 
 
 func _on_MultiPlayerBtn_pressed():

@@ -28,4 +28,3 @@ func _on_distance_body_exited(body):
 func _on_start_body_entered(body):
 	if body.is_in_group("player"):
 		emit_signal("start")
-		print("yaaaa")

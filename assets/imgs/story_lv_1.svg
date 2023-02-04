@@ -28,9 +28,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.79955509"
-     inkscape:cx="-59.408039"
-     inkscape:cy="376.45936"
+     inkscape:zoom="3.5985984"
+     inkscape:cx="142.13867"
+     inkscape:cy="476.57443"
      inkscape:window-width="1792"
      inkscape:window-height="1022"
      inkscape:window-x="0"
@@ -54,7 +54,7 @@
        fx="37.850212"
        fy="21.670874"
        r="43.881287"
-       gradientTransform="matrix(0.01198148,10.923218,-13.528376,0.01483755,330.56844,-407.73659)"
+       gradientTransform="matrix(0.01198148,10.787831,-13.528376,0.01465365,330.56844,-402.72419)"
        gradientUnits="userSpaceOnUse" /></defs><g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
@@ -66,9 +66,9 @@
        id="image140"
        x="-15.946918"
        y="-0.14133906" /><rect
-       style="fill:url(#radialGradient422);stroke-width:0.410001;stroke-linejoin:round;fill-opacity:1"
+       style="fill:url(#radialGradient422);fill-opacity:1;stroke-width:0.407452;stroke-linejoin:round"
        id="rect354"
        width="87.762573"
-       height="124.57294"
+       height="123.02893"
        x="-2.0796819"
        y="-3.3274908" /></g></svg>

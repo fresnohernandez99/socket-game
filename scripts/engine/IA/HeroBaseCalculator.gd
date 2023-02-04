@@ -39,7 +39,6 @@ func calculatePlaysResult(gameEngine, pA: Array):
 				playResult.push_back(setInField(gameEngine, it))
 			"over-piece":
 				playResult.push_back(overPiecePlay(gameEngine, it))
-	print("play result size: " + str(playResult.size()))
 	return playResult
 
 func setInField(gameEngine, play):

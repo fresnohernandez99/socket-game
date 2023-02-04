@@ -67,6 +67,51 @@ var classes = [
 	}
 ]
 
+func getClassName(hero):
+	var className
+	match hero.charClass.name:
+		CLASS_BOX:
+			className = "Hércules"
+		CLASS_ARCHER:
+			className = "Ochosi"
+		CLASS_SWORD_MASTER:
+			className = "Gilbert Hérail"
+		CLASS_WIZARD:
+			className = "Veles"
+		CLASS_NINJA :
+			className = "Susanoo"
+	return className
+
+func getClassDescription(hero):
+	var description
+	match hero.charClass.name:
+		CLASS_BOX:
+			description = "Un héroe solitario y peregrino, que combate a los monstruos y realiza hazañas extraordinarias. Su fuerza destaca sobre sus muchas cualidades heróicas."
+		CLASS_ARCHER:
+			description = "El mejor de los cazadores y uno de los guerreros. Es el santo de las prisiones, Orisha de la cárcel, la justicia y los perseguidos."
+		CLASS_SWORD_MASTER:
+			description = "Uno de los templarios más jóvenes. Alistado muy joven y fuerte con la espada y de liderazgo excepcional."
+		CLASS_WIZARD:
+			description = "Astuto y travieso. Podía transformarse en árbol, animal o incluso persona para protegerse."
+		CLASS_NINJA :
+			description = "De gran talento pero rebelde y agresivo estaba inconforme con los dones que le entregó su padre. Le concedió el mar, la tierra y el rayo, pero quería más."
+	return description
+
+func getClassGodImage(hero):
+	var image
+	match hero.charClass.name:
+		CLASS_BOX:
+			image = "res://assets/imgs/gods/hercules.jpg"
+		CLASS_ARCHER:
+			image = "res://assets/imgs/gods/ochosi.png"
+		CLASS_SWORD_MASTER:
+			image = "res://assets/imgs/gods/templar.jpeg"
+		CLASS_WIZARD:
+			image = "res://assets/imgs/gods/veles.jpg"
+		CLASS_NINJA :
+			image = "res://assets/imgs/gods/susanoo.png"
+	return image
+
 func _getStatName(stat: int):
 	var statName = ""
 	match stat:
