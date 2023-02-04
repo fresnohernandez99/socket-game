@@ -71,7 +71,7 @@ anchor_bottom = 0.5
 margin_left = 8.0
 margin_top = -62.0
 margin_right = -8.0
-margin_bottom = 33.0
+margin_bottom = 34.0
 
 [connection signal="pressed" from="ConnectBtn" to="." method="_on_ConnectBtn_pressed"]
 [connection signal="confirmed" from="ConfirmationDialog" to="." method="_on_ConfirmationDialog_confirmed"]

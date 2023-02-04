@@ -14,7 +14,7 @@ func setData(roomData, spaceConfiguration):
 	
 func _ready():
 	roomNamelabel.text = data.name
-	roomPlayersLabel.text = "Connected: " + str(data.users.size()) + "/" + str(configs.maxPlayers)
+	roomPlayersLabel.text = "Conectados: " + str(data.users.size()) + "/" + str(configs.maxPlayers)
 
 
 func _on_ConnectBtn_pressed():

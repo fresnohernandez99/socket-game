@@ -11,10 +11,10 @@ script = ExtResource( 1 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -29.0
-margin_top = 18.0
+margin_top = 10.0
 margin_right = 29.0
 margin_bottom = 35.0
-text = "Rename"
+text = "Renombrar"
 
 [node name="Name" type="Label" parent="."]
 anchor_top = 0.5
@@ -23,7 +23,7 @@ margin_left = 34.0
 margin_top = -160.0
 margin_right = 85.0
 margin_bottom = -145.0
-text = "Name :"
+text = "Nombre :"
 
 [node name="NameText" type="TextEdit" parent="Name"]
 margin_left = 4.0
@@ -36,23 +36,25 @@ margin_left = 39.0
 margin_top = 301.0
 margin_right = 81.0
 margin_bottom = 329.0
-text = "Sex :"
+text = "Sexo:"
 
 [node name="Male" type="CheckBox" parent="Sex"]
 margin_left = 54.0
 margin_top = 16.0
 margin_right = 116.0
 margin_bottom = 40.0
+disabled = true
 action_mode = 0
-text = "Male"
+text = "M"
 
 [node name="Female" type="CheckBox" parent="Sex"]
 margin_left = 138.0
 margin_top = 6.0
 margin_right = 217.0
 margin_bottom = 49.0
+disabled = true
 action_mode = 0
-text = "Female"
+text = "F"
 
 [node name="Save" type="Button" parent="."]
 anchor_left = 1.0

@@ -37,6 +37,7 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Jane Doe"
 
 [node name="PlayerLevelLabel" type="Label" parent="."]
+visible = false
 anchor_right = 1.0
 margin_left = 59.0
 margin_top = 10.0
@@ -60,6 +61,7 @@ texture = ExtResource( 1 )
 centered = false
 
 [node name="KickBtn" type="Button" parent="."]
+visible = false
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5

@@ -32,7 +32,7 @@ margin_top = 112.0
 margin_right = -55.0
 margin_bottom = 127.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Public Games"
+text = "Salas"
 align = 1
 
 [node name="AddRoomBtn" type="Button" parent="Control"]
@@ -42,16 +42,7 @@ margin_left = -46.0
 margin_top = 32.0
 margin_right = 46.0
 margin_bottom = 53.0
-text = "Host Game"
-
-[node name="DirectConnectBtn" type="Button" parent="Control"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -59.0
-margin_top = 64.0
-margin_right = 59.0
-margin_bottom = 85.0
-text = "Direct connect"
+text = "Crear"
 
 [node name="RefreshBtn" type="Button" parent="Control"]
 anchor_left = 0.5
@@ -60,7 +51,7 @@ margin_left = 58.0
 margin_top = 108.0
 margin_right = 150.0
 margin_bottom = 129.0
-text = "Refresh"
+text = "Actiualizar"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control"]
 anchor_right = 1.0

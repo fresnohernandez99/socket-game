@@ -98,6 +98,6 @@ func _on_StartBtn_pressed():
 	if RoomInfo.configuration.minPlayers <= RoomInfo.usersInfo.size():
 		SocketManager.closeRoomAndStart()
 	else:
-		var toast = Toast.new("Room incomplete", Toast.LENGTH_SHORT)
+		var toast = Toast.new("Sala incompleta", Toast.LENGTH_SHORT)
 		get_node("/root").add_child(toast)
 		toast.show()

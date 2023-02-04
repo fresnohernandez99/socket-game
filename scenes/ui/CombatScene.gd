@@ -26,7 +26,7 @@ onready var enemiesPosition = [enemy1Position]
 
 func _ready():
 	emit_signal("IsLoading", [true])
-	emit_signal("ShowMsg", ["The battle is about to start"])
+	emit_signal("ShowMsg", ["La batalla va a comenzar"])
 	SocketManager.sendInitPlay()
 
 
@@ -50,7 +50,7 @@ func setPlayerReady():
 			
 			if Session.playerId == RoomInfo.lastPlayerReady:
 				emit_signal("IsLoading", [true])
-				emit_signal("ShowMsg", ["READY!"])
+				emit_signal("ShowMsg", ["Listos!"])
 
 func _initNextPlay():
 	combatControls.setUnaviable(false)
@@ -80,7 +80,7 @@ func _setInFieldPlay(actualPlay):
 		
 		combatControls.setHero(hero)
 		
-		emit_signal("ShowMsg", ["[color=blue]You[/color] have entered in combat!"])
+		emit_signal("ShowMsg", ["[color=blue]Has[/color] entrado en combate!"])
 	else:
 		var nextPlayerPosition
 		if players.size() > 0:
@@ -88,7 +88,7 @@ func _setInFieldPlay(actualPlay):
 		else:
 			nextPlayerPosition = enemiesPosition[0]
 		playerIns.setData(actualPlay.piece, nextPlayerPosition.global_position.x,  nextPlayerPosition.global_position.y)
-		emit_signal("ShowMsg", ["[color=red]"+ actualPlay.piece.name +"[/color] has entered in combat!"])
+		emit_signal("ShowMsg", ["[color=red]"+ actualPlay.piece.name +"[/color] ha entrado en combate!"])
 		
 		combatControls.addEnemyPlayer(actualPlay.piece)
 		
@@ -124,15 +124,15 @@ func _setPlayOverHero(actualPlay):
 		colorTo = "red"
 	
 	if actualPlay.wasMiss:
-		emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] has use " + "[color="+ moveColor + "]" + moveName + "[/color] and he [color="+ missColor + "]miss it[/color]!" ])
+		emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] ha usado " + "[color="+ moveColor + "]" + moveName + "[/color] y ha [color="+ missColor + "]fallado[/color]!" ])
 	else:
 		_showAnimationOver(actualPlay.move, playerTo)
 		_showAnimationFrom(actualPlay.move, playerFrom)
 		
 		if playerTo.hero.id == playerFrom.hero.id:
-			emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] has use " + "[color="+ moveColor + "]" + moveName + "[/color]!" ])
+			emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] ha usado " + "[color="+ moveColor + "]" + moveName + "[/color]!" ])
 		else:
-			emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] has use " + "[color="+ moveColor + "]" + moveName + "[/color] over " + "[color="+ colorTo + "]" + playerTo.hero.name +"[/color]!" ])
+			emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] ha usado " + "[color="+ moveColor + "]" + moveName + "[/color] contra " + "[color="+ colorTo + "]" + playerTo.hero.name +"[/color]!" ])
 	
 	_calculatePlaysResults(actualPlay)
 

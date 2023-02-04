@@ -11,8 +11,9 @@ script = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="."]
 anchor_right = 1.0
+margin_top = 10.0
 margin_bottom = 15.0
-text = "Options"
+text = "Opciones"
 align = 1
 
 [node name="Savebtn" type="Button" parent="."]
@@ -25,7 +26,7 @@ margin_top = 107.5
 margin_right = -180.0
 margin_bottom = 163.5
 disabled = true
-text = "Save"
+text = "Salvar"
 
 [node name="Cancelbtn" type="Button" parent="."]
 anchor_left = 1.0
@@ -36,14 +37,14 @@ margin_left = -156.0
 margin_top = 106.5
 margin_right = -42.0
 margin_bottom = 162.5
-text = "Cancel"
+text = "Cancelar"
 
 [node name="Volume" type="Label" parent="."]
 margin_left = 37.0
 margin_top = 130.0
 margin_right = 108.0
 margin_bottom = 145.0
-text = "Volume :"
+text = "Volume n:"
 
 [node name="HSlider" type="HSlider" parent="Volume"]
 margin_top = 29.0
@@ -61,7 +62,7 @@ margin_left = 37.0
 margin_top = 222.0
 margin_right = 118.0
 margin_bottom = 246.0
-text = "IP Adress :"
+text = "Dirección del server :"
 align = 1
 
 [node name="IpText" type="TextEdit" parent="Ip"]
@@ -80,7 +81,7 @@ margin_left = 39.0
 margin_top = 308.0
 margin_right = 91.0
 margin_bottom = 332.0
-text = "PORT :"
+text = "Puerto:"
 align = 1
 
 [node name="PortText" type="TextEdit" parent="Port"]

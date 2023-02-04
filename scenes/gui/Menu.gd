@@ -6,9 +6,9 @@ var popup
 
 func _ready():
 	popup = menuBtn.get_popup()
-	popup.add_item("Reset")
-	popup.add_item("Options")
-	popup.add_item("Quit")
+	popup.add_item("Resetear")
+	popup.add_item("Opciones")
+	popup.add_item("Salir")
 	popup.connect("id_pressed", self, "_on_item_pressed")
 
 func _on_item_pressed(ID):

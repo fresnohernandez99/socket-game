@@ -10,12 +10,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -149.0
-margin_top = 16.0
-margin_right = 149.0
-margin_bottom = 386.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control"]
 anchor_right = 1.0
@@ -52,38 +48,39 @@ text = "Perfil"
 margin_top = 440.0
 margin_right = 320.0
 margin_bottom = 461.0
-text = "Single Player"
+text = "Jugar"
 
 [node name="MultiPlayerBtn" type="Button" parent="Control"]
 margin_top = 481.0
 margin_right = 320.0
 margin_bottom = 505.0
-text = "Online"
+text = "Combate en línea"
 
 [node name="OptionsBtn" type="Button" parent="Control"]
 margin_top = 522.0
 margin_right = 320.0
 margin_bottom = 543.0
-text = "Options"
+text = "Opciones"
 
 [node name="ExitBtn" type="Button" parent="Control"]
 margin_top = 563.0
 margin_right = 320.0
 margin_bottom = 584.0
-text = "Close"
+text = "Cerrar"
 
 [node name="Label" type="Label" parent="Control"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -74.5
-margin_top = -33.0
-margin_right = 74.5
-margin_bottom = -18.0
-text = "Create by ProyectoX"
+margin_left = -80.0
+margin_top = -23.0
+margin_right = 80.0
+margin_bottom = -10.0
+text = "Creado por EquipoX 2023"
 
 [connection signal="pressed" from="Control/Perfil" to="." method="_on_Perfil_pressed"]
 [connection signal="pressed" from="Control/SinglePlayerBtn" to="." method="_on_SinglePlayerBtn_pressed"]
 [connection signal="pressed" from="Control/MultiPlayerBtn" to="." method="_on_MultiPlayerBtn_pressed"]
 [connection signal="pressed" from="Control/OptionsBtn" to="." method="_on_OptionsBtn_pressed"]
+[connection signal="pressed" from="Control/ExitBtn" to="." method="_on_ExitBtn_pressed"]

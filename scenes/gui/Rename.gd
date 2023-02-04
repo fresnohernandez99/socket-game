@@ -7,7 +7,7 @@ onready var male =$Sex/Male
 
 
 func _ready():
-	  NamePlayer.text=Persistence.data.namePlayer.name
+	  NamePlayer.text = Persistence.data.namePlayer.name
 
 func _process(delta):
 
@@ -22,6 +22,7 @@ func _on_Cancel_pressed():
 func _on_Save_pressed():
 	
 	Persistence.data.namePlayer.name = NamePlayer.text
+	Persistence.data.hero.name = NamePlayer.text
 	Persistence.save_data()   
 	get_tree().change_scene("res://scenes/gui/MainMenu.tscn")
 	

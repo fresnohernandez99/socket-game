@@ -22,7 +22,7 @@ margin_top = 8.0
 margin_right = 27.0
 margin_bottom = 23.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Waiting"
+text = "Esperando"
 align = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control"]
@@ -44,7 +44,7 @@ margin_left = 63.5
 margin_top = -61.0
 margin_right = 112.5
 margin_bottom = -40.0
-text = "Start"
+text = "Inicio"
 
 [node name="CancelBtn" type="Button" parent="Control"]
 anchor_left = 0.5
@@ -55,7 +55,7 @@ margin_left = -109.5
 margin_top = -61.0
 margin_right = -50.5
 margin_bottom = -40.0
-text = "Cancel"
+text = "Cancelar"
 
 [node name="Menu" parent="." instance=ExtResource( 2 )]
 
