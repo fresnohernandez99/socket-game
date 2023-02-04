@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://scenes/ui/Runningplayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ui/Enemy.tscn" type="PackedScene" id=2]
@@ -72,6 +72,9 @@ extents = Vector2( 80.125, 979.875 )
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 476, 10.5 )
+
+[sub_resource type="RectangleShape2D" id=11]
+extents = Vector2( 53, 1514 )
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 22 )
@@ -1033,6 +1036,27 @@ texture = ExtResource( 26 )
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 24 )
 autoplay = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( -152, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 86, 326 )
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1586, -379 )
+rotation = 1.5708
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1490, 1137 )
+rotation = 1.5708
+shape = SubResource( 11 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 2991, 352 )
+shape = SubResource( 11 )
 
 [connection signal="area_entered" from="Group2/Clouds/ResetCloudArea" to="." method="_on_ResetCloudArea_area_entered"]
 [connection signal="start" from="Enemies/Enemy" to="." method="_on_Enemy_start"]

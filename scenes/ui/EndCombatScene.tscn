@@ -289,35 +289,32 @@ texture = ExtResource( 3 )
 [node name="Sprite_Class_1_H" type="AnimatedSprite" parent="Control/KinematicBody2D"]
 frames = SubResource( 2 )
 animation = "idle"
-frame = 3
+frame = 4
 playing = true
 flip_h = true
 
 [node name="Sprite_Class_2_O" type="AnimatedSprite" parent="Control/KinematicBody2D"]
 frames = SubResource( 2 )
 animation = "idle"
-frame = 1
+frame = 2
 playing = true
 flip_h = true
 
 [node name="Sprite_Class_3_G" type="AnimatedSprite" parent="Control/KinematicBody2D"]
 frames = SubResource( 2 )
 animation = "idle"
-frame = 4
 playing = true
 flip_h = true
 
 [node name="Sprite_Class_4_V" type="AnimatedSprite" parent="Control/KinematicBody2D"]
 frames = SubResource( 2 )
 animation = "idle"
-frame = 4
 playing = true
 flip_h = true
 
 [node name="Sprite_Class_5_S" type="AnimatedSprite" parent="Control/KinematicBody2D"]
 frames = SubResource( 2 )
 animation = "idle"
-frame = 4
 playing = true
 flip_h = true
 
