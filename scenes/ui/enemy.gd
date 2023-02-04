@@ -2,9 +2,39 @@ extends KinematicBody2D
 var jugador = null 
 var move  = Vector2.ZERO
 var vel = 130  
+var hero 
+var actualSprite
+var velocity = Vector2()
 
+const ClassHandler = preload("res://scripts/engine/ClassHandler.gd")
 
-signal start 
+var classHandler = ClassHandler.new()
+
+export (int) var level = 1 
+export (String) var iaName = "ia" 
+  
+onready var sprites = [
+	$Sprite_Class_1_H,
+	$Sprite_Class_2_O,
+	$Sprite_Class_3_G,
+	$Sprite_Class_4_V,
+	$Sprite_Class_5_S
+]
+
+const BaseIAEnemy = preload("res://scripts/engine/IA/BaseIAEnemy.gd")
+
+signal start
+ 
+func _ready():
+	
+	hero = BaseIAEnemy.new().getNewNpc(iaName, level).handDeck.items[0]
+	
+	actualSprite = sprites[classHandler.getSpritePosByClass(hero)]
+
+	for s in sprites:
+		if s != actualSprite:
+			s.hide()
+	
 
 func _physics_process(delta):
 	move = Vector2.ZERO
@@ -18,12 +48,24 @@ func _physics_process(delta):
 	move = move.normalized() * vel 
 	move = move_and_slide(move)
 	
+	if move.y == 0 && move.x == 0:
+		actualSprite.animation = "idle"
+	else:
+		actualSprite.animation = "move"
+	
+	if move.x != 0 :
+		actualSprite.flip_h = move.x < 0
+func _process(delta):
+	 pass
 func _on_distance_body_entered(body):
 	if body.is_in_group("player"):
 		jugador = body
-
+		
+	
+		
 func _on_distance_body_exited(body):
 	jugador = null
+	
 	
 
 

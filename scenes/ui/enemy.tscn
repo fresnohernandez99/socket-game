@@ -1,6 +1,38 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/ui/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://assets/imgs/player/idle/idle5.svg" type="Texture" id=2]
+[ext_resource path="res://assets/imgs/player/idle/idle2.svg" type="Texture" id=3]
+[ext_resource path="res://assets/imgs/player/idle/idle4.svg" type="Texture" id=4]
+[ext_resource path="res://assets/imgs/player/idle/idle1.svg" type="Texture" id=5]
+[ext_resource path="res://assets/imgs/player/idle/idle3.svg" type="Texture" id=6]
+[ext_resource path="res://assets/imgs/player/move/player_move_3.svg" type="Texture" id=7]
+[ext_resource path="res://assets/imgs/player/move/player_move_5.svg" type="Texture" id=8]
+[ext_resource path="res://assets/imgs/player/move/player_move_6.svg" type="Texture" id=9]
+[ext_resource path="res://assets/imgs/player/move/player_move_2.svg" type="Texture" id=10]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "use",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "move",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "hitted",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 18.5, 19 )
@@ -12,7 +44,44 @@ radius = 28.0713
 radius = 76.1643
 
 [node name="Enemy" type="KinematicBody2D"]
+modulate = Color( 0.396078, 0.392157, 0.392157, 1 )
+collision_layer = 3
+collision_mask = 3
 script = ExtResource( 1 )
+
+[node name="Sprite_Class_1_H" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+animation = "idle"
+playing = true
+flip_h = true
+
+[node name="Sprite_Class_2_O" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+animation = "idle"
+frame = 3
+playing = true
+flip_h = true
+
+[node name="Sprite_Class_3_G" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+animation = "idle"
+frame = 3
+playing = true
+flip_h = true
+
+[node name="Sprite_Class_4_V" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+animation = "idle"
+frame = 2
+playing = true
+flip_h = true
+
+[node name="Sprite_Class_5_S" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+animation = "idle"
+frame = 1
+playing = true
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0.5, 0 )
