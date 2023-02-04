@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://scenes/ui/Runningplayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ui/Enemy.tscn" type="PackedScene" id=2]
@@ -21,6 +21,8 @@
 [ext_resource path="res://assets/imgs/hierba/hierba3.svg" type="Texture" id=19]
 [ext_resource path="res://assets/imgs/hierba/hierba2.svg" type="Texture" id=20]
 [ext_resource path="res://assets/imgs/hierba/hierba5.svg" type="Texture" id=21]
+[ext_resource path="res://scenes/ui/Map.gd" type="Script" id=22]
+[ext_resource path="res://scenes/ui/objects/Cloud.tscn" type="PackedScene" id=23]
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
@@ -61,7 +63,11 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 10, 9 )
 
-[node name="map" type="Node2D"]
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 80.125, 979.875 )
+
+[node name="Map" type="Node2D"]
+script = ExtResource( 22 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_left = -2904.0
@@ -249,13 +255,11 @@ playing = true
 [node name="Past2" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 415, 265 )
 frames = SubResource( 8 )
-frame = 4
 playing = true
 
 [node name="Past3" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 599, 265 )
 frames = SubResource( 8 )
-frame = 4
 playing = true
 
 [node name="Past4" type="AnimatedSprite" parent="Group1/Arbustos"]
@@ -355,32 +359,33 @@ flip_h = true
 [node name="Past37" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1663, -271 )
 frames = SubResource( 8 )
-frame = 2
+frame = 3
 playing = true
 flip_h = true
 
 [node name="Past38" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1647, -191 )
 frames = SubResource( 8 )
-frame = 2
+frame = 3
 playing = true
 
 [node name="Past39" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1727, -71 )
 frames = SubResource( 8 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Past40" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1727, 25 )
 frames = SubResource( 8 )
-frame = 1
+frame = 2
 playing = true
 flip_h = true
 
 [node name="Past41" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1615, -23 )
 frames = SubResource( 8 )
+frame = 1
 playing = true
 
 [node name="Past42" type="AnimatedSprite" parent="Group1/Arbustos"]
@@ -550,21 +555,21 @@ flip_h = true
 [node name="Past24" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2047, 561 )
 frames = SubResource( 8 )
-frame = 3
+frame = 4
 playing = true
 flip_h = true
 
 [node name="Past25" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2088, 505 )
 frames = SubResource( 8 )
-frame = 3
+frame = 4
 playing = true
 flip_h = true
 
 [node name="Past26" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2084, 761 )
 frames = SubResource( 8 )
-frame = 3
+frame = 4
 playing = true
 flip_h = true
 
@@ -900,6 +905,23 @@ shape = SubResource( 6 )
 position = Vector2( 1, 1 )
 texture = ExtResource( 15 )
 
+[node name="Clouds" type="Node2D" parent="Group2"]
+
+[node name="ResetCloudArea" type="Area2D" parent="Group2/Clouds"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Group2/Clouds/ResetCloudArea"]
+position = Vector2( -2673, 201 )
+shape = SubResource( 9 )
+
+[node name="Cloud" parent="Group2/Clouds" instance=ExtResource( 23 )]
+position = Vector2( 4860, -372 )
+
+[node name="Cloud2" parent="Group2/Clouds" instance=ExtResource( 23 )]
+position = Vector2( 5981, 1013 )
+
+[node name="Cloud3" parent="Group2/Clouds" instance=ExtResource( 23 )]
+position = Vector2( 4129, 371 )
+
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1148, -156 )
 
@@ -917,3 +939,5 @@ position = Vector2( 2686, 933 )
 
 [node name="Enemy5" parent="." instance=ExtResource( 2 )]
 position = Vector2( 2686, -164 )
+
+[connection signal="area_entered" from="Group2/Clouds/ResetCloudArea" to="." method="_on_ResetCloudArea_area_entered"]
