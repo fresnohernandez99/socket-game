@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scenes/ui/Amigo.gd" type="Script" id=1]
+[ext_resource path="res://assets/imgs/player/idle/idle2.svg" type="Texture" id=2]
+[ext_resource path="res://assets/imgs/player/idle/idle4.svg" type="Texture" id=3]
+[ext_resource path="res://assets/imgs/player/idle/idle5.svg" type="Texture" id=4]
+[ext_resource path="res://assets/imgs/player/idle/idle3.svg" type="Texture" id=5]
+[ext_resource path="res://assets/imgs/player/idle/idle1.svg" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 39.0
+
+[node name="Amigo" type="StaticBody2D"]
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+frame = 2
+playing = true
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="DistanciaAyuda" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+self_modulate = Color( 1, 1, 1, 0.564706 )
+margin_left = -85.0
+margin_top = -84.0
+margin_right = 215.0
+margin_bottom = 6.0
+rect_min_size = Vector2( 300, 90 )
+
+[node name="TextDeAyuda" type="RichTextLabel" parent="ColorRect"]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 300.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 300, 90 )
+bbcode_enabled = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
