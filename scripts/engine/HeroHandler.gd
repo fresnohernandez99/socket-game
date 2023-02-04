@@ -29,6 +29,7 @@ func generateInitialHero():
 		"level": 1,
 		"experience": 0,
 		"nextLevelOn": 100,
+		"nextLevelOnEarned": 0,
 		"lifePoints": 100,
 		"lifePointsLose": 0,
 		"charClass": charClass,
