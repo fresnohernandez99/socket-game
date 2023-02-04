@@ -12,12 +12,17 @@ const RIGHT = "right"
 var isReady = false
 var isAlive = true
 
+const ClassHandler = preload("res://scripts/engine/ClassHandler.gd")
+
+var classHandler = ClassHandler.new()
+
 onready var character = $KinematicBody2D
 onready var nameLabel = $Status/NameLabel
 onready var levelLabel = $Status/LevelLabel
 onready var lifeBar = $Status/LifeBar
 onready var statusLabel = $KinematicBody2D/StatusLabel
 onready var points = $Status/Points
+onready var typebackground = $Status/TypeBackground
 
 func setData(data, standX, standY, turnFor = RIGHT):
 	hero = data
@@ -32,6 +37,7 @@ func setThinking():
 	isReady = false
 
 func _ready():
+	typebackground.color = classHandler.getColorByClass(hero)
 	global_position.x = horizontalPosition
 	
 	if turnFor == LEFT:

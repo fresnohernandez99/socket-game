@@ -43,7 +43,7 @@ func getNewNpc(name: String, level: int):
 	var talentPoints = level / 2
 	while talentPoints != 0:
 		var selected = int(rand_range(0, IAHero.stats.size()))
-		IAHero.stats[selected] += 1
+		IAHero.stats[selected].value += 1
 		talentPoints -= 1
 		
 	if level > 1 && level < 10:

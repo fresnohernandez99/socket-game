@@ -1,12 +1,79 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/gui/CombatControls.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ui/CombatScene.gd" type="Script" id=2]
 [ext_resource path="res://scenes/gui/Menu.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/music/intro.ogg" type="AudioStream" id=4]
+[ext_resource path="res://assets/imgs/back/back_3.svg" type="Texture" id=5]
+[ext_resource path="res://assets/imgs/back/back_4.svg" type="Texture" id=6]
+[ext_resource path="res://assets/imgs/back/back_5.svg" type="Texture" id=7]
+[ext_resource path="res://assets/imgs/back/back_1.svg" type="Texture" id=8]
+[ext_resource path="res://assets/imgs/back/back_6.svg" type="Texture" id=9]
+[ext_resource path="res://assets/imgs/back/back_7.svg" type="Texture" id=10]
+[ext_resource path="res://assets/imgs/back/back_2.svg" type="Texture" id=11]
+[ext_resource path="res://assets/imgs/hierba/hierba4.svg" type="Texture" id=12]
+[ext_resource path="res://assets/imgs/hierba/hierba3.svg" type="Texture" id=13]
+[ext_resource path="res://assets/imgs/hierba/hierba1.svg" type="Texture" id=14]
+[ext_resource path="res://assets/imgs/hierba/hierba2.svg" type="Texture" id=15]
+[ext_resource path="res://assets/imgs/hierba/hierba5.svg" type="Texture" id=16]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 11 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 12 ), ExtResource( 16 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="CombatScene" type="Node"]
 script = ExtResource( 2 )
+
+[node name="Background" type="AnimatedSprite" parent="."]
+position = Vector2( 160, 320 )
+frames = SubResource( 1 )
+frame = 4
+playing = true
+
+[node name="Hierva" type="AnimatedSprite" parent="Background"]
+position = Vector2( -38.75, -50.25 )
+scale = Vector2( 0.86, 0.86 )
+frames = SubResource( 2 )
+frame = 2
+playing = true
+
+[node name="Hierva2" type="AnimatedSprite" parent="Background"]
+position = Vector2( 108.75, -164.75 )
+scale = Vector2( 0.66, 0.66 )
+frames = SubResource( 2 )
+frame = 2
+playing = true
+
+[node name="Hierva5" type="AnimatedSprite" parent="Background"]
+position = Vector2( -60.125, -198.875 )
+scale = Vector2( 0.489999, 0.489999 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
+
+[node name="Hierva3" type="AnimatedSprite" parent="Background"]
+position = Vector2( 117, -4 )
+frames = SubResource( 2 )
+frame = 1
+playing = true
+
+[node name="Hierva4" type="AnimatedSprite" parent="Background"]
+position = Vector2( -95.75, 74.75 )
+scale = Vector2( 1.1, 1.1 )
+frames = SubResource( 2 )
+playing = true
 
 [node name="PlayerContainer" type="Node2D" parent="."]
 

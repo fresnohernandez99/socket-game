@@ -67,6 +67,21 @@ var classes = [
 	}
 ]
 
+func getColorByClass(hero):
+	var color
+	match hero.charClass.name:
+		CLASS_BOX:
+			color = Color.red
+		CLASS_ARCHER:
+			color = Color.antiquewhite
+		CLASS_SWORD_MASTER:
+			color = Color.darkgray
+		CLASS_WIZARD:
+			color = Color.aqua
+		CLASS_NINJA :
+			color = Color.black
+	return color
+
 func getClassName(hero):
 	var className
 	match hero.charClass.name:
