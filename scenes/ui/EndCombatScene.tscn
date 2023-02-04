@@ -1,7 +1,39 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/fonts/basic_font_16.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scenes/ui/EndCombatScene.gd" type="Script" id=2]
+[ext_resource path="res://assets/imgs/cloud.svg" type="Texture" id=3]
+[ext_resource path="res://assets/imgs/player/idle/idle5.svg" type="Texture" id=4]
+[ext_resource path="res://assets/imgs/player/idle/idle2.svg" type="Texture" id=5]
+[ext_resource path="res://assets/imgs/player/idle/idle4.svg" type="Texture" id=6]
+[ext_resource path="res://assets/imgs/player/idle/idle1.svg" type="Texture" id=7]
+[ext_resource path="res://assets/imgs/player/idle/idle3.svg" type="Texture" id=8]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 18.0
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "use",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": true,
+"name": "move",
+"speed": 5.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "hitted",
+"speed": 5.0
+} ]
 
 [node name="EndCombatScene" type="Node"]
 script = ExtResource( 2 )
@@ -9,16 +41,6 @@ script = ExtResource( 2 )
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-
-[node name="ResultLabel" type="Label" parent="Control"]
-anchor_right = 1.0
-margin_left = 10.0
-margin_top = 10.0
-margin_right = -10.0
-margin_bottom = 46.0
-custom_fonts/font = ExtResource( 1 )
-align = 1
-valign = 1
 
 [node name="ColorRect" type="ColorRect" parent="Control"]
 anchor_right = 1.0
@@ -252,6 +274,53 @@ margin_top = -10.0
 margin_bottom = 10.0
 text = "+"
 
+[node name="KinematicBody2D" type="KinematicBody2D" parent="Control"]
+position = Vector2( 149, 137 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/KinematicBody2D"]
+shape = SubResource( 1 )
+
+[node name="Shadow" type="Sprite" parent="Control/KinematicBody2D"]
+self_modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 3, 26 )
+scale = Vector2( 0.02, 0.012 )
+texture = ExtResource( 3 )
+
+[node name="Sprite_Class_1_H" type="AnimatedSprite" parent="Control/KinematicBody2D"]
+frames = SubResource( 2 )
+animation = "idle"
+frame = 3
+playing = true
+flip_h = true
+
+[node name="Sprite_Class_2_O" type="AnimatedSprite" parent="Control/KinematicBody2D"]
+frames = SubResource( 2 )
+animation = "idle"
+frame = 1
+playing = true
+flip_h = true
+
+[node name="Sprite_Class_3_G" type="AnimatedSprite" parent="Control/KinematicBody2D"]
+frames = SubResource( 2 )
+animation = "idle"
+frame = 4
+playing = true
+flip_h = true
+
+[node name="Sprite_Class_4_V" type="AnimatedSprite" parent="Control/KinematicBody2D"]
+frames = SubResource( 2 )
+animation = "idle"
+frame = 4
+playing = true
+flip_h = true
+
+[node name="Sprite_Class_5_S" type="AnimatedSprite" parent="Control/KinematicBody2D"]
+frames = SubResource( 2 )
+animation = "idle"
+frame = 4
+playing = true
+flip_h = true
+
 [node name="Attacks" type="Control" parent="Control"]
 visible = false
 anchor_right = 1.0
@@ -345,6 +414,20 @@ text = "Aprender:"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 autoplay = true
+
+[node name="ResultLabel" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = 67.0
+custom_fonts/font = ExtResource( 1 )
+text = "
+"
+align = 1
+valign = 1
 
 [connection signal="pressed" from="Control/ExitBtn" to="." method="_on_ExitBtn_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Stat1/Button1" to="." method="_on_Button1_pressed"]

@@ -35,7 +35,7 @@ func _ready():
 	music.volume_db = int(Persistence.data.option.volume / 10)
 	
 	if RoomInfo.actualIAHero == null:
-		enemyIA = BaseIAEnemy.new().getNewNpc("IATEST", 10)
+		enemyIA = BaseIAEnemy.new().getNewNpc("IATEST", 1)
 	else:
 		enemyIA = RoomInfo.actualIAHero
 	

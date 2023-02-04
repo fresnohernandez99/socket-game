@@ -1,7 +1,7 @@
 extends Node
 
 
-onready var resultLabel = $Control/ResultLabel
+onready var resultLabel = $ResultLabel
 
 onready var pointsLabel1 = $Control/VBoxContainer/Stat1/StatPoint
 onready var pointsLabel2 = $Control/VBoxContainer/Stat2/StatPoint
@@ -33,7 +33,8 @@ const MoveNames = preload("res://scripts/engine/MoveNames.gd")
 var classHandler = ClassHandler.new()
 var moveHandler = MoveHandler.new()
 var moveNames = MoveNames.new()
-
+var actualSprite
+var hero = {}
 
 var stats 
 var uLose = false
@@ -44,8 +45,24 @@ var talentPoints = 0
 var newAttacksEarned = []
 var actualToLearn = null
 
+onready var sprites = [
+	$KinematicBody2D/Sprite_Class_1_H,
+	$KinematicBody2D/Sprite_Class_2_O,
+	$KinematicBody2D/Sprite_Class_3_G,
+	$KinematicBody2D/Sprite_Class_4_V,
+	$KinematicBody2D/Sprite_Class_5_S
+]
+
 func _ready():
+	
+	hero = Persistence.data.hero
 	music.volume_db = int(Persistence.data.option.volume / 10)
+	
+	actualSprite = sprites[classHandler.getSpritePosByClass(hero)]
+	
+	for s in sprites:
+		if s != actualSprite:
+			s.hide()
 	
 	stats = Persistence.data.hero.stats 
 	for p in RoomInfo.finalResult:
@@ -57,8 +74,10 @@ func _ready():
 
 	if uLose:
 		music.stream = load("res://assets/music/defeat.ogg")
+		resultLabel.text = "Perdiste!!"
 	else:
 		music.stream = load("res://assets/music/winning.ogg")
+		resultLabel.text = "Ganaste!!"
 	music.play()
 	
 	var experience
@@ -76,27 +95,17 @@ func _ready():
 	updateUi()
 
 func calculateTalentPoints(experience):
-	if Persistence.data.hero.nextLevelOnEarned + experience >= Persistence.data.hero.nextLevelOn:
-		var extra = Persistence.data.hero.nextLevelOnEarned + experience - Persistence.data.hero.nextLevelOn
-		
-		Persistence.data.hero.nextLevelOnEarned = extra
-		
+	Persistence.data.hero.nextLevelOnEarned += experience
+	
+	while Persistence.data.hero.nextLevelOnEarned >=  Persistence.data.hero.nextLevelOn:
 		Persistence.data.hero.nextLevelOn += Persistence.data.hero.nextLevelOn * 0.3
-		
 		talentPoints += 1
-		
 		Persistence.data.hero.level += 1
-		
-		Persistence.save_data()
-		
-		calculateTalentPoints(extra)
-		
+	
 		var newMove = getNewPower()
 		if newMove != null:
 			newAttacksEarned.push_front(newMove)
-	else:
-		Persistence.data.hero.nextLevelOnEarned += experience
-	
+		
 	Persistence.save_data()
 
 func getNewPower():
@@ -123,26 +132,27 @@ func showUpdateAttakcs():
 
 
 func calculateExperienceEarnedIfWin():
-	if heroAgainst.level > Persistence.data.hero.level:
-		var lvDiference = heroAgainst.level - Persistence.data.hero.level
+	if heroAgainst.level >= Persistence.data.hero.level:
+		var lvDiference = heroAgainst.level - Persistence.data.hero.level + 1
+		
+		return lvDiference * 30
+	else:
+		var lvDiference = Persistence.data.hero.level - heroAgainst.level + 1
+		
+		return lvDiference * 20
+
+func calculateExperienceEarnedIfLose():
+	if heroAgainst.level >= Persistence.data.hero.level:
+		var lvDiference = heroAgainst.level - Persistence.data.hero.level + 1
 		
 		return lvDiference * 20
 	else:
-		var lvDiference = Persistence.data.hero.level - heroAgainst.level
+		var lvDiference = Persistence.data.hero.level - heroAgainst.level + 1
 		
-		return lvDiference * 10
-
-func calculateExperienceEarnedIfLose():
-	if heroAgainst.level > Persistence.data.hero.level:
-		var lvDiference = heroAgainst.level - Persistence.data.hero.level
-		
-		return lvDiference * 10
-	else:
-		var lvDiference = Persistence.data.hero.level - heroAgainst.level
-		
-		return lvDiference * 5
+		return lvDiference * 15
 
 func updateUi():
+	
 	pointsLabel1.text = str(stats[0].value)
 	pointsLabel2.text = str(stats[1].value)
 	pointsLabel3.text = str(stats[2].value)
@@ -212,7 +222,7 @@ func _on_Move1Btn_pressed():
 	toastHasLearn()
 	if newAttacksEarned.size() > 0:
 		showUpdateAttakcs()
-
+	attacks.hide()
 
 func _on_Move2Btn_pressed():
 	Persistence.data.hero.moves[1] = actualToLearn
@@ -220,6 +230,7 @@ func _on_Move2Btn_pressed():
 	toastHasLearn()
 	if newAttacksEarned.size() > 0:
 		showUpdateAttakcs()
+	attacks.hide()
 
 
 func _on_Move3Btn_pressed():
@@ -230,7 +241,7 @@ func _on_Move3Btn_pressed():
 	Persistence.save_data()
 	if newAttacksEarned.size() > 0:
 		showUpdateAttakcs()
-
+	attacks.hide()
 
 func _on_Move4Btn_pressed():
 	if Persistence.data.hero.moves.size() >= 3:
@@ -241,7 +252,7 @@ func _on_Move4Btn_pressed():
 	toastHasLearn()
 	if newAttacksEarned.size() > 0:
 		showUpdateAttakcs()
-
+	attacks.hide()
 func toastHasLearn():
 	var toast = Toast.new("Has aprendido: " + moveNames.getMoveName(Persistence.data.hero.charClass.name, actualToLearn.id), Toast.LENGTH_SHORT)
 	get_node("/root").add_child(toast)

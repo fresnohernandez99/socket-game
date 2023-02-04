@@ -39,39 +39,40 @@ script = ExtResource( 2 )
 [node name="Background" type="AnimatedSprite" parent="."]
 position = Vector2( 160, 320 )
 frames = SubResource( 1 )
-frame = 2
+frame = 5
 playing = true
 
 [node name="Hierva" type="AnimatedSprite" parent="Background"]
 position = Vector2( -38.75, -50.25 )
 scale = Vector2( 0.86, 0.86 )
 frames = SubResource( 2 )
+frame = 2
 playing = true
 
 [node name="Hierva2" type="AnimatedSprite" parent="Background"]
-position = Vector2( 108.75, -164.75 )
+position = Vector2( 42, -184 )
 scale = Vector2( 0.66, 0.66 )
 frames = SubResource( 2 )
+frame = 2
 playing = true
 
 [node name="Hierva5" type="AnimatedSprite" parent="Background"]
 position = Vector2( -60.125, -198.875 )
 scale = Vector2( 0.489999, 0.489999 )
 frames = SubResource( 2 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Hierva3" type="AnimatedSprite" parent="Background"]
 position = Vector2( 117, -4 )
 frames = SubResource( 2 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Hierva4" type="AnimatedSprite" parent="Background"]
 position = Vector2( -95.75, 74.75 )
 scale = Vector2( 1.1, 1.1 )
 frames = SubResource( 2 )
-frame = 3
 playing = true
 
 [node name="PlayerContainer" type="Node2D" parent="."]
