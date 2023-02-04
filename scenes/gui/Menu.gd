@@ -21,6 +21,7 @@ func _on_item_pressed(ID):
 			exitGame()
 
 func goToStart():
+	SocketManager.closeConnection()
 	get_tree().change_scene("res://scenes/gui/MainMenu.tscn")
 
 func goToSettings():
