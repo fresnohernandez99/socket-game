@@ -18,6 +18,7 @@ signal ShowMsg(playMsg)
 signal IsLoading(state)
 
 onready var players = []
+var matchEnded = false
 
 onready var combatControls = $CombatControls
 
@@ -363,7 +364,7 @@ func _calculateAttack(move, playerTo, playerFrom):
 	
 	playerTo.receiveHit(damage)
 	
-	_calculateActualMatch()
+	matchEnded = _calculateActualMatch()
 
 func _calculateActualMatch():
 	var loserCount = 0
@@ -375,6 +376,8 @@ func _calculateActualMatch():
 	
 	if loserCount == players.size() - 1:
 		endMatch()
+		return true
+	return false
 
 func endMatch():
 	yield(get_tree().create_timer(4), "timeout")

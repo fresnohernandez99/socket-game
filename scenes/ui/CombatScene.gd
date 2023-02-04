@@ -13,6 +13,7 @@ signal ShowMsg(playMsg)
 signal IsLoading(state)
 
 onready var players = []
+var matchEnded = false
 
 onready var combatControls = $CombatControls
 
@@ -161,34 +162,35 @@ func _on_CombatControls_UseMove(move):
 # Calculate region
 #################################################
 func _calculatePlaysResults(actualPlay):
-	var playerFrom
-	var playerTo
-	
-	for player in players:
-		if player.hero.position == actualPlay.positionFrom:
-			playerFrom = player
-		if player.hero.position == actualPlay.positionTo:
-			playerTo = player
-			
-	if actualPlay.wasMiss:
-		playerFrom.miss()
-		return
-	
-	match(actualPlay.move.type):
-		moveHandler.ATTACK_MOVE:
-			_calculateAttack(actualPlay.move, playerTo, playerFrom)
-		moveHandler.DEFENSE_MOVE:
-			playerTo.hero.stats[0].value += playerTo.hero.stats[0].value * actualPlay.move.percent
-		moveHandler.HEAL_MOVE:
-			if playerTo.hero.lifePointsLose > actualPlay.move.restoredPoints:
-				playerTo.hero.lifePointsLose -= actualPlay.move.restoredPoints
-			else:
-				playerTo.hero.lifePointsLose = 0
+	if !matchEnded:
+		var playerFrom
+		var playerTo
+		
+		for player in players:
+			if player.hero.position == actualPlay.positionFrom:
+				playerFrom = player
+			if player.hero.position == actualPlay.positionTo:
+				playerTo = player
 				
-		moveHandler.BOOST_MOVE:
-			playerTo.hero.stats[actualPlay.move.attrToBoost].value += actualPlay.move.value
-		moveHandler.INSTANT_HEAL_MOVE:
-			playerTo.hero.lifePointsLose = 0
+		if actualPlay.wasMiss:
+			playerFrom.miss()
+			return
+		
+		match(actualPlay.move.type):
+			moveHandler.ATTACK_MOVE:
+				_calculateAttack(actualPlay.move, playerTo, playerFrom)
+			moveHandler.DEFENSE_MOVE:
+				playerTo.hero.stats[0].value += playerTo.hero.stats[0].value * actualPlay.move.percent
+			moveHandler.HEAL_MOVE:
+				if playerTo.hero.lifePointsLose > actualPlay.move.restoredPoints:
+					playerTo.hero.lifePointsLose -= actualPlay.move.restoredPoints
+				else:
+					playerTo.hero.lifePointsLose = 0
+					
+			moveHandler.BOOST_MOVE:
+				playerTo.hero.stats[actualPlay.move.attrToBoost].value += actualPlay.move.value
+			moveHandler.INSTANT_HEAL_MOVE:
+				playerTo.hero.lifePointsLose = 0
 
 func _calculateAttack(move, playerTo, playerFrom):
 	var damage = move.damage
@@ -230,7 +232,7 @@ func _calculateAttack(move, playerTo, playerFrom):
 	
 	playerTo.receiveHit(damage)
 	
-	_calculateActualMatch()
+	matchEnded = _calculateActualMatch()
 
 func _calculateActualMatch():
 	var loserCount = 0
@@ -242,6 +244,8 @@ func _calculateActualMatch():
 	
 	if loserCount == players.size() - 1:
 		endMatch()
+		return true
+	return false
 
 func endMatch():
 	yield(get_tree().create_timer(4), "timeout")
