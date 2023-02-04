@@ -23,13 +23,15 @@ func _ready():
 
 
 func _on_Area2D_body_entered(body):
-	textoAyuda.visible = true
-	rect.visible = true 
+	if body.is_in_group("player"):
+		textoAyuda.visible = true
+		rect.visible = true 
 
 
 func _on_Area2D_body_exited(body):
-	textoAyuda.visible = false
-	rect.visible = false
+	if body.is_in_group("player"):
+		textoAyuda.visible = false
+		rect.visible = false
 
 
 #if idAmigo == 3:

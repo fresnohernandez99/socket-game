@@ -41,7 +41,7 @@ texture = ExtResource( 12 )
 [node name="Nino" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
 animation = "idle"
-frame = 2
+frame = 4
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]

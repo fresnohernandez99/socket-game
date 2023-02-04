@@ -949,18 +949,22 @@ stream = ExtResource( 24 )
 autoplay = true
 
 [node name="AmigoT4" parent="." instance=ExtResource( 25 )]
+modulate = Color( 0.792157, 0.952941, 0.34902, 1 )
 position = Vector2( 1065, 442 )
 idAmigo = 3
 
 [node name="AmigoT3" parent="." instance=ExtResource( 25 )]
+modulate = Color( 0.552941, 0.54902, 0.964706, 1 )
 position = Vector2( 1062, 279 )
 idAmigo = 2
 
 [node name="AmigoT2" parent="." instance=ExtResource( 25 )]
+modulate = Color( 1, 0.52549, 0.52549, 1 )
 position = Vector2( 835, 286 )
 idAmigo = 1
 
 [node name="AmigoT1" parent="." instance=ExtResource( 25 )]
+modulate = Color( 0.780392, 0.901961, 0.643137, 1 )
 position = Vector2( 599, 285 )
 
 [connection signal="area_entered" from="Group2/Clouds/ResetCloudArea" to="." method="_on_ResetCloudArea_area_entered"]
