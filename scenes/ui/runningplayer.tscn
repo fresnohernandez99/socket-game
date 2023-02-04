@@ -1,44 +1,41 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=14 format=2]
 
-[sub_resource type="GDScript" id=2]
-script/source = "extends KinematicBody2D
+[ext_resource path="res://assets/imgs/player/idle/idle4.svg" type="Texture" id=1]
+[ext_resource path="res://assets/imgs/player/idle/idle5.svg" type="Texture" id=2]
+[ext_resource path="res://assets/imgs/player/move/player_move_6.svg" type="Texture" id=3]
+[ext_resource path="res://assets/imgs/player/idle/idle2.svg" type="Texture" id=4]
+[ext_resource path="res://assets/imgs/player/move/player_move_3.svg" type="Texture" id=5]
+[ext_resource path="res://assets/imgs/player/move/player_move_5.svg" type="Texture" id=6]
+[ext_resource path="res://assets/imgs/player/idle/idle1.svg" type="Texture" id=7]
+[ext_resource path="res://assets/imgs/player/move/player_move_4.svg" type="Texture" id=8]
+[ext_resource path="res://assets/imgs/player/idle/idle3.svg" type="Texture" id=9]
+[ext_resource path="res://assets/imgs/player/move/player_move_2.svg" type="Texture" id=10]
+[ext_resource path="res://scenes/ui/Runningplayer.gd" type="Script" id=11]
 
-export (int) var speed = 200
-export (float) var rotation_speed = 1.5
-
-var velocity = Vector2()
-
-func get_input():
-	velocity = Vector2()
-	if Input.is_action_pressed(\"ui_right\"):
-		velocity.x += 1
-	
-	if Input.is_action_pressed(\"ui_left\"):
-		velocity.x -= 1
-	if Input.is_action_pressed(\"ui_down\"):
-		velocity.y += 1
-	if Input.is_action_pressed(\"ui_up\"):
-		velocity.y -= 1
-	velocity = velocity.normalized() * speed
-
-func _physics_process(delta):
-	get_input()
-	velocity = move_and_slide(velocity)
-"
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "move",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 19.5, 19 )
 
 [node name="Runningplayer" type="KinematicBody2D" groups=["player"]]
-script = SubResource( 2 )
+script = ExtResource( 11 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-
-[node name="ColorRect" type="ColorRect" parent="AnimatedSprite"]
-margin_left = -20.0
-margin_top = -20.0
-margin_right = 20.0
-margin_bottom = 20.0
+[node name="Nino" type="AnimatedSprite" parent="."]
+frames = SubResource( 3 )
+animation = "move"
+frame = 1
+playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

@@ -2,6 +2,8 @@ extends KinematicBody2D
 var jugador = null 
 var move  = Vector2.ZERO
 var vel = 130  
+
+
 signal start 
 
 func _physics_process(delta):

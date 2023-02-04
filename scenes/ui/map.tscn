@@ -1,12 +1,137 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/ui/Runningplayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ui/Enemy.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/imgs/Casa/calle.svg" type="Texture" id=3]
+[ext_resource path="res://assets/imgs/Casa/calle2.svg" type="Texture" id=4]
 
 [node name="map" type="Node2D"]
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -2904.0
+margin_top = -1321.0
+margin_right = 7096.0
+margin_bottom = 8679.0
+color = Color( 0.0159, 0.6, 0.00599999, 0.431373 )
+
+[node name="Calle20" type="Sprite" parent="ColorRect"]
+position = Vector2( 4063, 1730 )
+scale = Vector2( 1.175, 1.41113 )
+texture = ExtResource( 4 )
+
+[node name="Calle21" type="Sprite" parent="ColorRect"]
+position = Vector2( 4809, 1730 )
+texture = ExtResource( 4 )
+
+[node name="Calle22" type="Sprite" parent="ColorRect"]
+position = Vector2( 5518, 1728 )
+texture = ExtResource( 4 )
+
+[node name="Calle" type="Sprite" parent="ColorRect"]
+position = Vector2( 3189, 1729 )
+texture = ExtResource( 3 )
+
+[node name="Calle6" type="Sprite" parent="ColorRect"]
+position = Vector2( 3509, 1729 )
+texture = ExtResource( 3 )
+
+[node name="Calle5" type="Sprite" parent="ColorRect"]
+position = Vector2( 4023, 1917 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="Calle2" type="Sprite" parent="ColorRect"]
+position = Vector2( 3828, 1729 )
+texture = ExtResource( 3 )
+
+[node name="Calle4" type="Sprite" parent="ColorRect"]
+position = Vector2( 4273, 1729 )
+texture = ExtResource( 3 )
+
+[node name="Calle3" type="Sprite" parent="ColorRect"]
+position = Vector2( 4023, 1478 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="Calle10" type="Sprite" parent="ColorRect"]
+position = Vector2( 4788, 1480 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="Calle11" type="Sprite" parent="ColorRect"]
+position = Vector2( 4788, 1161 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="Calle16" type="Sprite" parent="ColorRect"]
+position = Vector2( 5552, 1479 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="Calle17" type="Sprite" parent="ColorRect"]
+position = Vector2( 5552, 1158 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="Calle18" type="Sprite" parent="ColorRect"]
+position = Vector2( 5552, 1921 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="Calle19" type="Sprite" parent="ColorRect"]
+position = Vector2( 5552, 2240 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="Calle12" type="Sprite" parent="ColorRect"]
+position = Vector2( 4788, 1922 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="Calle13" type="Sprite" parent="ColorRect"]
+position = Vector2( 4788, 2240 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="Calle8" type="Sprite" parent="ColorRect"]
+position = Vector2( 4023, 1158 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="Calle9" type="Sprite" parent="ColorRect"]
+position = Vector2( 4023, 2205 )
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="Calle7" type="Sprite" parent="ColorRect"]
+position = Vector2( 4590, 1729 )
+texture = ExtResource( 3 )
+
+[node name="Calle14" type="Sprite" parent="ColorRect"]
+position = Vector2( 5037, 1727 )
+texture = ExtResource( 3 )
+
+[node name="Calle15" type="Sprite" parent="ColorRect"]
+position = Vector2( 5356, 1727 )
+texture = ExtResource( 3 )
+
 [node name="Runningplayer" parent="." instance=ExtResource( 1 )]
-position = Vector2( 202, 228 )
+position = Vector2( 164, 257 )
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
-position = Vector2( -3, 3 )
+position = Vector2( 1148, -156 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1152, 933 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1923, -160 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1919, 929 )
+
+[node name="Enemy6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2686, 933 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2686, -164 )
