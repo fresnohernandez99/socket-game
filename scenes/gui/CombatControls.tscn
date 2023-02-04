@@ -29,7 +29,7 @@ rect_min_size = Vector2( 300, 180 )
 [node name="ColorRect" type="ColorRect" parent="Control/ControlsStep1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.905882, 0.552941, 0.552941, 1 )
+color = Color( 0.631373, 0.607843, 0.607843, 1 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/ControlsStep1"]
 anchor_right = 1.0
@@ -67,7 +67,7 @@ rect_min_size = Vector2( 300, 180 )
 [node name="ColorRect2" type="ColorRect" parent="Control/ControlsStep2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.141176, 0.439216, 0.819608, 1 )
+color = Color( 0.631373, 0.607843, 0.607843, 1 )
 
 [node name="FightBtn" type="Button" parent="Control/ControlsStep2"]
 margin_left = 11.0
@@ -124,7 +124,7 @@ rect_min_size = Vector2( 300, 180 )
 [node name="ColorRect3" type="ColorRect" parent="Control/ControlsStep3"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.372549, 0.811765, 0.266667, 1 )
+color = Color( 0.631373, 0.607843, 0.607843, 1 )
 
 [node name="Move1Btn" type="Button" parent="Control/ControlsStep3"]
 visible = false
@@ -215,7 +215,7 @@ rect_min_size = Vector2( 300, 180 )
 [node name="ColorRect" type="ColorRect" parent="Control/ControlsStep4"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.160784, 0.282353, 0.313726, 1 )
+color = Color( 0.631373, 0.607843, 0.607843, 1 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/ControlsStep4"]
 anchor_right = 1.0

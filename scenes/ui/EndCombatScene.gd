@@ -87,6 +87,8 @@ func calculateTalentPoints(experience):
 		
 		Persistence.data.hero.level += 1
 		
+		Persistence.save_data()
+		
 		calculateTalentPoints(extra)
 		
 		var newMove = getNewPower()

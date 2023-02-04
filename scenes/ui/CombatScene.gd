@@ -196,8 +196,6 @@ func _calculatePlaysResults(actualPlay):
 
 		if playerFrom.hero.id == hero.id:
 			combatControls.setHero(playerFrom.hero)
-		else:
-			combatControls.setHero(playerTo.hero)
 		
 
 func _calculateAttack(move, playerTo, playerFrom):
