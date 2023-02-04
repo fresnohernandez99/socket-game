@@ -9,6 +9,8 @@ onready var tween = $Tween
 onready var finalPos = $Position2D
 onready var nextBtn = $NextBtn
 
+onready var music = $AudioStreamPlayer2D
+
 onready var images = [$Hercules, $Ochosi, $Susanoo, $Templar, $Veles]
 
 var cont = 0
@@ -26,6 +28,7 @@ var texts = [
 ]
 
 func _ready():
+	music.volume_db = int(Persistence.data.option.volume / 10)
 	showFade(story1, 5.0)
 	label.bbcode_text = texts[cont]
 
@@ -60,7 +63,7 @@ func _on_NextBtn_pressed():
 		cont += 1
 		label.bbcode_text = texts[cont]
 	else:
-		pass
+		get_tree().change_scene("res://scenes/gui/MainMenu.tscn")
 	
 	yield(get_tree().create_timer(3), "timeout")
 	nextBtn.disabled = false
@@ -73,3 +76,7 @@ func startTransition():
 		showFade(images[cont2], 5.0)
 		tween.start()
 		cont2 +=1
+
+
+func _on_ExitBtn_pressed():
+	get_tree().change_scene("res://scenes/gui/MainMenu.tscn")

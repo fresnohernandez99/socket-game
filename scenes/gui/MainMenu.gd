@@ -10,6 +10,9 @@ func _ready():
 	
 	descriptionLabel.text += Persistence.data.hero.name + " detalles:" + "\n"
 	descriptionLabel.text += "LV: " + str(Persistence.data.hero.level) + "\n"
+	descriptionLabel.text += "Próximo nivel a : " + str(Persistence.data.hero.nextLevelOn - Persistence.data.hero.nextLevelOnEarned) + "\n\n"
+	
+	
 	descriptionLabel.text += "Ídolo: " + classHandler.getClassName(Persistence.data.hero) + "\n"
 	descriptionLabel.text += "Bio: \n" + classHandler.getClassDescription(Persistence.data.hero) + "\n\n"
 	

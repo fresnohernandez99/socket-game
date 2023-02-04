@@ -15,6 +15,8 @@ signal IsLoading(state)
 onready var players = []
 var matchEnded = false
 
+onready var music = $AudioStreamPlayer2D
+
 onready var combatControls = $CombatControls
 
 onready var playerContainer = $PlayerContainer
@@ -25,6 +27,7 @@ onready var enemy1Position = $PlayerContainer/Enemy1
 onready var enemiesPosition = [enemy1Position] 
 
 func _ready():
+	music.volume_db = int(Persistence.data.option.volume / 10)
 	emit_signal("IsLoading", [true])
 	emit_signal("ShowMsg", ["La batalla va a comenzar"])
 	SocketManager.sendInitPlay()

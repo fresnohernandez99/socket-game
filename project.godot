@@ -27,7 +27,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Fiñe"
-run/main_scene="res://scenes/gui/MainMenu.tscn"
+run/main_scene="res://scenes/ui/Start.tscn"
 config/icon="res://icon.png"
 
 [autoload]

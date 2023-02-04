@@ -20,6 +20,8 @@ signal IsLoading(state)
 onready var players = []
 var matchEnded = false
 
+onready var music = $AudioStreamPlayer2D
+
 onready var combatControls = $CombatControls
 
 onready var playerContainer = $PlayerContainer
@@ -30,13 +32,14 @@ onready var enemy1Position = $PlayerContainer/Enemy1
 onready var enemiesPosition = [enemy1Position] 
 
 func _ready():
+	music.volume_db = int(Persistence.data.option.volume / 10)
 	enemyIA = BaseIAEnemy.new().getNewNpc("IATEST", 1)
 	
 	pieces.push_back(Persistence.data.hero)
 	hero = pieces.duplicate(true)[0]
 	
 	emit_signal("IsLoading", [true])
-	emit_signal("ShowMsg", ["The battle is about to start"])
+	emit_signal("ShowMsg", ["La batalla va a comenzar"])
 	
 	initPlay()
 
@@ -168,7 +171,7 @@ func _setInFieldPlay(actualPlay):
 		
 		combatControls.setHero(hero)
 		
-		emit_signal("ShowMsg", ["[color=blue]You[/color] have entered in combat!"])
+		emit_signal("ShowMsg", ["[color=blue]Has[/color] entrado en combate!"])
 	else:
 		var nextPlayerPosition
 		if players.size() > 0:
@@ -176,7 +179,7 @@ func _setInFieldPlay(actualPlay):
 		else:
 			nextPlayerPosition = enemiesPosition[0]
 		playerIns.setData(actualPlay.piece, nextPlayerPosition.global_position.x,  nextPlayerPosition.global_position.y)
-		emit_signal("ShowMsg", ["[color=red]"+ actualPlay.piece.name +"[/color] has entered in combat!"])
+		emit_signal("ShowMsg", ["[color=red]"+ actualPlay.piece.name +"[/color] ha entrado en combate!"])
 		
 		combatControls.addEnemyPlayer(actualPlay.piece)
 		
@@ -212,15 +215,15 @@ func _setPlayOverHero(actualPlay):
 		colorTo = "red"
 	
 	if actualPlay.wasMiss:
-		emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] has use " + "[color="+ moveColor + "]" + moveName + "[/color] and he [color="+ missColor + "]miss it[/color]!" ])
+		emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] ha usado " + "[color="+ moveColor + "]" + moveName + "[/color] y ha [color="+ missColor + "]fallado[/color]!" ])
 	else:
 		_showAnimationOver(actualPlay.move, playerTo)
 		_showAnimationFrom(actualPlay.move, playerFrom)
 		
 		if playerTo.hero.id == playerFrom.hero.id:
-			emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] has use " + "[color="+ moveColor + "]" + moveName + "[/color]!" ])
+			emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] ha usado " + "[color="+ moveColor + "]" + moveName + "[/color]!" ])
 		else:
-			emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] has use " + "[color="+ moveColor + "]" + moveName + "[/color] over " + "[color="+ colorTo + "]" + playerTo.hero.name +"[/color]!" ])
+			emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] ha usado " + "[color="+ moveColor + "]" + moveName + "[/color] contra " + "[color="+ colorTo + "]" + playerTo.hero.name +"[/color]!" ])
 	
 	_calculatePlaysResults(actualPlay)
 

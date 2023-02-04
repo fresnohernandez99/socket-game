@@ -24,6 +24,8 @@ onready var pos2 = $Control/Attacks/Move2Btn/Label
 onready var pos3 = $Control/Attacks/Move3Btn/Label
 onready var pos4 = $Control/Attacks/Move4Btn/Label
 
+onready var music = $AudioStreamPlayer2D
+
 
 const ClassHandler = preload("res://scripts/engine/ClassHandler.gd")
 const MoveHandler = preload("res://scripts/engine/MoveHandler.gd")
@@ -43,6 +45,8 @@ var newAttacksEarned = []
 var actualToLearn = null
 
 func _ready():
+	music.volume_db = int(Persistence.data.option.volume / 10)
+	
 	stats = Persistence.data.hero.stats 
 	for p in RoomInfo.finalResult:
 		if p.lifePointsLose > p.lifePoints:
@@ -51,6 +55,12 @@ func _ready():
 		if p.id != Persistence.data.hero.id:
 			heroAgainst = p
 
+	if uLose:
+		music.stream = load("res://assets/music/defeat.ogg")
+	else:
+		music.stream = load("res://assets/music/winning.ogg")
+	music.play()
+	
 	var experience
 
 	if !uLose:
@@ -82,8 +92,10 @@ func calculateTalentPoints(experience):
 		var newMove = getNewPower()
 		if newMove != null:
 			newAttacksEarned.push_front(newMove)
-		
-		Persistence.save_data()
+	else:
+		Persistence.data.hero.nextLevelOnEarned += experience
+	
+	Persistence.save_data()
 
 func getNewPower():
 	var level = Persistence.data.hero.level
@@ -187,8 +199,9 @@ func _on_Button6_pressed():
 
 
 func _on_ExitBtn_pressed():
+	Persistence.data.hero.lifePoints += classHandler.upgradeLife(Persistence.data.hero)
 	Persistence.save_data()
-	get_tree().change_scene("res://scenes/gui/RoomList.tscn")
+	get_tree().change_scene("res://scenes/gui/MainMenu.tscn")
 
 
 func _on_Move1Btn_pressed():

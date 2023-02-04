@@ -343,6 +343,9 @@ margin_right = 92.0
 margin_bottom = 120.0
 text = "Aprender:"
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+
 [connection signal="pressed" from="Control/ExitBtn" to="." method="_on_ExitBtn_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Stat1/Button1" to="." method="_on_Button1_pressed"]
 [connection signal="pressed" from="Control/VBoxContainer/Stat2/Button2" to="." method="_on_Button2_pressed"]
