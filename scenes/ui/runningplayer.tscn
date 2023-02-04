@@ -33,8 +33,8 @@ script = ExtResource( 11 )
 
 [node name="Nino" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
-animation = "move"
-frame = 1
+animation = "idle"
+frame = 4
 playing = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
