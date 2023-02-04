@@ -104,7 +104,7 @@ func _getStatPosByName(statName):
 func upgradeLife(hero):
 	var positionOfClass
 	
-	match hero.charClass:
+	match hero.charClass.name:
 		CLASS_BOX:
 			positionOfClass = 0
 		CLASS_ARCHER:
@@ -119,7 +119,7 @@ func upgradeLife(hero):
 	var primaryStatName = classes[positionOfClass].poweredStat[0]
 	var primaryStatPos = _getStatPosByName(primaryStatName)
 	
-	return 100 + 5 * hero.stats[primaryStatPos] + 2 * hero.stats[5]
+	return 100 + 5 * hero.stats[primaryStatPos].value + 2 * hero.stats[5].value
 
 func getRandomClass():
 	return classes[int(rand_range(0, classes.size()))]

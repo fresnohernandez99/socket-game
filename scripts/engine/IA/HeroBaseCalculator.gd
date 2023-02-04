@@ -22,11 +22,13 @@ func calculatePlaysResult(gameEngine, pA: Array):
 			for i in range(pA.size()-1, -1, -1):
 				for j in range(1,i+1,1):
 					var aux1 = gameEngine.findInGrid(pA[j-1].positionFrom).stats[4].value
+					var aux1O = pA[j-1]
 					var aux2 = gameEngine.findInGrid(pA[j].positionFrom).stats[4].value
+					var aux2O = pA[j]
 					
 					if aux1 < aux2:
-						var temp = aux1
-						pA[j-1] = aux2
+						var temp = aux1O
+						pA[j-1] = aux2O
 						pA[j] = temp
 	
 	var playResult = []

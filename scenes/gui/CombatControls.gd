@@ -43,7 +43,7 @@ signal showNextPlay
 var loadingResults = true
 
 func _ready():
-	showControlStep2()
+	showControlStep1()
 	
 func showControlStep1():
 	controlStep1.show()
@@ -72,7 +72,6 @@ func showControlStep4():
 	messageLabe4.bbcode_text = ""
 	for i in range(stats.size()):
 		messageLabe4.bbcode_text += stats[i].name + " : " + str(stats[i].value) + "\n"
-	
 
 func setUnaviable(value: bool):
 	unabiable.visible = value

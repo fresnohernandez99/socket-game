@@ -3,9 +3,13 @@ extends Node
 const MoveHandler = preload("res://scripts/engine/MoveHandler.gd")
 const MoveNames = preload("res://scripts/engine/MoveNames.gd")
 const GameEngine = preload("res://scripts/engine/IA/GameEngine.gd")
+const BaseIAEnemy = preload("res://scripts/engine/IA/BaseIAEnemy.gd")
 
-var pieces = [Persistence.data.hero]
-var hero = pieces.duplicate(true)[0]
+var pieces = []
+var hero
+var enemyIA
+
+var gameEngine
 
 var moveNames = MoveNames.new()
 var moveHandler = MoveHandler.new()
@@ -25,21 +29,26 @@ onready var enemy1Position = $PlayerContainer/Enemy1
 onready var enemiesPosition = [enemy1Position] 
 
 func _ready():
+	enemyIA = BaseIAEnemy.new().getNewNpc("IATEST", 1)
+	
+	pieces.push_back(Persistence.data.hero)
+	hero = pieces.duplicate(true)[0]
+	
 	emit_signal("IsLoading", [true])
 	emit_signal("ShowMsg", ["The battle is about to start"])
-	#SocketManager.sendInitPlay()
+	
 	initPlay()
-	setPlayerReady()
 
 
 func _process(delta):
-	if SocketManager.INTENT_SEND_PLAYS_ACTIVE == SocketManager.SUCCESS_STATE:
-		SocketManager.INTENT_SEND_PLAYS_ACTIVE = SocketManager.NOT_REQUESTED_STATE
-		setPlayerReady()
+	#if SocketManager.INTENT_SEND_PLAYS_ACTIVE == SocketManager.SUCCESS_STATE:
+	#	SocketManager.INTENT_SEND_PLAYS_ACTIVE = SocketManager.NOT_REQUESTED_STATE
+	#	setPlayerReady()
 	
-	if SocketManager.INTENT_ROUND_RESULTS_ACTIVE == SocketManager.SUCCESS_STATE:
-		SocketManager.INTENT_ROUND_RESULTS_ACTIVE = SocketManager.NOT_REQUESTED_STATE
-		_initNextPlay()
+	#if SocketManager.INTENT_ROUND_RESULTS_ACTIVE == SocketManager.SUCCESS_STATE:
+	#	SocketManager.INTENT_ROUND_RESULTS_ACTIVE = SocketManager.NOT_REQUESTED_STATE
+	#	_initNextPlay()
+	pass
 
 #################################################
 # Local actions region
@@ -71,17 +80,51 @@ func initPlay():
 			}
 		},
 		"rules": [],
-		"playerList": [SocketRooms.getNewNpc("IA", 10)],
+		"playerList": [
+			{
+				"name": Session.playerName,
+				"playerId": Session.playerId,
+				"handDeck": {
+					"name": "hand-deck",
+					"items": [Persistence.data.hero]
+				}
+			}, 
+			enemyIA
+		],
 		"loserPlayers": [],
 		"spaceGrid": {
 			"grid": []
 		}
 	}
 	
-	var gameEngine = GameEngine.new()
+	gameEngine = GameEngine.new()
 	gameEngine.initConfigurations(serverConfigurations)
 	
+	var plays = [
+		{
+			"playerId": "IA",
+			"type": SocketManager.SET_IN_FIELD_PLAY,
+			"piece": enemyIA.handDeck.items[0],
+			"newPosition": "IA" + "_1"
+		},
+		{
+			"playerId": Session.playerId,
+			"type": SocketManager.SET_IN_FIELD_PLAY,
+			"piece": Persistence.data.hero,
+			"newPosition": Session.playerId + "_1"
+		}
+	]
 	
+	var total = gameEngine.addPlays(plays)
+		
+	var playList = gameEngine.getPlaysForCalculate().duplicate(true)
+	gameEngine.cleanPlays()
+	
+	var result = gameEngine.calculatePlaysResult(playList)
+	
+	RoomInfo.roundResult = result
+	
+	_initNextPlay()
 
 #################################################
 # Visual actions region
@@ -113,7 +156,6 @@ func _initNextPlay():
 				_setPlayOverHero(actualPlay)
 
 func _setInFieldPlay(actualPlay):
-	print(actualPlay)
 	var Player = load("res://scenes/ui/Player.tscn")
 	var playerIns = Player.instance()
 	
@@ -196,11 +238,57 @@ func _on_CombatControls_showNextPlay():
 # Socket actions region
 #################################################
 func _sendPlay(move, posTo):
-	SocketManager.sendOverPiecePlay(move, posTo, hero.position)
+	emulatePlay(move, posTo, hero.position)
 
 func _on_CombatControls_UseMove(move):
 	_sendPlay(move[0], move[1])
 	combatControls.setUnaviable(true)
+
+func emulatePlay(move, posTo, posFrom):
+	var IAMove = {
+			"playerId": "IA",
+			"type": SocketManager.OVER_PIECE_PLAY,
+			"positionFrom": "IA" + "_1",
+			"positionTo": posFrom,
+			"move": enemyIA.handDeck.items[0].moves[int(rand_range(0, enemyIA.handDeck.items[0].moves.size()))],
+			"wasMiss": false
+		}
+	
+	print(JSON.print(IAMove))
+	
+	if IAMove.move.type != moveHandler.ATTACK_MOVE:
+		print("AAA")
+		IAMove.positionTo = "IA" + "_1"
+	
+	var plays = [
+		IAMove,
+		{
+			"playerId": Session.playerId,
+			"type": SocketManager.OVER_PIECE_PLAY,
+			"positionFrom": posFrom,
+			"positionTo": posTo,
+			"move": move,
+			"wasMiss": false
+		}
+	]
+	
+	var total = gameEngine.addPlays(plays)
+		
+	var playList = gameEngine.getPlaysForCalculate().duplicate(true)
+	gameEngine.cleanPlays()
+	
+	var result = gameEngine.calculatePlaysResult(playList)
+	
+	RoomInfo.roundResult = result
+	
+	RoomInfo.lastPlayerReady = Session.playerId
+	setPlayerReady()
+	yield(get_tree().create_timer(2), "timeout")
+	
+	RoomInfo.lastPlayerReady = "IA"
+	setPlayerReady()
+	
+	_initNextPlay()
 
 #################################################
 # Calculate region
