@@ -24,7 +24,11 @@ onready var statusLabel = $KinematicBody2D/StatusLabel
 onready var points = $Status/Points
 onready var typebackground = $Status/TypeBackground
 
+onready var tween = $Tween
+
 onready var weapon = $KinematicBody2D/Weapon
+
+var actualTweenInterpolation
 
 var actualSprite
 onready var sprites = [
@@ -93,23 +97,46 @@ func lose():
 	isAlive = false
 
 func receiveHit(damage):
+	actualTweenInterpolation = [Color(1,1,1,1), Color(1,0.5,0.5,1)]
+	
 	points.start("-" + str(damage), Color(1,0,0,0))
+	
+	startTween()
+	yieldAndReset()
 
 func sendHit():
 	pass
 
 func increaseStat(p):
+	actualTweenInterpolation = [Color(1,1,1,1), Color(0.5,0.5,1,1)]
+	
 	points.start("+" + str(p), Color(0,0,1,0))
+	
+	startTween()
+	yieldAndReset()
 
 func decreaseStat(p):
 	points.start("-" + str(p), Color(1,0,1,0))
 
 func increaseLife(life):
+	actualTweenInterpolation = [Color(1,1,1,1), Color(0.5,1,0.5,1)]
+	
 	points.start("+" + str(life), Color(0,1,0,0))
+	
+	startTween()
+	yieldAndReset()
 
 func miss():
 	points.start("MISS", Color(1,1,1,0))
 
 
+func startTween():
+	tween.interpolate_property(self, "modulate", actualTweenInterpolation[0], actualTweenInterpolation[1], 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	tween.start()
 
+func yieldAndReset():
+	yield(get_tree().create_timer(1), "timeout")
+	actualTweenInterpolation.invert()
+	
+	startTween()
 
