@@ -14,7 +14,7 @@ const ClassHandler = preload("res://scripts/engine/ClassHandler.gd")
 
 var classHandler = ClassHandler.new()
 
-export (int) var level = 1 
+export (int) var level = -1
 export (String) var iaName = "" 
   
 onready var sprites = [
@@ -38,10 +38,16 @@ func _ready():
 		iaName = SocketRooms.names.pop_back()
 		SocketRooms.nextToUse.push_back(iaName)
 	
-	nameLabel.text = iaName
+	if level == -1:
+		if Persistence.data.hero.level <= 2:
+			level = int(rand_range(1, 3))
+		else:
+			level = int(rand_range(Persistence.data.hero.level - 1, Persistence.data.hero.level + 3))
 	
 	IA = BaseIAEnemy.new().getNewNpc(iaName, level)
 	hero = IA.handDeck.items[0]
+	
+	nameLabel.text = iaName + " LV " + str(hero.level)
 	
 	actualSprite = sprites[classHandler.getSpritePosByClass(hero)]
 

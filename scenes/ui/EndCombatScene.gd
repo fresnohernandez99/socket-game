@@ -254,6 +254,7 @@ func _on_Move4Btn_pressed():
 	if newAttacksEarned.size() > 0:
 		showUpdateAttakcs()
 	attacks.hide()
+	
 func toastHasLearn():
 	var toast = Toast.new("Has aprendido: " + moveNames.getMoveName(Persistence.data.hero.charClass.name, actualToLearn.id), Toast.LENGTH_SHORT)
 	get_node("/root").add_child(toast)

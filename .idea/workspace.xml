@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="fa18512c-1e62-47c6-ab43-466540dad957" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Multiplayer.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/socket-game.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/anim_entered_down.svg-ce53d1fdf2f62495fb28242d01704366.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/anim_entered_down.svg-ce53d1fdf2f62495fb28242d01704366.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/anim_entered_up.svg-ae7e4ff91d0a1cb3c2c2e43d5a2ad88e.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/anim_entered_up.svg-ae7e4ff91d0a1cb3c2c2e43d5a2ad88e.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/arbol1.svg-ce965bb63a5e93285233b7b2d339e535.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/arbol1.svg-ce965bb63a5e93285233b7b2d339e535.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/arbol2.svg-6abd3af763749d81ae5405011a366918.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/arbol2.svg-6abd3af763749d81ae5405011a366918.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/arbol3.svg-0da62024fb54956eedfabbe1b8096618.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/arbol3.svg-0da62024fb54956eedfabbe1b8096618.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/arbol4.svg-390da10029c952cc4924b15906247aec.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/arbol4.svg-390da10029c952cc4924b15906247aec.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/arbol5.svg-09fe4c2ce57c02472bb5cdaf4a37d657.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/arbol5.svg-09fe4c2ce57c02472bb5cdaf4a37d657.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/arbusto.svg-42ed755590d0044984d990b8b8a9fe23.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/arbusto.svg-42ed755590d0044984d990b8b8a9fe23.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/ataque1.svg-d4d41172da43971b270b470e9e660339.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/ataque1.svg-d4d41172da43971b270b470e9e660339.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/ataque2.svg-a33bf85823001e2e3110f1fbfb3c955f.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/ataque2.svg-a33bf85823001e2e3110f1fbfb3c955f.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/ataque3.svg-79d88d39804fd1db60b2af4112aab02e.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/ataque3.svg-79d88d39804fd1db60b2af4112aab02e.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/ataque4.svg-b273e79c9a3cd0fdb6eecdc5b00e8a8e.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/ataque4.svg-b273e79c9a3cd0fdb6eecdc5b00e8a8e.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/ataque5.svg-d35608f8005945c0194515768eb329f1.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/ataque5.svg-d35608f8005945c0194515768eb329f1.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/back_1.svg-e07a0a1d6de528501cf89960c352cc35.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/back_1.svg-e07a0a1d6de528501cf89960c352cc35.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/back_2.svg-08f4b8b55301f0e067d51e29a9a36159.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/back_2.svg-08f4b8b55301f0e067d51e29a9a36159.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/back_3.svg-05862c62e3461b074c539465afa8c0f3.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/back_3.svg-05862c62e3461b074c539465afa8c0f3.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/back_4.svg-4cc8a29bb1dc1a12915d5da8f507b7ad.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/back_4.svg-4cc8a29bb1dc1a12915d5da8f507b7ad.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/back_5.svg-4f2d5e60f8aea9d3e4932b3e7c294e01.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/back_5.svg-4f2d5e60f8aea9d3e4932b3e7c294e01.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/back_6.svg-b4f970352f1697f0551a71a8324a8ea9.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/back_6.svg-b4f970352f1697f0551a71a8324a8ea9.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/back_7.svg-8c949dc01ee8d1712402967af6108627.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/back_7.svg-8c949dc01ee8d1712402967af6108627.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/ball.svg-61106c1908a3036e0bc6cd08f3dc8487.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/ball.svg-61106c1908a3036e0bc6cd08f3dc8487.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/calle.svg-460c48d791b4b75262e64b026da835c4.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/calle.svg-460c48d791b4b75262e64b026da835c4.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/calle2.svg-672b68d08a7fab9524ffe0d777c45f4c.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/calle2.svg-672b68d08a7fab9524ffe0d777c45f4c.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/casa1.svg-31e98cb063995c771b0d3c9750a952c7.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/casa1.svg-31e98cb063995c771b0d3c9750a952c7.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/casa2.svg-65da095f5e6405a6b736685212483c19.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/casa2.svg-65da095f5e6405a6b736685212483c19.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/casa2.svg-65da095f5e6405a6b736685212483c19.stex" beforeDir="false" afterPath="$PROJECT_DIR$/.import/casa2.svg-65da095f5e6405a6b736685212483c19.stex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/casa3.svg-d8d2389c9b513e2e99f71734c3f516bc.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/casa3.svg-d8d2389c9b513e2e99f71734c3f516bc.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/casa3.svg-d8d2389c9b513e2e99f71734c3f516bc.stex" beforeDir="false" afterPath="$PROJECT_DIR$/.import/casa3.svg-d8d2389c9b513e2e99f71734c3f516bc.stex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/casa4.svg-78bc3279c4e4d1b6d0e8f66f0d7af497.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/casa4.svg-78bc3279c4e4d1b6d0e8f66f0d7af497.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/casa5.svg-fc5d3e4b2e9db8336768a723e8329885.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/casa5.svg-fc5d3e4b2e9db8336768a723e8329885.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/casa5.svg-fc5d3e4b2e9db8336768a723e8329885.stex" beforeDir="false" afterPath="$PROJECT_DIR$/.import/casa5.svg-fc5d3e4b2e9db8336768a723e8329885.stex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/cloud.svg-329266d60bd760d2fba2d4a8ff636479.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/cloud.svg-329266d60bd760d2fba2d4a8ff636479.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/g68373.svg-c8dfec8dc193af6a03e5bbdc80d206d5.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/g68373.svg-c8dfec8dc193af6a03e5bbdc80d206d5.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/hierba1.svg-78a37b5579df915f487ce02f9f1493aa.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/hierba1.svg-78a37b5579df915f487ce02f9f1493aa.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/hierba2.svg-29874fa1a132d23c300f1305ed80e7d0.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/hierba2.svg-29874fa1a132d23c300f1305ed80e7d0.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/hierba3.svg-441ca8f2540623adc52d8ffe4845e451.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/hierba3.svg-441ca8f2540623adc52d8ffe4845e451.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/hierba4.svg-0030c29fe7525838daaa5a3f06b45493.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/hierba4.svg-0030c29fe7525838daaa5a3f06b45493.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/hierba5.svg-ee83f7ef88d94279265e871ba87ee164.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/hierba5.svg-ee83f7ef88d94279265e871ba87ee164.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/icon.svg-218a8f2b3041327d8a5756f3a245f83b.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/icon.svg-218a8f2b3041327d8a5756f3a245f83b.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/idle1.svg-45ab2346a92bce0c2896a40c982ef7a3.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/idle1.svg-45ab2346a92bce0c2896a40c982ef7a3.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/idle1.svg-8c18459ea9716cffbbea700ad1ea7586.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/idle1.svg-8c18459ea9716cffbbea700ad1ea7586.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/idle2.svg-2122dfd80a5e14ad7613ce7b13f29fd7.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/idle2.svg-2122dfd80a5e14ad7613ce7b13f29fd7.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/idle2.svg-ead001e98d4a85108b25018c78145aec.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/idle2.svg-ead001e98d4a85108b25018c78145aec.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/idle3.svg-4f18a1ccfac13d7493e4eb63bc9c7ca2.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/idle3.svg-4f18a1ccfac13d7493e4eb63bc9c7ca2.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/idle3.svg-cdc9fa0d9ca03dee1b6110825e3f6847.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/idle3.svg-cdc9fa0d9ca03dee1b6110825e3f6847.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/idle4.svg-118f969cb68ae1bfb4291ca35c59ace1.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/idle4.svg-118f969cb68ae1bfb4291ca35c59ace1.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/idle4.svg-de0c16e2e4e61c8130e4f7b914c1e7d5.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/idle4.svg-de0c16e2e4e61c8130e4f7b914c1e7d5.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/idle5.svg-3d555ae6f1dc8ed043e4ef5de6c0c116.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/idle5.svg-3d555ae6f1dc8ed043e4ef5de6c0c116.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/idle5.svg-ae0cf0e965e8301151967fc4e0ab05c6.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/idle5.svg-ae0cf0e965e8301151967fc4e0ab05c6.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/katana.svg-29d791b186335fa72bc588b18550e3e8.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/katana.svg-29d791b186335fa72bc588b18550e3e8.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/oshosi_ataque1.svg-eefd29654f43832c670c70cfcd0fb2d3.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/oshosi_ataque1.svg-eefd29654f43832c670c70cfcd0fb2d3.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/oshosi_ataque2.svg-64a14b38bbc8862dbcdd8cea632fb7e3.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/oshosi_ataque2.svg-64a14b38bbc8862dbcdd8cea632fb7e3.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/oshosi_ataque3.svg-f7867950df5c2284e366615f4eba4cf9.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/oshosi_ataque3.svg-f7867950df5c2284e366615f4eba4cf9.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/oshosi_ataque4.svg-3d928f87a1a1adba87bb6370be3fb686.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/oshosi_ataque4.svg-3d928f87a1a1adba87bb6370be3fb686.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/oshosi_ataque5.svg-da70a4042cca5d808acbfea3e7d8e441.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/oshosi_ataque5.svg-da70a4042cca5d808acbfea3e7d8e441.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/oshosi_idle1.svg-16f195a1c033d6848e1ae956cae9320d.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/oshosi_idle1.svg-16f195a1c033d6848e1ae956cae9320d.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/oshosi_idle2.svg-ac7bcde9647e11a13aa1d1482cca7a8f.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/oshosi_idle2.svg-ac7bcde9647e11a13aa1d1482cca7a8f.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/oshosi_idle3.svg-a219e01bf8d347a302fcf12aa15b81b4.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/oshosi_idle3.svg-a219e01bf8d347a302fcf12aa15b81b4.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/oshosi_idle4.svg-1d29d7197622bcf128bb41e5711a5fc1.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/oshosi_idle4.svg-1d29d7197622bcf128bb41e5711a5fc1.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/oshosi_idle5.svg-025456ec5c0af2f5d429aaa83daf1459.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/oshosi_idle5.svg-025456ec5c0af2f5d429aaa83daf1459.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/oshosi_move_2.svg-21590eac7e1a1d8c5766ea24017ecaba.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/oshosi_move_2.svg-21590eac7e1a1d8c5766ea24017ecaba.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/oshosi_move_3.svg-3bc9dd9bf4feb293d9cd71d398687dcc.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/oshosi_move_3.svg-3bc9dd9bf4feb293d9cd71d398687dcc.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/oshosi_move_4.svg-839b884a9e5069a2e2d982616e6c6333.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/oshosi_move_4.svg-839b884a9e5069a2e2d982616e6c6333.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/oshosi_move_5.svg-51578948b3f51a952459ca231e252a42.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/oshosi_move_5.svg-51578948b3f51a952459ca231e252a42.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/oshosi_move_6.svg-38371d62bd57cf1c897e0afac731b68a.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/oshosi_move_6.svg-38371d62bd57cf1c897e0afac731b68a.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/player_move_2.svg-758695e14b2368edb8810746c3cc1aad.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/player_move_2.svg-758695e14b2368edb8810746c3cc1aad.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/player_move_2.svg-b654d7bf5a3b9f034022b2f09a1b68a1.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/player_move_2.svg-b654d7bf5a3b9f034022b2f09a1b68a1.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/player_move_3.svg-12718a8fe89da4021de3d7400b88bde6.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/player_move_3.svg-12718a8fe89da4021de3d7400b88bde6.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/player_move_3.svg-a8b6bfdc2717cc3076a697b5d422ff82.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/player_move_3.svg-a8b6bfdc2717cc3076a697b5d422ff82.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/player_move_4.svg-79d9f9e45bb53a9208f611139e7b97a0.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/player_move_4.svg-79d9f9e45bb53a9208f611139e7b97a0.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/player_move_4.svg-f75d012548762c19015943c04ddd03a0.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/player_move_4.svg-f75d012548762c19015943c04ddd03a0.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/player_move_5.svg-6c932f8d78a10120b13d980282e29cc8.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/player_move_5.svg-6c932f8d78a10120b13d980282e29cc8.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/player_move_5.svg-a4504bf80af1e08ba3d614b3f190fe3e.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/player_move_5.svg-a4504bf80af1e08ba3d614b3f190fe3e.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/player_move_6.svg-2757561b02d021273ff8c33c43d2be11.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/player_move_6.svg-2757561b02d021273ff8c33c43d2be11.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/player_move_6.svg-78a6349bf8f3846ad08c656539594156.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/player_move_6.svg-78a6349bf8f3846ad08c656539594156.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/staff.svg-ebd512c6dfe12f7fcb5bda086f4e695e.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/staff.svg-ebd512c6dfe12f7fcb5bda086f4e695e.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/start_anim_1.svg-8a3cda2d9d2da011cf6f504c1a02c94e.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/start_anim_1.svg-8a3cda2d9d2da011cf6f504c1a02c94e.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/start_anim_10.svg-fc82aefe0ecdeaa81d0dc622b0959e8c.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/start_anim_10.svg-fc82aefe0ecdeaa81d0dc622b0959e8c.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/start_anim_2.svg-c9f211d7a2c16ff140920130f66b92ed.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/start_anim_2.svg-c9f211d7a2c16ff140920130f66b92ed.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/start_anim_3.svg-5e2bde953e3088085bf7fbfeea99c6c7.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/start_anim_3.svg-5e2bde953e3088085bf7fbfeea99c6c7.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/start_anim_4.svg-7b802f6e43b8a70334e0a3f8d97c9d76.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/start_anim_4.svg-7b802f6e43b8a70334e0a3f8d97c9d76.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/start_anim_5.svg-422752f8c95592f280adad324cadad93.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/start_anim_5.svg-422752f8c95592f280adad324cadad93.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/start_anim_6.svg-b34508dc6f83c33c92941c4c162185c6.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/start_anim_6.svg-b34508dc6f83c33c92941c4c162185c6.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/start_anim_7.svg-552f9877119689481815989cebdb2f8f.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/start_anim_7.svg-552f9877119689481815989cebdb2f8f.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/start_anim_8.svg-96dd0eb4a0af5221861a8750b4de0fcb.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/start_anim_8.svg-96dd0eb4a0af5221861a8750b4de0fcb.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/start_anim_9.svg-e72bd3a5f292bbfb503281a1eb678c3f.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/start_anim_9.svg-e72bd3a5f292bbfb503281a1eb678c3f.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/stick.svg-00ed23a16d3e7c9ec4b2a3458f24ec1e.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/stick.svg-00ed23a16d3e7c9ec4b2a3458f24ec1e.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/story_lv_1.svg-2b77f4b3b56557f3042ea656d700128a.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/story_lv_1.svg-2b77f4b3b56557f3042ea656d700128a.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/story_lv_1.svg-43ba968d1d5a6db306f74c98b236e182.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/story_lv_1.svg-43ba968d1d5a6db306f74c98b236e182.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/susanoo_ataque1.svg-c44214718d6482131e9dc37b3db130cc.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/susanoo_ataque1.svg-c44214718d6482131e9dc37b3db130cc.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/susanoo_ataque2.svg-70c4dac00b7fcead0c53aa12fe6fec4c.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/susanoo_ataque2.svg-70c4dac00b7fcead0c53aa12fe6fec4c.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/susanoo_ataque3.svg-8347d16bf4e9af617fcc17a4685ead3d.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/susanoo_ataque3.svg-8347d16bf4e9af617fcc17a4685ead3d.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/susanoo_ataque4.svg-3509dcf03d227c4ea3160f19dc43fb2f.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/susanoo_ataque4.svg-3509dcf03d227c4ea3160f19dc43fb2f.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/susanoo_ataque5.svg-e0d8875de1a438e346aa9618d47f89ac.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/susanoo_ataque5.svg-e0d8875de1a438e346aa9618d47f89ac.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/susanoo_idle1.svg-db68c791ddc38b9fa94322c49656c3dc.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/susanoo_idle1.svg-db68c791ddc38b9fa94322c49656c3dc.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/susanoo_idle2.svg-b1ef8c888538fd02e2338fa174424ae7.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/susanoo_idle2.svg-b1ef8c888538fd02e2338fa174424ae7.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/susanoo_idle3.svg-076c3f254beb9f579518a4516c9d1744.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/susanoo_idle3.svg-076c3f254beb9f579518a4516c9d1744.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/susanoo_idle4.svg-5ae0919c3279cefebb696280dcb4e494.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/susanoo_idle4.svg-5ae0919c3279cefebb696280dcb4e494.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/susanoo_idle5.svg-013f0ad4650f84097c833f5cfc1a733b.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/susanoo_idle5.svg-013f0ad4650f84097c833f5cfc1a733b.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/susanoo_move_2.svg-05fd345894f1c08c841b1128f961ae90.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/susanoo_move_2.svg-05fd345894f1c08c841b1128f961ae90.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/susanoo_move_3.svg-cb5578bf71d1f1d50083c1bd65a88cba.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/susanoo_move_3.svg-cb5578bf71d1f1d50083c1bd65a88cba.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/susanoo_move_4.svg-b92dccf80ed089c38e97ce565341f84a.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/susanoo_move_4.svg-b92dccf80ed089c38e97ce565341f84a.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/susanoo_move_5.svg-7e0a58e6a0b33a16d79d307c3f512da6.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/susanoo_move_5.svg-7e0a58e6a0b33a16d79d307c3f512da6.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/susanoo_move_6.svg-306694d4e51e4e66f5c8b9fe6028026c.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/susanoo_move_6.svg-306694d4e51e4e66f5c8b9fe6028026c.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/sword.svg-9d6f704caeb118ac71f4198a96008f70.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/sword.svg-9d6f704caeb118ac71f4198a96008f70.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/templar_ataque1.svg-fcdff1f143f4e091c6764a1dce8debd9.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/templar_ataque1.svg-fcdff1f143f4e091c6764a1dce8debd9.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/templar_ataque2.svg-18cba81784dec522b637e4809697ba5e.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/templar_ataque2.svg-18cba81784dec522b637e4809697ba5e.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/templar_ataque3.svg-594c003e81632c7cb0c5a4ae1b905677.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/templar_ataque3.svg-594c003e81632c7cb0c5a4ae1b905677.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/templar_ataque4.svg-ab09fbe32f5e1c7fae9d281b98f3cc12.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/templar_ataque4.svg-ab09fbe32f5e1c7fae9d281b98f3cc12.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/templar_ataque5.svg-14391eb614041988eb8442b1f9773173.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/templar_ataque5.svg-14391eb614041988eb8442b1f9773173.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/templar_idle1.svg-bca60b1bade7feab153d24cd1c268a61.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/templar_idle1.svg-bca60b1bade7feab153d24cd1c268a61.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/templar_idle2.svg-45f4fcad6441868a8e55e1224a0c1ec0.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/templar_idle2.svg-45f4fcad6441868a8e55e1224a0c1ec0.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/templar_idle3.svg-f8c35d25d36d25a118fe009132c64e22.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/templar_idle3.svg-f8c35d25d36d25a118fe009132c64e22.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/templar_idle4.svg-c66d37523cb1f6297e584ef3ab3a4e0e.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/templar_idle4.svg-c66d37523cb1f6297e584ef3ab3a4e0e.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/templar_idle5.svg-fb2bdfbd237a9a9a064f56ee0c09db65.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/templar_idle5.svg-fb2bdfbd237a9a9a064f56ee0c09db65.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/templar_move_2.svg-bfe15c31570e7a2c4054e9c1c6e27f39.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/templar_move_2.svg-bfe15c31570e7a2c4054e9c1c6e27f39.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/templar_move_3.svg-0817e7bf3bcfc2567fb44df96f7f375b.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/templar_move_3.svg-0817e7bf3bcfc2567fb44df96f7f375b.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/templar_move_4.svg-0a64afd954de92dbf1813278a86a5e06.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/templar_move_4.svg-0a64afd954de92dbf1813278a86a5e06.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/templar_move_5.svg-5f06487e13d11eb0be974a0e9244d987.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/templar_move_5.svg-5f06487e13d11eb0be974a0e9244d987.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/templar_move_6.svg-3d184d5a46f75428730a5fff2d6ecf49.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/templar_move_6.svg-3d184d5a46f75428730a5fff2d6ecf49.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/veles_ataque1.svg-c7b0d540b424893b684ec6f8dbee41a5.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/veles_ataque1.svg-c7b0d540b424893b684ec6f8dbee41a5.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/veles_ataque2.svg-54b8011f9d1e66bf7a7f4bf12e4fcc9e.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/veles_ataque2.svg-54b8011f9d1e66bf7a7f4bf12e4fcc9e.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/veles_ataque3.svg-b60b45a318aed9bccb9bde4a8d1811b0.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/veles_ataque3.svg-b60b45a318aed9bccb9bde4a8d1811b0.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/veles_ataque4.svg-55e118d9c04af4556d8a2f8f5433b722.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/veles_ataque4.svg-55e118d9c04af4556d8a2f8f5433b722.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/veles_ataque5.svg-74a5f3c1d2048d629700f727b1dc7a31.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/veles_ataque5.svg-74a5f3c1d2048d629700f727b1dc7a31.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/veles_idle1.svg-f2851f9fd4c90a0676fdbf539743d83f.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/veles_idle1.svg-f2851f9fd4c90a0676fdbf539743d83f.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/veles_idle2.svg-20a4d6e69e399a6bb7dd9293afa66bed.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/veles_idle2.svg-20a4d6e69e399a6bb7dd9293afa66bed.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/veles_idle3.svg-e2c7cf29ac86d713f1fed7263c1a5c2c.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/veles_idle3.svg-e2c7cf29ac86d713f1fed7263c1a5c2c.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/veles_idle4.svg-6b6dd8d516559487c89b4403f26a1420.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/veles_idle4.svg-6b6dd8d516559487c89b4403f26a1420.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/veles_idle5.svg-de54e1403c9eceb0f77d112fdb1f3d9b.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/veles_idle5.svg-de54e1403c9eceb0f77d112fdb1f3d9b.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/veles_move_2.svg-9b74188a9e727d7d6f10c630d1fafbcc.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/veles_move_2.svg-9b74188a9e727d7d6f10c630d1fafbcc.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/veles_move_3.svg-1227e7cfc62dcb5999ad97bf2cf3dfe5.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/veles_move_3.svg-1227e7cfc62dcb5999ad97bf2cf3dfe5.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/veles_move_4.svg-927afdc8cf664fb9e9cda553d485d7df.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/veles_move_4.svg-927afdc8cf664fb9e9cda553d485d7df.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/veles_move_5.svg-38d25fa2a4622f35fd8204a105d9c842.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/veles_move_5.svg-38d25fa2a4622f35fd8204a105d9c842.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.import/veles_move_6.svg-48fb85073f97940b0a879a631bdfe292.md5" beforeDir="false" afterPath="$PROJECT_DIR$/.import/veles_move_6.svg-48fb85073f97940b0a879a631bdfe292.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/imgs/Casa/calle.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/assets/imgs/Casa/calle.svg.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/imgs/Casa/calle2.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/assets/imgs/Casa/calle2.svg.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/imgs/Casa/casa1.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/assets/imgs/Casa/casa1.svg.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/imgs/Casa/casa2.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/assets/imgs/Casa/casa2.svg.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/imgs/Casa/casa3.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/assets/imgs/Casa/casa3.svg.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/imgs/Casa/casa4.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/assets/imgs/Casa/casa4.svg.import" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/imgs/Casa/casa5.svg.import" beforeDir="false" afterPath="$PROJECT_DIR$/assets/imgs/Casa/casa5.svg.import" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2LJ4dyrCCXDS6TUbqbW0PremyQ8" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fa18512c-1e62-47c6-ab43-466540dad957" name="Changes" comment="" />
+      <created>1675575942186</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1675575942186</updated>
+    </task>
+    <servers />
+  </component>
+</project>
