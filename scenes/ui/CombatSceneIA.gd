@@ -244,6 +244,10 @@ func _showAnimationFrom(move, player):
 
 func _on_CombatControls_showNextPlay():
 	_initNextPlay()
+	
+	for p in players:
+		if p.hero.id == Persistence.data.hero.id:
+			p.setAnim("idle")
 
 #################################################
 # Socket actions region

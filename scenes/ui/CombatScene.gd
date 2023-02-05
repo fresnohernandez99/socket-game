@@ -137,6 +137,9 @@ func _setPlayOverHero(actualPlay):
 		else:
 			emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] ha usado " + "[color="+ moveColor + "]" + moveName + "[/color] contra " + "[color="+ colorTo + "]" + playerTo.hero.name +"[/color]!" ])
 	
+	playerFrom.setAnim("use")
+	playerTo.setAnim("idle")
+	
 	_calculatePlaysResults(actualPlay)
 
 func _showAnimationOver(move, player):
@@ -149,6 +152,10 @@ func _showAnimationFrom(move, player):
 
 func _on_CombatControls_showNextPlay():
 	_initNextPlay()
+	
+	for p in players:
+		if p.hero.id == Persistence.data.hero.id:
+			p.setAnim("idle")
 
 #################################################
 # Socket actions region

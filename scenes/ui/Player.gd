@@ -46,7 +46,7 @@ func setThinking():
 	isReady = false
 
 func setAnim(anim):
-	actualSprite.aniamtion = anim
+	actualSprite.animation = anim
 
 func _ready():
 	typebackground.color = classHandler.getColorByClass(hero)
