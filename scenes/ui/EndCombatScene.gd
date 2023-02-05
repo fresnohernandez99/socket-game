@@ -214,6 +214,7 @@ func _on_Button6_pressed():
 func _on_ExitBtn_pressed():
 	Persistence.data.hero.lifePoints += classHandler.upgradeLife(Persistence.data.hero)
 	Persistence.save_data()
+	SocketManager.closeConnection()
 	get_tree().change_scene("res://scenes/gui/MainMenu.tscn")
 
 
