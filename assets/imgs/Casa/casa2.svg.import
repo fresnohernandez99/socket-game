@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/casa2.svg-65da095f5e6405a6b736685212483c19.stex"
+path="res://.import/casa2.svg-f9bf1a70d0f71e76f3f1f7ac74e7e4af.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/imgs/Casa/casa2.svg"
-dest_files=[ "res://.import/casa2.svg-65da095f5e6405a6b736685212483c19.stex" ]
+source_file="res://assets/imgs/casa/casa2.svg"
+dest_files=[ "res://.import/casa2.svg-f9bf1a70d0f71e76f3f1f7ac74e7e4af.stex" ]
 
 [params]
 

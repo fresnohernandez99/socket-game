@@ -36,6 +36,7 @@ func _ready():
 	if iaName == "":
 		SocketRooms.names.shuffle()
 		iaName = SocketRooms.names.pop_back()
+		SocketRooms.nextToUse.push_back(iaName)
 	
 	nameLabel.text = iaName
 	

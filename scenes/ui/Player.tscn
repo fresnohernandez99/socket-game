@@ -89,14 +89,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 52 ), ExtResource( 51 ), ExtResource( 59 ), ExtResource( 61 ), ExtResource( 58 ) ],
-"loop": false,
-"name": "use",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 78 ), ExtResource( 10 ), ExtResource( 76 ), ExtResource( 11 ), ExtResource( 77 ) ],
 "loop": true,
 "name": "move",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 52 ), ExtResource( 51 ), ExtResource( 59 ), ExtResource( 61 ), ExtResource( 58 ) ],
+"loop": false,
+"name": "use",
 "speed": 5.0
 } ]
 
@@ -107,14 +107,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 73 ), ExtResource( 71 ), ExtResource( 72 ), ExtResource( 70 ), ExtResource( 69 ) ],
-"loop": false,
-"name": "use",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 29 ), ExtResource( 25 ), ExtResource( 32 ), ExtResource( 24 ), ExtResource( 31 ) ],
 "loop": true,
 "name": "move",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 73 ), ExtResource( 71 ), ExtResource( 72 ), ExtResource( 70 ), ExtResource( 69 ) ],
+"loop": false,
+"name": "use",
 "speed": 5.0
 } ]
 
@@ -125,14 +125,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 60 ), ExtResource( 54 ), ExtResource( 57 ), ExtResource( 55 ), ExtResource( 53 ) ],
-"loop": false,
-"name": "use",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 34 ), ExtResource( 18 ), ExtResource( 40 ), ExtResource( 43 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "move",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 60 ), ExtResource( 54 ), ExtResource( 57 ), ExtResource( 55 ), ExtResource( 53 ) ],
+"loop": false,
+"name": "use",
 "speed": 5.0
 } ]
 
@@ -143,14 +143,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 56 ), ExtResource( 50 ), ExtResource( 49 ), ExtResource( 63 ), ExtResource( 62 ) ],
-"loop": false,
-"name": "use",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 42 ), ExtResource( 48 ), ExtResource( 44 ), ExtResource( 15 ), ExtResource( 14 ) ],
 "loop": true,
 "name": "move",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 56 ), ExtResource( 50 ), ExtResource( 49 ), ExtResource( 63 ), ExtResource( 62 ) ],
+"loop": false,
+"name": "use",
 "speed": 5.0
 } ]
 
@@ -161,14 +161,14 @@ animations = [ {
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 66 ), ExtResource( 64 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 65 ) ],
-"loop": false,
-"name": "use",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 16 ), ExtResource( 36 ), ExtResource( 21 ), ExtResource( 47 ), ExtResource( 35 ) ],
 "loop": true,
 "name": "move",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 66 ), ExtResource( 64 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 65 ) ],
+"loop": false,
+"name": "use",
 "speed": 5.0
 } ]
 
@@ -199,35 +199,35 @@ texture = ExtResource( 8 )
 [node name="Sprite_Class_1_H" type="AnimatedSprite" parent="KinematicBody2D"]
 frames = SubResource( 3 )
 animation = "idle"
-frame = 2
+frame = 4
 playing = true
 flip_h = true
 
 [node name="Sprite_Class_2_O" type="AnimatedSprite" parent="KinematicBody2D"]
 frames = SubResource( 4 )
 animation = "idle"
-frame = 4
+frame = 1
 playing = true
 flip_h = true
 
 [node name="Sprite_Class_3_G" type="AnimatedSprite" parent="KinematicBody2D"]
 frames = SubResource( 5 )
 animation = "idle"
-frame = 2
+frame = 3
 playing = true
 flip_h = true
 
 [node name="Sprite_Class_4_V" type="AnimatedSprite" parent="KinematicBody2D"]
 frames = SubResource( 6 )
 animation = "idle"
-frame = 2
+frame = 4
 playing = true
 flip_h = true
 
 [node name="Sprite_Class_5_S" type="AnimatedSprite" parent="KinematicBody2D"]
 frames = SubResource( 7 )
 animation = "idle"
-frame = 2
+frame = 4
 playing = true
 flip_h = true
 

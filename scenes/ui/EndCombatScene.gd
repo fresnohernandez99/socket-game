@@ -33,8 +33,8 @@ const MoveNames = preload("res://scripts/engine/MoveNames.gd")
 var classHandler = ClassHandler.new()
 var moveHandler = MoveHandler.new()
 var moveNames = MoveNames.new()
-var actualSprite
-var hero = {}
+
+var hero
 
 var stats 
 var uLose = false
@@ -45,12 +45,13 @@ var talentPoints = 0
 var newAttacksEarned = []
 var actualToLearn = null
 
+var actualSprite
 onready var sprites = [
-	$KinematicBody2D/Sprite_Class_1_H,
-	$KinematicBody2D/Sprite_Class_2_O,
-	$KinematicBody2D/Sprite_Class_3_G,
-	$KinematicBody2D/Sprite_Class_4_V,
-	$KinematicBody2D/Sprite_Class_5_S
+	$Control/KinematicBody2D/Sprite_Class_1_H,
+	$Control/KinematicBody2D/Sprite_Class_2_O,
+	$Control/KinematicBody2D/Sprite_Class_3_G,
+	$Control/KinematicBody2D/Sprite_Class_4_V,
+	$Control/KinematicBody2D/Sprite_Class_5_S
 ]
 
 func _ready():
@@ -61,8 +62,8 @@ func _ready():
 	actualSprite = sprites[classHandler.getSpritePosByClass(hero)]
 	
 	for s in sprites:
-		if s != actualSprite:
-			s.hide()
+		if s == actualSprite:
+			s.show()
 	
 	stats = Persistence.data.hero.stats 
 	for p in RoomInfo.finalResult:

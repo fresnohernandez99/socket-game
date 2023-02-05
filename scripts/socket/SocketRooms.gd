@@ -4,6 +4,9 @@ extends Node
 var roomsWithConfigs = []
 
 var names = [
+]
+
+var nextToUse = [
 	"Pepito",
 	"Fulanito",
 	"Menganito",

@@ -6,6 +6,10 @@ const ClassHandler = preload("res://scripts/engine/ClassHandler.gd")
 var classHandler = ClassHandler.new()
 
 func _ready():
+	for i in SocketRooms.nextToUse:
+		SocketRooms.names.push_back(i)
+	
+	
 	SocketManager.actualRootNode = get_node("/root")
 	
 	descriptionLabel.text += Persistence.data.hero.name + " detalles:" + "\n"
