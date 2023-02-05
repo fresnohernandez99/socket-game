@@ -24,6 +24,8 @@ onready var statusLabel = $KinematicBody2D/StatusLabel
 onready var points = $Status/Points
 onready var typebackground = $Status/TypeBackground
 
+onready var weapon = $KinematicBody2D/Weapon
+
 var actualSprite
 onready var sprites = [
 	$KinematicBody2D/Sprite_Class_1_H,
@@ -53,6 +55,7 @@ func _ready():
 	typebackground.color = classHandler.getColorByClass(hero)
 	
 	actualSprite = sprites[classHandler.getSpritePosByClass(hero)]
+	weapon.animation = classHandler.getWeaponByClass(hero)
 	
 	if hero.id != Persistence.data.hero.id:
 		modulate = Color(0.8, 0.8, 0.8, 1)

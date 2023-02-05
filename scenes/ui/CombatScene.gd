@@ -60,6 +60,7 @@ func _initNextPlay():
 	emit_signal("IsLoading", [false])
 	
 	for p in players:
+		p.setAnim("idle")
 		p.setThinking()
 	
 	if RoomInfo.roundResult.size() > 0:
@@ -138,7 +139,6 @@ func _setPlayOverHero(actualPlay):
 			emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] ha usado " + "[color="+ moveColor + "]" + moveName + "[/color] contra " + "[color="+ colorTo + "]" + playerTo.hero.name +"[/color]!" ])
 	
 	playerFrom.setAnim("use")
-	playerTo.setAnim("idle")
 	
 	_calculatePlaysResults(actualPlay)
 
@@ -152,10 +152,6 @@ func _showAnimationFrom(move, player):
 
 func _on_CombatControls_showNextPlay():
 	_initNextPlay()
-	
-	for p in players:
-		if p.hero.id == Persistence.data.hero.id:
-			p.setAnim("idle")
 
 #################################################
 # Socket actions region

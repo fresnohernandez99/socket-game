@@ -97,6 +97,21 @@ func getSpritePosByClass(hero):
 			spritePos = 4
 	return spritePos
 
+func getWeaponByClass(hero):
+	var weapon
+	match hero.charClass.name:
+		CLASS_BOX:
+			weapon = "1_H"
+		CLASS_ARCHER:
+			weapon = "2_O"
+		CLASS_SWORD_MASTER:
+			weapon = "3_G"
+		CLASS_WIZARD:
+			weapon = "4_V"
+		CLASS_NINJA :
+			weapon = "5_S"
+	return weapon
+
 func getClassName(hero):
 	var className
 	match hero.charClass.name:
