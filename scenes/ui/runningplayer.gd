@@ -5,6 +5,8 @@ export (float) var rotation_speed = 1.5
 onready var animatedSprite = $Nino
 var velocity = Vector2()
 
+var canMove = true
+
 func _ready():
 	pass
 	
@@ -23,7 +25,8 @@ func get_input():
 	velocity = velocity.normalized() * speed
 
 func _process(delta):
-	get_input()
+	if canMove:
+		get_input()
 	velocity = move_and_slide(velocity)
 		
 	if velocity.y == 0 && velocity.x == 0:

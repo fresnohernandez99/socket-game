@@ -50,6 +50,9 @@ func _ready():
 	
 	actualSprite = sprites[classHandler.getSpritePosByClass(hero)]
 	
+	if hero.id != Persistence.data.hero.id:
+		modulate = Color(0.8, 0.8, 0.8, 1)
+	
 	for s in sprites:
 		if s != actualSprite:
 			s.hide()

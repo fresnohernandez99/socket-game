@@ -33,7 +33,11 @@ onready var enemiesPosition = [enemy1Position]
 
 func _ready():
 	music.volume_db = int(Persistence.data.option.volume / 10)
-	enemyIA = BaseIAEnemy.new().getNewNpc("IATEST", 10)
+	
+	if RoomInfo.actualIAHero == null:
+		enemyIA = BaseIAEnemy.new().getNewNpc("IATEST", 10)
+	else:
+		enemyIA = RoomInfo.actualIAHero
 	
 	pieces.push_back(Persistence.data.hero)
 	hero = pieces.duplicate(true)[0]

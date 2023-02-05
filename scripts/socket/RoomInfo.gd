@@ -14,6 +14,8 @@ var lastDisconnectedUser = ""
 
 var usersInfo = []
 
+var actualIAHero
+
 # To show player status
 var allPlayersReady = false
 var lastPlayerReady: String

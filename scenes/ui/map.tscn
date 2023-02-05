@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=38 format=2]
 
 [ext_resource path="res://scenes/ui/Runningplayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ui/Enemy.tscn" type="PackedScene" id=2]
@@ -25,6 +25,8 @@
 [ext_resource path="res://scenes/ui/objects/Cloud.tscn" type="PackedScene" id=23]
 [ext_resource path="res://assets/music/mysterious.ogg" type="AudioStream" id=24]
 [ext_resource path="res://scenes/ui/Amigo.tscn" type="PackedScene" id=25]
+[ext_resource path="res://assets/imgs/back/anim_entered_down.svg" type="Texture" id=26]
+[ext_resource path="res://assets/imgs/back/anim_entered_up.svg" type="Texture" id=27]
 
 [sub_resource type="SpriteFrames" id=8]
 animations = [ {
@@ -255,346 +257,338 @@ texture = ExtResource( 15 )
 [node name="Past" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 448, 267 )
 frames = SubResource( 8 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Past2" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 415, 265 )
 frames = SubResource( 8 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Past3" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 599, 265 )
 frames = SubResource( 8 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Past4" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 551, 473 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 
 [node name="Past5" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 535, 553 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 
 [node name="Past6" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 615, 673 )
 frames = SubResource( 8 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="Past7" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 615, 769 )
 frames = SubResource( 8 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="Past8" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 503, 721 )
 frames = SubResource( 8 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="Past27" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1335, -207 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 
 [node name="Past28" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1319, -127 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 
 [node name="Past29" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1399, -7 )
 frames = SubResource( 8 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="Past30" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1399, 89 )
 frames = SubResource( 8 )
-frame = 2
+frame = 4
 playing = true
 flip_h = true
 
 [node name="Past31" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1287, 41 )
 frames = SubResource( 8 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Past32" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1591, -351 )
 frames = SubResource( 8 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="Past33" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1575, -271 )
 frames = SubResource( 8 )
-frame = 2
+frame = 4
 playing = true
 flip_h = true
 
 [node name="Past34" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1655, -151 )
 frames = SubResource( 8 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Past35" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1655, -55 )
 frames = SubResource( 8 )
-frame = 1
+frame = 3
 playing = true
 flip_h = true
 
 [node name="Past36" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1543, -103 )
 frames = SubResource( 8 )
+frame = 2
 playing = true
 flip_h = true
 
 [node name="Past37" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1663, -271 )
 frames = SubResource( 8 )
-frame = 2
+frame = 4
 playing = true
 flip_h = true
 
 [node name="Past38" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1647, -191 )
 frames = SubResource( 8 )
-frame = 2
+frame = 4
 playing = true
 
 [node name="Past39" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1727, -71 )
 frames = SubResource( 8 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Past40" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1727, 25 )
 frames = SubResource( 8 )
-frame = 1
+frame = 3
 playing = true
 flip_h = true
 
 [node name="Past41" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1615, -23 )
 frames = SubResource( 8 )
+frame = 2
 playing = true
 
 [node name="Past42" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2287, -199 )
 frames = SubResource( 8 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Past43" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2271, -119 )
 frames = SubResource( 8 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Past44" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2351, 1 )
 frames = SubResource( 8 )
+frame = 2
 playing = true
 
 [node name="Past45" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2351, 97 )
 frames = SubResource( 8 )
+frame = 2
 playing = true
 
 [node name="Past46" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2239, 49 )
 frames = SubResource( 8 )
-frame = 4
+frame = 1
 playing = true
 flip_h = true
 
 [node name="Past47" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2287, 505 )
 frames = SubResource( 8 )
+frame = 2
 playing = true
 
 [node name="Past48" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2271, 585 )
 frames = SubResource( 8 )
+frame = 2
 playing = true
 
 [node name="Past49" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2351, 705 )
 frames = SubResource( 8 )
-frame = 4
+frame = 1
 playing = true
 flip_h = true
 
 [node name="Past50" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2351, 801 )
 frames = SubResource( 8 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Past51" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2239, 753 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 flip_h = true
 
 [node name="Past52" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2439, 505 )
 frames = SubResource( 8 )
+frame = 2
 playing = true
 
 [node name="Past53" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2423, 585 )
 frames = SubResource( 8 )
+frame = 2
 playing = true
 flip_h = true
 
 [node name="Past54" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2503, 705 )
 frames = SubResource( 8 )
-frame = 4
+frame = 1
 playing = true
 flip_h = true
 
 [node name="Past55" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2503, 801 )
 frames = SubResource( 8 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Past56" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2391, 753 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 flip_h = true
 
 [node name="Past9" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 391, 737 )
 frames = SubResource( 8 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="Past10" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 367, 737 )
 frames = SubResource( 8 )
+frame = 2
 playing = true
 flip_h = true
 
 [node name="Past11" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 823, 737 )
 frames = SubResource( 8 )
+frame = 2
 playing = true
 
 [node name="Past12" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 967, 657 )
 frames = SubResource( 8 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Past13" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1008, 601 )
 frames = SubResource( 8 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Past14" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1004, 857 )
 frames = SubResource( 8 )
-frame = 4
+frame = 1
 playing = true
 flip_h = true
 
 [node name="Past18" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1279, 601 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 
 [node name="Past19" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1320, 545 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 
 [node name="Past20" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1316, 801 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 
 [node name="Past21" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1695, 601 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 
 [node name="Past22" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1736, 545 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 flip_h = true
 
 [node name="Past23" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 1732, 801 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 flip_h = true
 
 [node name="Past24" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2047, 561 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 flip_h = true
 
 [node name="Past25" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2088, 505 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 flip_h = true
 
 [node name="Past26" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 2084, 761 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 flip_h = true
 
 [node name="Past15" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 883, 921 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 
 [node name="Past16" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 731, 921 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 
 [node name="Past17" type="AnimatedSprite" parent="Group1/Arbustos"]
 position = Vector2( 713, 921 )
 frames = SubResource( 8 )
-frame = 3
 playing = true
 
 [node name="Casa1" type="StaticBody2D" parent="Group1"]
@@ -635,7 +629,7 @@ position = Vector2( 269, -36 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Group1/Arbol5"]
 position = Vector2( 294, 163 )
 frames = SubResource( 3 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Group1/Arbol5"]
@@ -766,7 +760,7 @@ position = Vector2( 1288, 408 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Group2/Arbol"]
 position = Vector2( 294, 163 )
 frames = SubResource( 3 )
-frame = 1
+frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Group2/Arbol"]
@@ -779,7 +773,7 @@ position = Vector2( 1064, 523 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Group2/Arbol2"]
 position = Vector2( 294, 163 )
 frames = SubResource( 3 )
-frame = 1
+frame = 3
 playing = true
 flip_h = true
 
@@ -793,6 +787,7 @@ position = Vector2( 1136, 715 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Group2/Arbol3"]
 position = Vector2( 294, 163 )
 frames = SubResource( 3 )
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Group2/Arbol3"]
@@ -805,7 +800,6 @@ position = Vector2( 1400, 499 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Group2/Arbol4"]
 position = Vector2( 294, 163 )
 frames = SubResource( 5 )
-frame = 3
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Group2/Arbol4"]
@@ -928,26 +922,24 @@ position = Vector2( 5981, 1013 )
 [node name="Cloud3" parent="Group2/Clouds" instance=ExtResource( 23 )]
 position = Vector2( 4129, 371 )
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 24 )
-autoplay = true
+[node name="Friends" type="Node2D" parent="."]
 
-[node name="AmigoT4" parent="." instance=ExtResource( 25 )]
+[node name="AmigoT4" parent="Friends" instance=ExtResource( 25 )]
 modulate = Color( 0.792157, 0.952941, 0.34902, 1 )
 position = Vector2( 1065, 442 )
 idAmigo = 3
 
-[node name="AmigoT3" parent="." instance=ExtResource( 25 )]
+[node name="AmigoT3" parent="Friends" instance=ExtResource( 25 )]
 modulate = Color( 0.552941, 0.54902, 0.964706, 1 )
 position = Vector2( 1062, 279 )
 idAmigo = 2
 
-[node name="AmigoT2" parent="." instance=ExtResource( 25 )]
+[node name="AmigoT2" parent="Friends" instance=ExtResource( 25 )]
 modulate = Color( 1, 0.52549, 0.52549, 1 )
 position = Vector2( 835, 286 )
 idAmigo = 1
 
-[node name="AmigoT1" parent="." instance=ExtResource( 25 )]
+[node name="AmigoT1" parent="Friends" instance=ExtResource( 25 )]
 modulate = Color( 0.780392, 0.901961, 0.643137, 1 )
 position = Vector2( 599, 285 )
 
@@ -955,33 +947,21 @@ position = Vector2( 599, 285 )
 
 [node name="Enemy" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 1148, -156 )
-level = 1
-iaName = "ia"
 
 [node name="Enemy2" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 1152, 933 )
-level = 1
-iaName = "ia"
 
 [node name="Enemy3" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 1923, -160 )
-level = 1
-iaName = "ia"
 
 [node name="Enemy4" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 1919, 929 )
-level = 1
-iaName = "ia"
 
 [node name="Enemy6" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 2686, 933 )
-level = 1
-iaName = "ia"
 
 [node name="Enemy5" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 2686, -164 )
-level = 1
-iaName = "ia"
 
 [node name="Wall" type="StaticBody2D" parent="Enemies"]
 position = Vector2( 1153, 0 )
@@ -1018,4 +998,36 @@ collision_mask = 2
 position = Vector2( 12, 698 )
 shape = SubResource( 10 )
 
+[node name="InitBattleAnimation" type="Node2D" parent="."]
+
+[node name="Square1" type="ColorRect" parent="InitBattleAnimation"]
+visible = false
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="AnimEnteredUp" type="Sprite" parent="InitBattleAnimation/Square1"]
+position = Vector2( 0, 34 )
+texture = ExtResource( 27 )
+
+[node name="Square2" type="ColorRect" parent="InitBattleAnimation"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="AnimEnteredDown" type="Sprite" parent="InitBattleAnimation/Square2"]
+position = Vector2( 1, 32 )
+texture = ExtResource( 26 )
+
+[node name="Tween" type="Tween" parent="InitBattleAnimation"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+autoplay = true
+
 [connection signal="area_entered" from="Group2/Clouds/ResetCloudArea" to="." method="_on_ResetCloudArea_area_entered"]
+[connection signal="start" from="Enemies/Enemy" to="." method="_on_Enemy_start"]
+[connection signal="start" from="Enemies/Enemy2" to="." method="_on_Enemy_start"]
+[connection signal="start" from="Enemies/Enemy3" to="." method="_on_Enemy_start"]
+[connection signal="start" from="Enemies/Enemy4" to="." method="_on_Enemy_start"]
+[connection signal="start" from="Enemies/Enemy6" to="." method="_on_Enemy_start"]
+[connection signal="start" from="Enemies/Enemy5" to="." method="_on_Enemy_start"]
+[connection signal="tween_all_completed" from="InitBattleAnimation/Tween" to="." method="_on_Tween_tween_all_completed"]
