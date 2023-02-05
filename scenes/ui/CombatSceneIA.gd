@@ -266,6 +266,8 @@ func emulatePlay(move, posTo, posFrom):
 			"wasMiss": false
 		}
 	
+	print(JSON.print(enemyIA.handDeck.items[0].moves))
+	
 	if IAMove.move.type != moveHandler.ATTACK_MOVE:
 		IAMove.positionTo = "IA" + "_1"
 	

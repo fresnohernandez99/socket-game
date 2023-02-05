@@ -245,7 +245,7 @@ func _on_Move3Btn_pressed():
 	attacks.hide()
 
 func _on_Move4Btn_pressed():
-	if Persistence.data.hero.moves.size() >= 3:
+	if Persistence.data.hero.moves.size() > 3:
 		Persistence.data.hero.moves[3] = actualToLearn
 	else:
 		Persistence.data.hero.moves.push_back(actualToLearn)

@@ -27,7 +27,7 @@ func getNewNpc(name: String, level: int):
 					"position": "",
 					"type": "hero",
 					"name": name,
-					"level": level,
+					"level": 1,
 					"experience": 0,
 					"nextLevelOn": 100,
 					"lifePoints": 100,
@@ -40,12 +40,14 @@ func getNewNpc(name: String, level: int):
 	
 	IAHero.moves = moveHandler.generateInitialMoves(classHandler, IAHero)
 	
+	IAHero.level = level
+	
 	var talentPoints = level / 2
 	while talentPoints != 0:
 		var selected = int(rand_range(0, IAHero.stats.size()))
 		IAHero.stats[selected].value += 1
 		talentPoints -= 1
-		
+	
 	if level > 1 && level < 10:
 		var newPower1 = moveHandler.generateNextMove(classHandler, IAHero)
 		if newPower1 != null:

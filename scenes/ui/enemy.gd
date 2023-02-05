@@ -43,7 +43,7 @@ func _ready():
 			level = int(rand_range(1, 3))
 		else:
 			level = int(rand_range(Persistence.data.hero.level - 1, Persistence.data.hero.level + 3))
-	
+			
 	IA = BaseIAEnemy.new().getNewNpc(iaName, level)
 	hero = IA.handDeck.items[0]
 	
