@@ -10,6 +10,8 @@ var classHandler = ClassHandler.new()
 
 var canMove = true
 
+var isPlaying = false
+
 var actualSprite
 onready var sprites = [
 	$Sprite_Class_1_H,
@@ -18,6 +20,8 @@ onready var sprites = [
 	$Sprite_Class_4_V,
 	$Sprite_Class_5_S
 ]
+
+onready var stepsAudio = $AudioStreamPlayer2D
 
 func _ready():
 	actualSprite = sprites[classHandler.getSpritePosByClass(Persistence.data.hero)]
@@ -48,8 +52,13 @@ func _process(delta):
 		
 	if velocity.y == 0 && velocity.x == 0:
 		actualSprite.animation = "idle"
+		isPlaying = false
+		stepsAudio.stop()
 	else:
 		actualSprite.animation = "move"
+		if !isPlaying:
+			isPlaying = true
+			stepsAudio.play()
 	
 	if velocity.x != 0 :
 		actualSprite.flip_h = velocity.x < 0

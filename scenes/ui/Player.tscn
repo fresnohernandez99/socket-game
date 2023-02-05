@@ -323,3 +323,5 @@ margin_right = 154.0
 margin_bottom = 195.0
 
 [node name="Tween" type="Tween" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

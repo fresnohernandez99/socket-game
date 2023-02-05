@@ -47,17 +47,41 @@ func getNewNpc(name: String, level: int):
 		talentPoints -= 1
 		
 	if level > 1 && level < 10:
-		IAHero.moves.push_back(moveHandler.generateNextMove(classHandler, IAHero))
-		IAHero.moves.push_back(moveHandler.generateNextMove(classHandler, IAHero))
+		var newPower1 = moveHandler.generateNextMove(classHandler, IAHero)
+		if newPower1 != null:
+			IAHero.moves.push_back(newPower1)
+		
+		var newPower2 = moveHandler.generateNextMove(classHandler, IAHero)
+		if newPower2 != null:
+			IAHero.moves.push_back(newPower2)
 	elif level >= 10 && level < 20:
-		IAHero.moves[0] = moveHandler.generateNextMove(classHandler, IAHero)
-		IAHero.moves.push_back(moveHandler.generateNextMove(classHandler, IAHero))
-		IAHero.moves.push_back(moveHandler.generateNextMove(classHandler, IAHero))
+		var newPower1 = moveHandler.generateNextMove(classHandler, IAHero)
+		if newPower1 != null:
+			IAHero.moves.push_back(newPower1)
+		
+		var newPower2 = moveHandler.generateNextMove(classHandler, IAHero)
+		if newPower2 != null:
+			IAHero.moves.push_back(newPower2)
+		
+		var newPower3 = moveHandler.generateNextMove(classHandler, IAHero)
+		if newPower3 != null:
+			IAHero.moves[0] = newPower3
 	elif level >= 20 && level < 30:
-		IAHero.moves[0] = moveHandler.generateNextMove(classHandler, IAHero)
-		IAHero.moves[1] = moveHandler.generateNextMove(classHandler, IAHero)
-		IAHero.moves.push_back(moveHandler.generateNextMove(classHandler, IAHero))
-		IAHero.moves.push_back(moveHandler.generateNextMove(classHandler, IAHero))
+		var newPower1 = moveHandler.generateNextMove(classHandler, IAHero)
+		if newPower1 != null:
+			IAHero.moves.push_back(newPower1)
+		
+		var newPower2 = moveHandler.generateNextMove(classHandler, IAHero)
+		if newPower2 != null:
+			IAHero.moves.push_back(newPower2)
+		
+		var newPower3 = moveHandler.generateNextMove(classHandler, IAHero)
+		if newPower3 != null:
+			IAHero.moves[0] = newPower3
+			
+		var newPower4 = moveHandler.generateNextMove(classHandler, IAHero)
+		if newPower4 != null:
+			IAHero.moves[1] = newPower4
 	
 	IAHero.lifePoints += classHandler.upgradeLife(IAHero)
 	

@@ -39,6 +39,15 @@ onready var sprites = [
 	$KinematicBody2D/Sprite_Class_5_S
 ]
 
+onready var audio = $AudioStreamPlayer2D
+
+onready var hitSounds = [
+	load("res://assets/sfx/hit_1.wav"),
+	load("res://assets/sfx/hit_2.wav"),
+	load("res://assets/sfx/hit_3.wav"),
+	load("res://assets/sfx/hit_4.wav")
+]
+
 func setData(data, standX, standY, turnFor = RIGHT):
 	hero = data
 	horizontalPosition = standX
@@ -56,6 +65,7 @@ func setAnim(anim):
 	actualSprite.frame = 0
 
 func _ready():
+	randomize()
 	typebackground.color = classHandler.getColorByClass(hero)
 	
 	actualSprite = sprites[classHandler.getSpritePosByClass(hero)]
@@ -103,7 +113,9 @@ func receiveHit(damage):
 	
 	startTween()
 	yieldAndReset()
-
+	
+	audio.stream = hitSounds[int(rand_range(0, hitSounds.size()))]
+	audio.play()
 func sendHit():
 	pass
 
