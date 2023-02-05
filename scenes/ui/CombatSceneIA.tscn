@@ -39,7 +39,7 @@ script = ExtResource( 2 )
 [node name="Background" type="AnimatedSprite" parent="."]
 position = Vector2( 160, 320 )
 frames = SubResource( 1 )
-frame = 4
+frame = 3
 playing = true
 
 [node name="Hierva" type="AnimatedSprite" parent="Background"]

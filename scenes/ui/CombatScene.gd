@@ -139,6 +139,7 @@ func _setPlayOverHero(actualPlay):
 			emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] ha usado " + "[color="+ moveColor + "]" + moveName + "[/color] contra " + "[color="+ colorTo + "]" + playerTo.hero.name +"[/color]!" ])
 	
 	playerFrom.setAnim("use")
+	playerFrom.sendHit()
 	
 	_calculatePlaysResults(actualPlay)
 

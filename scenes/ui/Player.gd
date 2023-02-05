@@ -48,6 +48,13 @@ onready var hitSounds = [
 	load("res://assets/sfx/hit_4.wav")
 ]
 
+onready var powerSounds = [
+	load("res://assets/sfx/attack_1.wav"),
+	load("res://assets/sfx/attack_2.wav"),
+	load("res://assets/sfx/attack_3.wav"),
+	load("res://assets/sfx/attack_4.wav"),
+]
+
 func setData(data, standX, standY, turnFor = RIGHT):
 	hero = data
 	horizontalPosition = standX
@@ -116,8 +123,10 @@ func receiveHit(damage):
 	
 	audio.stream = hitSounds[int(rand_range(0, hitSounds.size()))]
 	audio.play()
+
 func sendHit():
-	pass
+	audio.stream = powerSounds[int(rand_range(0, hitSounds.size()))]
+	audio.play()
 
 func increaseStat(p):
 	actualTweenInterpolation = [Color(1,1,1,1), Color(0.5,0.5,1,1)]

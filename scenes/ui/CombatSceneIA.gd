@@ -35,7 +35,7 @@ func _ready():
 	music.volume_db = int(Persistence.data.option.volume / 10)
 	
 	if RoomInfo.actualIAHero == null:
-		enemyIA = BaseIAEnemy.new().getNewNpc("IATEST", 5)
+		enemyIA = BaseIAEnemy.new().getNewNpc("IATEST", 20)
 	else:
 		enemyIA = RoomInfo.actualIAHero
 	
@@ -232,6 +232,7 @@ func _setPlayOverHero(actualPlay):
 	
 	
 	playerFrom.setAnim("use")
+	playerFrom.sendHit()
 	
 	_calculatePlaysResults(actualPlay)
 
@@ -265,8 +266,7 @@ func emulatePlay(move, posTo, posFrom):
 			"move": enemyIA.handDeck.items[0].moves[int(rand_range(0, enemyIA.handDeck.items[0].moves.size()))],
 			"wasMiss": false
 		}
-	print("A" + JSON.print(enemyIA.handDeck.items) + "\n")
-	print(JSON.print(IAMove.move))
+	
 	if IAMove.move.type != moveHandler.ATTACK_MOVE:
 		IAMove.positionTo = "IA" + "_1"
 	
