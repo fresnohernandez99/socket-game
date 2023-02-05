@@ -13,6 +13,8 @@ onready var containerDown = $InitBattleAnimation/Square2
 onready var player = $Runningplayer
 onready var playerCamera = $Runningplayer/Camera2D
 
+onready var monsterLabel = $Enemies/Monster/RichTextLabel
+
 func _ready():
 	music.volume_db = int(Persistence.data.option.volume / 10)
 	
@@ -45,3 +47,13 @@ func _on_Enemy_start():
 
 func _on_Tween_tween_all_completed():
 	get_tree().change_scene("res://scenes/ui/CombatSceneIA.tscn")
+
+
+func _on_Area2D_body_exited(body):
+	if body.is_in_group("player"):
+		monsterLabel.hide()
+
+
+func _on_Area2D_body_entered(body):
+	if body.is_in_group("player"):
+		monsterLabel.show()
