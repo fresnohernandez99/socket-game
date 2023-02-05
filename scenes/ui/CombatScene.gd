@@ -182,17 +182,21 @@ func _calculatePlaysResults(actualPlay):
 			moveHandler.ATTACK_MOVE:
 				_calculateAttack(actualPlay.move, playerTo, playerFrom)
 			moveHandler.DEFENSE_MOVE:
-				playerTo.hero.stats[0].value += playerTo.hero.stats[0].value * actualPlay.move.percent
+				var increase = playerTo.hero.stats[0].value * actualPlay.move.percent
+				playerTo.hero.stats[0].value += increase
+				playerTo.increaseStat(increase)
 			moveHandler.HEAL_MOVE:
 				if playerTo.hero.lifePointsLose > actualPlay.move.restoredPoints:
 					playerTo.hero.lifePointsLose -= actualPlay.move.restoredPoints
 				else:
 					playerTo.hero.lifePointsLose = 0
-					
+				playerTo.increaseLife(actualPlay.move.restoredPoints)
 			moveHandler.BOOST_MOVE:
 				playerTo.hero.stats[actualPlay.move.attrToBoost].value += actualPlay.move.value
+				playerTo.increaseStat(actualPlay.move.value)
 			moveHandler.INSTANT_HEAL_MOVE:
 				playerTo.hero.lifePointsLose = 0
+				playerTo.increaseLife("∞")
 
 		if playerFrom.hero.id == hero.id:
 			combatControls.setHero(playerFrom.hero)

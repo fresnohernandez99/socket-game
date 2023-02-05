@@ -45,6 +45,9 @@ func setReady():
 func setThinking():
 	isReady = false
 
+func setAnim(anim):
+	actualSprite.aniamtion = anim
+
 func _ready():
 	typebackground.color = classHandler.getColorByClass(hero)
 	
@@ -92,7 +95,7 @@ func sendHit():
 	pass
 
 func increaseStat(p):
-	points.start("+" + str(points), Color(0,0,1,0))
+	points.start("+" + str(p), Color(0,0,1,0))
 
 func decreaseStat(p):
 	points.start("-" + str(p), Color(1,0,1,0))

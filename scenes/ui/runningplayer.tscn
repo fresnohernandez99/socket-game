@@ -1,28 +1,170 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://assets/imgs/player/idle/idle4.svg" type="Texture" id=1]
 [ext_resource path="res://assets/imgs/player/idle/idle5.svg" type="Texture" id=2]
-[ext_resource path="res://assets/imgs/player/move/player_move_6.svg" type="Texture" id=3]
+[ext_resource path="res://assets/imgs/players/oshosi/oshosi_ataque/oshosi_ataque5.svg" type="Texture" id=3]
 [ext_resource path="res://assets/imgs/player/idle/idle2.svg" type="Texture" id=4]
-[ext_resource path="res://assets/imgs/player/move/player_move_3.svg" type="Texture" id=5]
-[ext_resource path="res://assets/imgs/player/move/player_move_5.svg" type="Texture" id=6]
+[ext_resource path="res://assets/imgs/players/oshosi/oshosi_ataque/oshosi_ataque4.svg" type="Texture" id=5]
+[ext_resource path="res://assets/imgs/players/susanoo/susano_ataque/susanoo_ataque2.svg" type="Texture" id=6]
 [ext_resource path="res://assets/imgs/player/idle/idle1.svg" type="Texture" id=7]
-[ext_resource path="res://assets/imgs/player/move/player_move_4.svg" type="Texture" id=8]
+[ext_resource path="res://assets/imgs/players/susanoo/susano_ataque/susanoo_ataque5.svg" type="Texture" id=8]
 [ext_resource path="res://assets/imgs/player/idle/idle3.svg" type="Texture" id=9]
-[ext_resource path="res://assets/imgs/player/move/player_move_2.svg" type="Texture" id=10]
+[ext_resource path="res://assets/imgs/players/susanoo/susano_ataque/susanoo_ataque1.svg" type="Texture" id=10]
 [ext_resource path="res://scenes/ui/Runningplayer.gd" type="Script" id=11]
 [ext_resource path="res://assets/imgs/cloud.svg" type="Texture" id=12]
+[ext_resource path="res://assets/imgs/players/templar/templar_idle/templar_idle5.svg" type="Texture" id=13]
+[ext_resource path="res://assets/imgs/players/susanoo/susanoo_idle/susanoo_idle1.svg" type="Texture" id=14]
+[ext_resource path="res://assets/imgs/players/veles/veles_ataque/veles_ataque3.svg" type="Texture" id=15]
+[ext_resource path="res://assets/imgs/players/susanoo/susanoo_idle/susanoo_idle4.svg" type="Texture" id=16]
+[ext_resource path="res://assets/imgs/players/templar/templar_move/templar_move_6.svg" type="Texture" id=17]
+[ext_resource path="res://assets/imgs/players/susanoo/susanoo_idle/susanoo_idle3.svg" type="Texture" id=18]
+[ext_resource path="res://assets/imgs/players/veles/veles_move/veles_move_5.svg" type="Texture" id=19]
+[ext_resource path="res://assets/imgs/players/oshosi/oshosi_move/oshosi_move_5.svg" type="Texture" id=20]
+[ext_resource path="res://assets/imgs/players/veles/veles_move/veles_move_6.svg" type="Texture" id=21]
+[ext_resource path="res://assets/imgs/players/veles/veles_ataque/veles_ataque2.svg" type="Texture" id=22]
+[ext_resource path="res://assets/imgs/players/susanoo/susano_move/susanoo_move_2.svg" type="Texture" id=23]
+[ext_resource path="res://assets/imgs/players/veles/veles_idle/veles_idle3.svg" type="Texture" id=24]
+[ext_resource path="res://assets/imgs/players/boy/boy_ataque/ataque2.svg" type="Texture" id=25]
+[ext_resource path="res://assets/imgs/players/oshosi/oshosi_move/oshosi_move_3.svg" type="Texture" id=26]
+[ext_resource path="res://assets/imgs/players/templar/templar_move/templar_move_3.svg" type="Texture" id=27]
+[ext_resource path="res://assets/imgs/players/susanoo/susanoo_idle/susanoo_idle5.svg" type="Texture" id=28]
+[ext_resource path="res://assets/imgs/players/boy/boy_ataque/ataque1.svg" type="Texture" id=29]
+[ext_resource path="res://assets/imgs/players/templar/templar_ataque/templar_ataque5.svg" type="Texture" id=30]
+[ext_resource path="res://assets/imgs/players/templar/templar_idle/templar_idle4.svg" type="Texture" id=31]
+[ext_resource path="res://assets/imgs/players/susanoo/susano_move/susanoo_move_5.svg" type="Texture" id=32]
+[ext_resource path="res://assets/imgs/players/templar/templar_idle/templar_idle2.svg" type="Texture" id=33]
+[ext_resource path="res://assets/imgs/players/veles/veles_idle/veles_idle5.svg" type="Texture" id=34]
+[ext_resource path="res://assets/imgs/players/oshosi/oshosi_idle/oshosi_idle4.svg" type="Texture" id=35]
+[ext_resource path="res://assets/imgs/players/templar/templar_ataque/templar_ataque2.svg" type="Texture" id=36]
+[ext_resource path="res://assets/imgs/players/templar/templar_ataque/templar_ataque4.svg" type="Texture" id=37]
+[ext_resource path="res://assets/imgs/players/templar/templar_move/templar_move_2.svg" type="Texture" id=38]
+[ext_resource path="res://assets/imgs/players/veles/veles_ataque/veles_ataque1.svg" type="Texture" id=39]
+[ext_resource path="res://assets/imgs/players/oshosi/oshosi_idle/oshosi_idle1.svg" type="Texture" id=40]
+[ext_resource path="res://assets/imgs/players/templar/templar_ataque/templar_ataque3.svg" type="Texture" id=41]
+[ext_resource path="res://assets/imgs/players/boy/boy_ataque/ataque5.svg" type="Texture" id=42]
+[ext_resource path="res://assets/imgs/players/boy/boy_ataque/ataque3.svg" type="Texture" id=43]
+[ext_resource path="res://assets/imgs/players/susanoo/susano_move/susanoo_move_6.svg" type="Texture" id=44]
+[ext_resource path="res://assets/imgs/players/templar/templar_ataque/templar_ataque1.svg" type="Texture" id=45]
+[ext_resource path="res://assets/imgs/players/oshosi/oshosi_idle/oshosi_idle3.svg" type="Texture" id=46]
+[ext_resource path="res://assets/imgs/players/boy/boy_ataque/ataque4.svg" type="Texture" id=47]
+[ext_resource path="res://assets/imgs/players/oshosi/oshosi_move/oshosi_move_2.svg" type="Texture" id=48]
+[ext_resource path="res://assets/imgs/players/susanoo/susano_move/susanoo_move_3.svg" type="Texture" id=49]
+[ext_resource path="res://assets/imgs/players/oshosi/oshosi_idle/oshosi_idle5.svg" type="Texture" id=50]
+[ext_resource path="res://assets/imgs/players/oshosi/oshosi_move/oshosi_move_6.svg" type="Texture" id=51]
+[ext_resource path="res://assets/imgs/players/templar/templar_idle/templar_idle1.svg" type="Texture" id=52]
+[ext_resource path="res://assets/imgs/players/oshosi/oshosi_move/oshosi_move_4.svg" type="Texture" id=53]
+[ext_resource path="res://assets/imgs/players/veles/veles_ataque/veles_ataque5.svg" type="Texture" id=54]
+[ext_resource path="res://assets/imgs/players/veles/veles_ataque/veles_ataque4.svg" type="Texture" id=55]
+[ext_resource path="res://assets/imgs/players/susanoo/susanoo_idle/susanoo_idle2.svg" type="Texture" id=56]
+[ext_resource path="res://assets/imgs/players/templar/templar_idle/templar_idle3.svg" type="Texture" id=57]
+[ext_resource path="res://assets/imgs/players/templar/templar_move/templar_move_4.svg" type="Texture" id=58]
+[ext_resource path="res://assets/imgs/players/veles/veles_idle/veles_idle1.svg" type="Texture" id=59]
+[ext_resource path="res://assets/imgs/players/oshosi/oshosi_idle/oshosi_idle2.svg" type="Texture" id=60]
+[ext_resource path="res://assets/imgs/players/veles/veles_move/veles_move_2.svg" type="Texture" id=61]
+[ext_resource path="res://assets/imgs/players/templar/templar_move/templar_move_5.svg" type="Texture" id=62]
+[ext_resource path="res://assets/imgs/players/veles/veles_move/veles_move_4.svg" type="Texture" id=63]
+[ext_resource path="res://assets/imgs/players/veles/veles_idle/veles_idle4.svg" type="Texture" id=64]
+[ext_resource path="res://assets/imgs/players/veles/veles_idle/veles_idle2.svg" type="Texture" id=65]
+[ext_resource path="res://assets/imgs/players/susanoo/susano_move/susanoo_move_4.svg" type="Texture" id=66]
+[ext_resource path="res://assets/imgs/players/veles/veles_move/veles_move_3.svg" type="Texture" id=67]
+[ext_resource path="res://assets/imgs/players/susanoo/susano_ataque/susanoo_ataque3.svg" type="Texture" id=68]
+[ext_resource path="res://assets/imgs/players/oshosi/oshosi_ataque/oshosi_ataque2.svg" type="Texture" id=69]
+[ext_resource path="res://assets/imgs/players/oshosi/oshosi_ataque/oshosi_ataque3.svg" type="Texture" id=70]
+[ext_resource path="res://assets/imgs/players/oshosi/oshosi_ataque/oshosi_ataque1.svg" type="Texture" id=71]
+[ext_resource path="res://assets/imgs/players/susanoo/susano_ataque/susanoo_ataque4.svg" type="Texture" id=72]
+[ext_resource path="res://assets/imgs/players/boy/move/player_move_3.svg" type="Texture" id=73]
+[ext_resource path="res://assets/imgs/players/boy/move/player_move_5.svg" type="Texture" id=74]
+[ext_resource path="res://assets/imgs/players/boy/move/player_move_4.svg" type="Texture" id=75]
+[ext_resource path="res://assets/imgs/players/boy/move/player_move_6.svg" type="Texture" id=76]
+[ext_resource path="res://assets/imgs/players/boy/move/player_move_2.svg" type="Texture" id=77]
 
-[sub_resource type="SpriteFrames" id=3]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 4 ), ExtResource( 9 ), ExtResource( 1 ), ExtResource( 2 ) ],
 "loop": true,
 "name": "idle",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 77 ), ExtResource( 73 ), ExtResource( 75 ), ExtResource( 74 ), ExtResource( 76 ) ],
 "loop": true,
 "name": "move",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 25 ), ExtResource( 43 ), ExtResource( 47 ), ExtResource( 42 ) ],
+"loop": false,
+"name": "use",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 40 ), ExtResource( 60 ), ExtResource( 35 ), ExtResource( 46 ), ExtResource( 50 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 48 ), ExtResource( 26 ), ExtResource( 53 ), ExtResource( 20 ), ExtResource( 51 ) ],
+"loop": true,
+"name": "move",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 71 ), ExtResource( 69 ), ExtResource( 70 ), ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "use",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 52 ), ExtResource( 33 ), ExtResource( 57 ), ExtResource( 31 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 38 ), ExtResource( 27 ), ExtResource( 58 ), ExtResource( 62 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "move",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 45 ), ExtResource( 36 ), ExtResource( 41 ), ExtResource( 37 ), ExtResource( 30 ) ],
+"loop": false,
+"name": "use",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 59 ), ExtResource( 65 ), ExtResource( 24 ), ExtResource( 64 ), ExtResource( 34 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 61 ), ExtResource( 67 ), ExtResource( 63 ), ExtResource( 21 ), ExtResource( 19 ) ],
+"loop": true,
+"name": "move",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 39 ), ExtResource( 22 ), ExtResource( 15 ), ExtResource( 55 ), ExtResource( 54 ) ],
+"loop": false,
+"name": "use",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 14 ), ExtResource( 56 ), ExtResource( 18 ), ExtResource( 16 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 23 ), ExtResource( 49 ), ExtResource( 32 ), ExtResource( 66 ), ExtResource( 44 ) ],
+"loop": true,
+"name": "move",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 6 ), ExtResource( 68 ), ExtResource( 72 ), ExtResource( 8 ) ],
+"loop": false,
+"name": "use",
 "speed": 5.0
 } ]
 
@@ -38,11 +180,40 @@ position = Vector2( -1.5, 27.5 )
 scale = Vector2( 0.027, 0.00900002 )
 texture = ExtResource( 12 )
 
-[node name="Nino" type="AnimatedSprite" parent="."]
+[node name="Sprite_Class_1_H" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "idle"
+frame = 2
+playing = true
+flip_h = true
+
+[node name="Sprite_Class_2_O" type="AnimatedSprite" parent="."]
 frames = SubResource( 3 )
+animation = "idle"
+frame = 3
+playing = true
+flip_h = true
+
+[node name="Sprite_Class_3_G" type="AnimatedSprite" parent="."]
+frames = SubResource( 4 )
+animation = "idle"
+frame = 1
+playing = true
+flip_h = true
+
+[node name="Sprite_Class_4_V" type="AnimatedSprite" parent="."]
+frames = SubResource( 5 )
 animation = "idle"
 frame = 4
 playing = true
+flip_h = true
+
+[node name="Sprite_Class_5_S" type="AnimatedSprite" parent="."]
+frames = SubResource( 6 )
+animation = "idle"
+frame = 3
+playing = true
+flip_h = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true

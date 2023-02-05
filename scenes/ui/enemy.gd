@@ -4,19 +4,6 @@ var jugador = null
 var move  = Vector2.ZERO
 var vel = 130 
 
-var names = [
-	"Pepito",
-	"Fulanito",
-	"Menganito",
-	"Manolito",
-	"Chicho",
-	"Pangacho",
-	"Isidoro",
-	"Ramiro",
-	"Miguelito",
-	"El de la esquina"
-]
-
 var IA
 var hero 
 
@@ -47,7 +34,8 @@ func _ready():
 	randomize()
 	
 	if iaName == "":
-		iaName = names[int(rand_range(0, names.size()))]
+		SocketRooms.names.shuffle()
+		iaName = SocketRooms.names.pop_back()
 	
 	nameLabel.text = iaName
 	

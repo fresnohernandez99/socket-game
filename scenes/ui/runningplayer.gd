@@ -2,13 +2,29 @@ extends KinematicBody2D
 
 export (int) var speed = 200
 export (float) var rotation_speed = 1.5
-onready var animatedSprite = $Nino
 var velocity = Vector2()
+
+const ClassHandler = preload("res://scripts/engine/ClassHandler.gd")
+
+var classHandler = ClassHandler.new()
 
 var canMove = true
 
+var actualSprite
+onready var sprites = [
+	$Sprite_Class_1_H,
+	$Sprite_Class_2_O,
+	$Sprite_Class_3_G,
+	$Sprite_Class_4_V,
+	$Sprite_Class_5_S
+]
+
 func _ready():
-	pass
+	actualSprite = sprites[classHandler.getSpritePosByClass(Persistence.data.hero)]
+
+	for s in sprites:
+		if s != actualSprite:
+			s.hide()
 	
 
 func get_input():
@@ -30,12 +46,12 @@ func _process(delta):
 	velocity = move_and_slide(velocity)
 		
 	if velocity.y == 0 && velocity.x == 0:
-		animatedSprite.animation = "idle"
+		actualSprite.animation = "idle"
 	else:
-		animatedSprite.animation = "move"
+		actualSprite.animation = "move"
 	
 	if velocity.x != 0 :
-		animatedSprite.flip_h = velocity.x < 0
+		actualSprite.flip_h = velocity.x < 0
 			
 		
 		 
