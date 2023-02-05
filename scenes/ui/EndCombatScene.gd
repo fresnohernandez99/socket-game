@@ -62,8 +62,8 @@ func _ready():
 	actualSprite = sprites[classHandler.getSpritePosByClass(hero)]
 	
 	for s in sprites:
-		if s == actualSprite:
-			s.show()
+		if s != actualSprite:
+			s.hide()
 	
 	stats = Persistence.data.hero.stats 
 	for p in RoomInfo.finalResult:
@@ -123,13 +123,13 @@ func showUpdateAttakcs():
 	attacksLabel.text = "Aprender: " + moveNames.getMoveName(hero.charClass.name, actualToLearn.id)
 	
 	pos1.text = moveNames.getMoveName(hero.charClass.name, hero.moves[0].id)
-	pos1.text = moveNames.getMoveName(hero.charClass.name, hero.moves[1].id)
+	pos2.text = moveNames.getMoveName(hero.charClass.name, hero.moves[1].id)
 	
 	if hero.moves.size() >= 3:
-		pos1.text = moveNames.getMoveName(hero.charClass.name, hero.moves[2].id)
+		pos3.text = moveNames.getMoveName(hero.charClass.name, hero.moves[2].id)
 	
 	if hero.moves.size() >= 4:
-		pos1.text = moveNames.getMoveName(hero.charClass.name, hero.moves[3].id)
+		pos4.text = moveNames.getMoveName(hero.charClass.name, hero.moves[3].id)
 
 
 func calculateExperienceEarnedIfWin():
