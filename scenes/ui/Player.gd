@@ -25,8 +25,10 @@ onready var points = $Status/Points
 onready var typebackground = $Status/TypeBackground
 
 onready var tween = $Tween
+onready var wTween = $WeaponTween
 
 onready var weapon = $KinematicBody2D/Weapon
+onready var idol = $KinematicBody2D/Idol
 
 var actualTweenInterpolation
 
@@ -55,6 +57,14 @@ onready var powerSounds = [
 	load("res://assets/sfx/attack_4.wav"),
 ]
 
+onready var idols = [
+	load("res://assets/imgs/heroe/hercules.svg"),
+	load("res://assets/imgs/heroe/oshosi.svg"),
+	load("res://assets/imgs/heroe/templar.svg"),
+	load("res://assets/imgs/heroe/dios_veles.svg"),
+	load("res://assets/imgs/heroe/susanoo_dios.svg")
+]
+
 func setData(data, standX, standY, turnFor = RIGHT):
 	hero = data
 	horizontalPosition = standX
@@ -77,6 +87,8 @@ func _ready():
 	
 	actualSprite = sprites[classHandler.getSpritePosByClass(hero)]
 	weapon.animation = classHandler.getWeaponByClass(hero)
+	
+	idol.texture = idols[classHandler.getSpritePosByClass(hero)]
 	
 	if hero.id != Persistence.data.hero.id:
 		modulate = Color(0.8, 0.8, 0.8, 1)
@@ -127,6 +139,23 @@ func receiveHit(damage):
 func sendHit():
 	audio.stream = powerSounds[int(rand_range(0, hitSounds.size()))]
 	audio.play()
+	
+	if hero.id == Persistence.data.hero.id:
+		wTween.interpolate_property(weapon, "global_position", Vector2(weapon.global_position.x, weapon.global_position.y), Vector2(weapon.global_position.x + 200, weapon.global_position.y), 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		wTween.start()
+		
+		yield(get_tree().create_timer(1.2), "timeout")
+		
+		wTween.interpolate_property(weapon, "global_position", Vector2(weapon.global_position.x, weapon.global_position.y), Vector2(weapon.global_position.x - 200, weapon.global_position.y), 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		wTween.start()
+	else:
+		wTween.interpolate_property(weapon, "global_position", Vector2(weapon.global_position.x, weapon.global_position.y), Vector2(weapon.global_position.x - 200, weapon.global_position.y), 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		wTween.start()
+		
+		yield(get_tree().create_timer(1.2), "timeout")
+		
+		wTween.interpolate_property(weapon, "global_position", Vector2(weapon.global_position.x, weapon.global_position.y), Vector2(weapon.global_position.x + 200, weapon.global_position.y), 1.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
+		wTween.start()
 
 func increaseStat(p):
 	actualTweenInterpolation = [Color(1,1,1,1), Color(0.5,0.5,1,1)]

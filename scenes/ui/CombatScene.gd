@@ -139,7 +139,6 @@ func _setPlayOverHero(actualPlay):
 			emit_signal("ShowMsg", ["[color="+ colorFrom + "]"+ playerFrom.hero.name +"[/color] ha usado " + "[color="+ moveColor + "]" + moveName + "[/color] contra " + "[color="+ colorTo + "]" + playerTo.hero.name +"[/color]!" ])
 	
 	playerFrom.setAnim("use")
-	playerFrom.sendHit()
 	
 	_calculatePlaysResults(actualPlay)
 
@@ -185,6 +184,7 @@ func _calculatePlaysResults(actualPlay):
 		match(actualPlay.move.type):
 			moveHandler.ATTACK_MOVE:
 				_calculateAttack(actualPlay.move, playerTo, playerFrom)
+				playerFrom.sendHit()
 			moveHandler.DEFENSE_MOVE:
 				var increase = playerTo.hero.stats[0].value * actualPlay.move.percent
 				playerTo.hero.stats[0].value += increase

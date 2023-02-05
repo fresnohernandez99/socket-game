@@ -35,7 +35,7 @@ func _ready():
 	music.volume_db = int(Persistence.data.option.volume / 10)
 	
 	if RoomInfo.actualIAHero == null:
-		enemyIA = BaseIAEnemy.new().getNewNpc("IATEST", 20)
+		enemyIA = BaseIAEnemy.new().getNewNpc("IATEST", 1)
 	else:
 		enemyIA = RoomInfo.actualIAHero
 	
@@ -232,7 +232,6 @@ func _setPlayOverHero(actualPlay):
 	
 	
 	playerFrom.setAnim("use")
-	playerFrom.sendHit()
 	
 	_calculatePlaysResults(actualPlay)
 
@@ -321,6 +320,7 @@ func _calculatePlaysResults(actualPlay):
 		match(actualPlay.move.type):
 			moveHandler.ATTACK_MOVE:
 				_calculateAttack(actualPlay.move, playerTo, playerFrom)
+				playerFrom.sendHit()
 			moveHandler.DEFENSE_MOVE:
 				var increase = playerTo.hero.stats[0].value * actualPlay.move.percent
 				playerTo.hero.stats[0].value += increase
